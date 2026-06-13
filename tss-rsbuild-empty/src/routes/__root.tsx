@@ -1,6 +1,8 @@
 import { Outlet, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 
+import "@/global.css";
+
 export const Route = createRootRoute({
   head: () => ({
     meta: [
@@ -27,7 +29,7 @@ function RootComponent() {
   );
 }
 
-function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
+function RootDocument({ children }: { children: ReactNode }) {
   return (
     <html>
       <head>
