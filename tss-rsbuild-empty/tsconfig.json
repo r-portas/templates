@@ -13,6 +13,9 @@
     "verbatimModuleSyntax": false, // Prevent server bundles leaking into client bundles
     "resolveJsonModule": true,
     "allowImportingTsExtensions": true,
+    "paths": {
+      "@/*": ["./src/*"]
+    },
 
     /* type checking */
     "strict": true,
