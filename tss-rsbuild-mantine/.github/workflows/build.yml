@@ -4,16 +4,6 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        directory:
-          # Add directories here when new templates are added
-          - tss-rsbuild-empty
-          - tss-rsbuild-mantine
-    defaults:
-      run:
-        working-directory: ${{ matrix.directory }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v6
@@ -25,3 +15,6 @@ jobs:
         run: bun run lint --format=github
       - name: Build project
         run: bun run build
+      # Add once we add tests
+      # - name: Run tests
+      #   run: bun test
