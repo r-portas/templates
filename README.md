@@ -13,8 +13,16 @@ your desired project name:
 bunx --bun gitpick r-portas/templates/tree/main/<template> my-project
 ```
 
+## Tooling
+
+All templates share a common set of tooling:
+
+- [Bun](https://bun.sh): runtime, package manager, and bundler
+- [Oxlint](https://oxc.rs): linting
+- [Oxfmt](https://oxc.rs): formatting
+
 ## Templates
 
 | Name | Description | Setup |
 | --- | --- | --- |
-| `tss-rsbuild-empty` | An empty [TanStack Start](https://tanstack.com/start) app bundled with [RSBuild](https://rsbuild.dev), configured with TypeScript, [oxlint](https://oxc.rs) for linting, and [oxfmt](https://oxc.rs) for formatting. | `bunx --bun gitpick r-portas/templates/tree/main/tss-rsbuild-empty my-project` |
+| `tss-rsbuild-empty` | An empty [TanStack Start](https://tanstack.com/start) app bundled with [RSBuild](https://rsbuild.dev), configured with TypeScript. | `bunx --bun gitpick r-portas/templates/tree/main/tss-rsbuild-empty my-project` |
