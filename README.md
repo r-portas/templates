@@ -23,6 +23,8 @@ All templates share a common set of tooling:
 
 ## Templates
 
-| Name | Description | Setup |
-| --- | --- | --- |
-| [tss](./tss) | A blank minimal TanStack Start application | `bun install` |
+| Name                         | Description                                                       |
+| ---------------------------- | ----------------------------------------------------------------- |
+| [react](./react)             | A blank minimal React application                                 |
+| [tss](./tss)                 | A blank minimal TanStack Start application                        |
+| [tss-mantine](./tss-mantine) | A blank minimal TanStack Start application configure with Mantine |
