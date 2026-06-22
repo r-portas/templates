@@ -4,6 +4,6 @@ export const Route = createFileRoute("/")({
   component: RouteComponent,
 });
 
-export function RouteComponent() {
-  return <div>Hello "/"!</div>;
+function RouteComponent() {
+  return <div>TSS app</div>;
 }

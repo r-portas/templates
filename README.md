@@ -25,4 +25,3 @@ All templates share a common set of tooling:
 
 | Name | Description | Setup |
 | --- | --- | --- |
-| `tss-rsbuild-empty` | An empty [TanStack Start](https://tanstack.com/start) app bundled with [RSBuild](https://rsbuild.dev), configured with TypeScript. | `bunx --bun gitpick r-portas/templates/tree/main/tss-rsbuild-empty my-project` |

@@ -9,7 +9,7 @@ jobs:
       matrix:
         directory:
           # Add directories here when new templates are added
-          - tss-rsbuild-empty
+          - tss
     defaults:
       run:
         working-directory: ${{ matrix.directory }}
