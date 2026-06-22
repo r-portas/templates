@@ -23,6 +23,8 @@ All templates share a common set of tooling:
 
 ## Templates
 
-| Name | Description | Setup |
-| --- | --- | --- |
-| `tss-rsbuild-empty` | An empty [TanStack Start](https://tanstack.com/start) app bundled with [RSBuild](https://rsbuild.dev), configured with TypeScript. | `bunx --bun gitpick r-portas/templates/tree/main/tss-rsbuild-empty my-project` |
+| Name                         | Description                                                        |
+| ---------------------------- | ----------------------------------------------------------------- |
+| [react](./react)             | A blank minimal React application                                  |
+| [tss](./tss)                 | A blank minimal TanStack Start application                         |
+| [tss-mantine](./tss-mantine) | A blank minimal TanStack Start application configured with Mantine |
