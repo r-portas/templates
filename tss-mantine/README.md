@@ -1,6 +1,6 @@
 # tss-mantine
 
-A blank minimal TanStack Start application configure with Mantine.
+A blank minimal TanStack Start application configured with Mantine.
 
 ## Getting Started
 
