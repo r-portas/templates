@@ -25,3 +25,4 @@ All templates share a common set of tooling:
 
 | Name | Description | Setup |
 | --- | --- | --- |
+| [tss](./tss) | A blank minimal TanStack Start application | `bun install` |
