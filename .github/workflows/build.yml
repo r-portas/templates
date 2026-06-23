@@ -11,6 +11,7 @@ jobs:
           # Add directories here when new templates are added
           - react
           - tss
+          - tss-tw
           - tss-mantine
     defaults:
       run:
