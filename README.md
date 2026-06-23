@@ -21,6 +21,20 @@ All templates share a common set of tooling:
 - [Oxlint](https://oxc.rs): linting
 - [Oxfmt](https://oxc.rs): formatting
 
+## Scripts
+
+Repository maintenance scripts live in [`./scripts`](./scripts):
+
+| Script                                 | Description                                                                |
+| -------------------------------------- | -------------------------------------------------------------------------- |
+| [`update.sh`](./scripts/update.sh)     | Update every template's dependencies to the latest versions via `bun update --latest` |
+
+Run from anywhere in the repo:
+
+```bash
+./scripts/update.sh
+```
+
 ## Templates
 
 | Name                         | Description                                                             |
