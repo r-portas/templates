@@ -21,6 +21,15 @@ All templates share a common set of tooling:
 - [Oxlint](https://oxc.rs): linting
 - [Oxfmt](https://oxc.rs): formatting
 
+## Templates
+
+| Name                         | Description                                                             |
+| ---------------------------- | ---------------------------------------------------------------------- |
+| [react](./react)             | A blank minimal React application                                       |
+| [tss](./tss)                 | A blank minimal TanStack Start application                              |
+| [tss-tw](./tss-tw)           | A blank minimal TanStack Start application configured with Tailwind CSS |
+| [tss-mantine](./tss-mantine) | A blank minimal TanStack Start application configured with Mantine      |
+
 ## Scripts
 
 Repository maintenance scripts live in [`./scripts`](./scripts):
@@ -35,11 +44,12 @@ Run from anywhere in the repo:
 ./scripts/update.sh
 ```
 
-## Templates
+## Skills
 
-| Name                         | Description                                                             |
-| ---------------------------- | ---------------------------------------------------------------------- |
-| [react](./react)             | A blank minimal React application                                       |
-| [tss](./tss)                 | A blank minimal TanStack Start application                              |
-| [tss-tw](./tss-tw)           | A blank minimal TanStack Start application configured with Tailwind CSS |
-| [tss-mantine](./tss-mantine) | A blank minimal TanStack Start application configured with Mantine      |
+[Claude Code](https://claude.com/claude-code) skills for maintaining this repo
+live in [`./.claude/skills`](./.claude/skills). Invoke one by typing
+`/<skill-name>` in Claude Code.
+
+| Name                                                                          | Description                                                                                       |
+| ----------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| [check-best-practises](./.claude/skills/check-best-practises/SKILL.md)         | Audits each template against the latest official docs for the libraries it uses and aligns them.  |
