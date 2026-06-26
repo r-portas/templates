@@ -30,6 +30,7 @@ All templates share a common set of tooling:
 | [tss-tw](./tss-tw)           | A blank minimal TanStack Start application configured with Tailwind CSS |
 | [tss-mantine](./tss-mantine) | A blank minimal TanStack Start application configured with Mantine      |
 | [next](./next)               | A blank minimal Next.js application                                     |
+| [next-mantine](./next-mantine) | A blank minimal Next.js application configured with Mantine           |
 
 ## Scripts
 
