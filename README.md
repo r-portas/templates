@@ -13,7 +13,7 @@ your desired project name:
 bunx --bun gitpick r-portas/templates/tree/main/<template> my-project
 ```
 
-## Tooling
+## Common Tooling
 
 All templates share a common set of tooling:
 
@@ -24,19 +24,21 @@ All templates share a common set of tooling:
 ## Templates
 
 | Name                         | Description                                                             |
-| ---------------------------- | ---------------------------------------------------------------------- |
+| ---------------------------- | ----------------------------------------------------------------------- |
 | [react](./react)             | A blank minimal React application                                       |
 | [tss](./tss)                 | A blank minimal TanStack Start application                              |
 | [tss-tw](./tss-tw)           | A blank minimal TanStack Start application configured with Tailwind CSS |
 | [tss-mantine](./tss-mantine) | A blank minimal TanStack Start application configured with Mantine      |
+| [next](./next)               | A blank minimal Next.js application                                     |
+| [next-mantine](./next-mantine) | A blank minimal Next.js application configured with Mantine           |
 
 ## Scripts
 
 Repository maintenance scripts live in [`./scripts`](./scripts):
 
-| Script                                 | Description                                                                |
-| -------------------------------------- | -------------------------------------------------------------------------- |
-| [`update.sh`](./scripts/update.sh)     | Update every template's dependencies to the latest versions via `bun update --latest` |
+| Script                             | Description                                                                           |
+| ---------------------------------- | ------------------------------------------------------------------------------------- |
+| [`update.sh`](./scripts/update.sh) | Update every template's dependencies to the latest versions via `bun update --latest` |
 
 Run from anywhere in the repo:
 
@@ -50,6 +52,6 @@ Run from anywhere in the repo:
 live in [`./.claude/skills`](./.claude/skills). Invoke one by typing
 `/<skill-name>` in Claude Code.
 
-| Name                                                                          | Description                                                                                       |
-| ----------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
-| [check-best-practises](./.claude/skills/check-best-practises/SKILL.md)         | Audits each template against the latest official docs for the libraries it uses and aligns them.  |
+| Name                                                                   | Description                                                                                      |
+| ---------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| [check-best-practises](./.claude/skills/check-best-practises/SKILL.md) | Audits each template against the latest official docs for the libraries it uses and aligns them. |

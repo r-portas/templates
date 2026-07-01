@@ -13,6 +13,8 @@ jobs:
           - tss
           - tss-tw
           - tss-mantine
+          - next
+          - next-mantine
     defaults:
       run:
         working-directory: ${{ matrix.directory }}
