@@ -43,5 +43,7 @@ jobs:
         run: bun install
       - name: Lint project
         run: bun run lint --format=github
+      - name: Run tests
+        run: bun test
       - name: Build project
         run: bun run build
