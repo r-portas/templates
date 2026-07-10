@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardAction, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { githubUrl, gitpickCommand } from "@/lib/gitpick";
 import { childTemplates, LINEAGE } from "@/lib/lineage";
-import { getTemplatePackageJsonFn } from "@/lib/templates";
+import { getTemplatePackageJsonFn } from "@/lib/templates.functions";
 
 export const Route = createFileRoute("/$templateName")({
   component: RouteComponent,

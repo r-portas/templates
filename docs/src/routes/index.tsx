@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 
 import { TemplateCard } from "@/components/template-card";
 import { LINEAGE } from "@/lib/lineage";
-import { listTemplatesFn } from "@/lib/templates";
+import { listTemplatesFn } from "@/lib/templates.functions";
 
 export const Route = createFileRoute("/")({
   component: RouteComponent,
