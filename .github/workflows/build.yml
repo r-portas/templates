@@ -13,6 +13,7 @@ jobs:
           - tss
           - tss-tw
           - tss-mantine
+          - tss-shadcn
     defaults:
       run:
         working-directory: templates/${{ matrix.directory }}

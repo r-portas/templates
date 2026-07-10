@@ -29,6 +29,7 @@ All templates share a common set of tooling:
 | [tss](./templates/tss)                     | A blank minimal TanStack Start application                              |
 | [tss-tw](./templates/tss-tw)               | A blank minimal TanStack Start application configured with Tailwind CSS |
 | [tss-mantine](./templates/tss-mantine)     | A blank minimal TanStack Start application configured with Mantine      |
+| [tss-shadcn](./templates/tss-shadcn)       | A blank minimal TanStack Start application configured with Tailwind CSS and shadcn/ui |
 
 ## Scripts
 
