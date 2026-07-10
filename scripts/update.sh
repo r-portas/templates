@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Update every template's dependencies to the latest versions.
 #
-# Discovers each top-level template by its package.json and runs
+# Discovers each template under ./templates by its package.json and runs
 # `bun update --latest` inside it, rewriting package.json and bun.lock.
 set -euo pipefail
 
@@ -9,7 +9,7 @@ set -euo pipefail
 root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$root"
 
-for pkg in */package.json; do
+for pkg in templates/*/package.json; do
   dir="$(dirname "$pkg")"
   echo "==> Updating $dir"
   (cd "$dir" && bun update --latest)

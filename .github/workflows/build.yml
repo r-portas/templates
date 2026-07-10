@@ -15,7 +15,7 @@ jobs:
           - tss-mantine
     defaults:
       run:
-        working-directory: ${{ matrix.directory }}
+        working-directory: templates/${{ matrix.directory }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v6
