@@ -3,6 +3,7 @@ import { ArrowLeft, GitBranch, SquareArrowOutUpRight } from "lucide-react";
 
 import { CopyCommand } from "@/components/copy-command";
 import { Badge } from "@/components/ui/badge";
+import { buttonVariants } from "@/components/ui/button";
 import { Card, CardAction, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { githubUrl, gitpickCommand } from "@/lib/gitpick";
 import { childTemplates, LINEAGE } from "@/lib/lineage";
@@ -48,7 +49,11 @@ function RouteComponent() {
     <div className="mx-auto flex max-w-3xl flex-col gap-10 px-6 py-16 sm:px-10">
       <Link
         to="/"
-        className="inline-flex w-fit items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
+        className={buttonVariants({
+          variant: "ghost",
+          size: "sm",
+          className: "w-fit text-muted-foreground",
+        })}
       >
         <ArrowLeft className="size-4" />
         All templates
