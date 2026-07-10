@@ -8,6 +8,7 @@ import {
   CardAction,
   CardContent,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -24,7 +25,7 @@ function TemplateCard({
   parent: string | null;
 }) {
   return (
-    <Card className={cn("relative transition-colors hover:ring-foreground/30")}>
+    <Card className={cn("relative transition-colors hover:ring-foreground/30 justify-between")}>
       <Link
         to="/$templateName"
         params={{ templateName: name }}
@@ -45,7 +46,7 @@ function TemplateCard({
           )}
         </CardAction>
       </CardHeader>
-      <CardContent className="relative z-10">
+      <CardContent>
         <CopyCommand command={gitpickCommand(name)} size="sm" />
       </CardContent>
     </Card>
