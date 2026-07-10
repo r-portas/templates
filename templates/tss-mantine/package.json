@@ -1,5 +1,6 @@
 {
   "name": "tss-mantine",
+  "description": "A blank minimal TanStack Start application configured with Mantine",
   "type": "module",
   "scripts": {
     "dev": "bun --bun vite dev",

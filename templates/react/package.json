@@ -1,5 +1,6 @@
 {
   "name": "react",
+  "description": "A blank minimal React application",
   "type": "module",
   "scripts": {
     "dev": "bun --bun vite dev",
