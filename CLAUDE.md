@@ -1,7 +1,7 @@
 # CLAUDE.md
 
 - This repo contains a collection of starter templates for quickly bootstrapping new projects
-- Each top-level directory is a self-contained template, which can be used to create a new project using tools like `gitpick`
+- Each directory under `./templates` is a self-contained template, which can be used to create a new project using tools like `gitpick`
 - Aim to keep templates minimal, focused and consistent.
 - All templates share a common set of tooling, including Bun, Oxlint and Oxfmt
 - When making changes to a template consider:

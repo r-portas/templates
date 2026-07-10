@@ -1,8 +1,8 @@
 # templates
 
 A collection of starter templates for quickly bootstrapping new projects. Each
-top-level directory is a self-contained template that can be pulled into a new
-project using [gitpick](https://github.com/nrjdalal/gitpick).
+directory under [`./templates`](./templates) is a self-contained template that
+can be pulled into a new project using [gitpick](https://github.com/nrjdalal/gitpick).
 
 ## Usage
 
@@ -10,7 +10,7 @@ Use `gitpick` to copy a template into a new directory. Replace `my-project` with
 your desired project name:
 
 ```bash
-bunx --bun gitpick r-portas/templates/tree/main/<template> my-project
+bunx --bun gitpick r-portas/templates/tree/main/templates/<template> my-project
 ```
 
 ## Tooling
@@ -23,12 +23,12 @@ All templates share a common set of tooling:
 
 ## Templates
 
-| Name                         | Description                                                             |
-| ---------------------------- | ---------------------------------------------------------------------- |
-| [react](./react)             | A blank minimal React application                                       |
-| [tss](./tss)                 | A blank minimal TanStack Start application                              |
-| [tss-tw](./tss-tw)           | A blank minimal TanStack Start application configured with Tailwind CSS |
-| [tss-mantine](./tss-mantine) | A blank minimal TanStack Start application configured with Mantine      |
+| Name                                       | Description                                                             |
+| ------------------------------------------ | ------------------------------------------------------------------------ |
+| [react](./templates/react)                 | A blank minimal React application                                       |
+| [tss](./templates/tss)                     | A blank minimal TanStack Start application                              |
+| [tss-tw](./templates/tss-tw)               | A blank minimal TanStack Start application configured with Tailwind CSS |
+| [tss-mantine](./templates/tss-mantine)     | A blank minimal TanStack Start application configured with Mantine      |
 
 ## Scripts
 
