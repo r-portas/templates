@@ -1,0 +1,149 @@
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowLeft, GitBranch, SquareArrowOutUpRight } from "lucide-react";
+
+import { CopyCommand } from "@/components/copy-command";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardAction, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { githubUrl, gitpickCommand } from "@/lib/gitpick";
+import { childTemplates, LINEAGE } from "@/lib/lineage";
+import { getTemplatePackageJsonFn } from "@/lib/templates";
+
+export const Route = createFileRoute("/$templateName")({
+  component: RouteComponent,
+  loader: async ({ params }) => ({
+    template: await getTemplatePackageJsonFn({ data: params.templateName }),
+  }),
+});
+
+function DependencyList({ dependencies }: { dependencies: Record<string, string> }) {
+  const entries = Object.entries(dependencies).sort(([a], [b]) => a.localeCompare(b));
+  if (entries.length === 0) {
+    return <p className="text-sm text-muted-foreground">None</p>;
+  }
+  return (
+    <ul className="flex flex-col gap-1 font-mono text-sm">
+      {entries.map(([name, version]) => (
+        <li key={name} className="flex items-baseline justify-between gap-4">
+          <a
+            href={`https://npmx.dev/package/${name}`}
+            target="_blank"
+            rel="noreferrer"
+            className="truncate text-foreground underline-offset-2 hover:underline"
+          >
+            {name}
+          </a>
+          <span className="shrink-0 text-muted-foreground">{version}</span>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function RouteComponent() {
+  const { template } = Route.useLoaderData();
+  const parent = LINEAGE[template.name]?.parent ?? null;
+  const children = childTemplates(template.name);
+
+  return (
+    <div className="mx-auto flex max-w-3xl flex-col gap-10 px-6 py-16 sm:px-10">
+      <Link
+        to="/"
+        className="inline-flex w-fit items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
+      >
+        <ArrowLeft className="size-4" />
+        All templates
+      </Link>
+
+      <div className="flex flex-col gap-3">
+        <div className="flex flex-wrap items-center gap-3">
+          <h1 className="font-mono text-3xl font-semibold">{template.name}</h1>
+          {parent ? (
+            <Badge variant="secondary">
+              <GitBranch data-icon="inline-start" />
+              extends {parent}
+            </Badge>
+          ) : (
+            <Badge variant="outline">base</Badge>
+          )}
+        </div>
+        <p className="text-muted-foreground">{template.description}</p>
+      </div>
+
+      <CopyCommand command={gitpickCommand(template.name)} />
+
+      {(parent ?? children.length > 0) && (
+        <Card>
+          <CardHeader>
+            <CardTitle>Lineage</CardTitle>
+          </CardHeader>
+          <CardContent className="flex flex-col gap-2 text-sm">
+            {parent && (
+              <div>
+                Extends{" "}
+                <Link
+                  to="/$templateName"
+                  params={{ templateName: parent }}
+                  className="font-mono text-foreground underline underline-offset-2"
+                >
+                  {parent}
+                </Link>
+              </div>
+            )}
+            {children.length > 0 && (
+              <div>
+                Extended by{" "}
+                {children.map((child, index) => (
+                  <span key={child}>
+                    <Link
+                      to="/$templateName"
+                      params={{ templateName: child }}
+                      className="font-mono text-foreground underline underline-offset-2"
+                    >
+                      {child}
+                    </Link>
+                    {index < children.length - 1 ? ", " : ""}
+                  </span>
+                ))}
+              </div>
+            )}
+          </CardContent>
+        </Card>
+      )}
+
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+        <Card>
+          <CardHeader>
+            <CardTitle>Dependencies</CardTitle>
+            <CardAction>
+              <Badge variant="secondary">{Object.keys(template.dependencies).length}</Badge>
+            </CardAction>
+          </CardHeader>
+          <CardContent>
+            <DependencyList dependencies={template.dependencies} />
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader>
+            <CardTitle>Dev dependencies</CardTitle>
+            <CardAction>
+              <Badge variant="secondary">{Object.keys(template.devDependencies).length}</Badge>
+            </CardAction>
+          </CardHeader>
+          <CardContent>
+            <DependencyList dependencies={template.devDependencies} />
+          </CardContent>
+        </Card>
+      </div>
+
+      <a
+        href={githubUrl(template.name)}
+        target="_blank"
+        rel="noreferrer"
+        className="inline-flex w-fit items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
+      >
+        View on GitHub
+        <SquareArrowOutUpRight className="size-3.5" />
+      </a>
+    </div>
+  );
+}
