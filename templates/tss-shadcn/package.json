@@ -1,5 +1,6 @@
 {
   "name": "tss-shadcn",
+  "description": "A blank minimal TanStack Start application configured with Tailwind CSS and shadcn/ui",
   "type": "module",
   "scripts": {
     "dev": "bun --bun vite dev",

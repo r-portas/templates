@@ -3,10 +3,20 @@
 
 version: 2
 updates:
-  # Version updates for Bun dependencies in every top-level directory
+  # Version updates for Bun dependencies in every template
   - package-ecosystem: "bun"
     directories:
-      - "/*"
+      - "/templates/*"
+    schedule:
+      interval: "weekly"
+    groups:
+      dependencies:
+        patterns:
+          - "*"
+
+  # Version updates for Bun dependencies in the docs app
+  - package-ecosystem: "bun"
+    directory: "/docs"
     schedule:
       interval: "weekly"
     groups:

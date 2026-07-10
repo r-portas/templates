@@ -1,38 +1,38 @@
-import { Check, Copy } from "lucide-react"
-import { useState } from "react"
+import { Check, Copy } from "lucide-react";
+import { useState } from "react";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 function CopyCommand({
   command,
   className,
   size = "default",
 }: {
-  command: string
-  className?: string
-  size?: "default" | "sm"
+  command: string;
+  className?: string;
+  size?: "default" | "sm";
 }) {
-  const [copied, setCopied] = useState(false)
+  const [copied, setCopied] = useState(false);
 
   function legacyCopy(text: string) {
-    const textarea = document.createElement("textarea")
-    textarea.value = text
-    textarea.style.position = "fixed"
-    textarea.style.opacity = "0"
-    document.body.appendChild(textarea)
-    textarea.select()
-    document.execCommand("copy")
-    document.body.removeChild(textarea)
+    const textarea = document.createElement("textarea");
+    textarea.value = text;
+    textarea.style.position = "fixed";
+    textarea.style.opacity = "0";
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand("copy");
+    document.body.removeChild(textarea);
   }
 
   async function handleCopy() {
     try {
-      await navigator.clipboard.writeText(command)
+      await navigator.clipboard.writeText(command);
     } catch {
-      legacyCopy(command)
+      legacyCopy(command);
     }
-    setCopied(true)
-    window.setTimeout(() => setCopied(false), 1600)
+    setCopied(true);
+    window.setTimeout(() => setCopied(false), 1600);
   }
 
   return (
@@ -44,7 +44,9 @@ function CopyCommand({
       className={cn(
         "group/copy relative flex w-full items-center gap-3 border border-line bg-panel text-left font-mono transition-colors",
         "hover:border-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent",
-        size === "default" ? "rounded-md px-4 py-3 text-[0.8rem] sm:text-sm" : "rounded px-3 py-2 text-xs",
+        size === "default"
+          ? "rounded-md px-4 py-3 text-[0.8rem] sm:text-sm"
+          : "rounded px-3 py-2 text-xs",
         className,
       )}
     >
@@ -71,7 +73,7 @@ function CopyCommand({
         )}
       </span>
     </button>
-  )
+  );
 }
 
-export { CopyCommand }
+export { CopyCommand };

@@ -1,5 +1,6 @@
 {
   "name": "tss",
+  "description": "A blank minimal TanStack Start application",
   "type": "module",
   "scripts": {
     "dev": "bun --bun vite dev",

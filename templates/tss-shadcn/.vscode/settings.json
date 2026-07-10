@@ -15,5 +15,8 @@
   "files.readonlyInclude": {
     "**/routeTree.gen.ts": true,
     "bun.lock": true
+  },
+  "json.schemaDownload.trustedDomains": {
+    "https://ui.shadcn.com": true
   }
 }
