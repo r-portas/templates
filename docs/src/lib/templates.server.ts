@@ -19,8 +19,13 @@ export async function listTemplates() {
  * Gets the full package.json for a given template name
  */
 export async function getTemplatePackageJson(templateName: string) {
-  const packageJsonPath = resolve(TEMPLATES_DIR, templateName, "package.json");
-  const packageJsonContent = await readFile(packageJsonPath, "utf-8");
-  const rawPackageJson = JSON.parse(packageJsonContent);
-  return packageJsonSchema.parse(rawPackageJson);
+  try {
+    const packageJsonPath = resolve(TEMPLATES_DIR, templateName, "package.json");
+    const packageJsonContent = await readFile(packageJsonPath, "utf-8");
+    const rawPackageJson = JSON.parse(packageJsonContent);
+    return packageJsonSchema.parse(rawPackageJson);
+  } catch (error) {
+    console.error(`Error reading package.json for template "${templateName}":`, error);
+    throw new Error(`Failed to read package.json for template "${templateName}"`);
+  }
 }

@@ -1,6 +1,7 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft, GitBranch, SquareArrowOutUpRight } from "lucide-react";
+import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { ArrowLeft, SquareArrowOutUpRight } from "lucide-react";
 
+import { LogoMark } from "@/components/logo-mark";
 import { CopyCommand } from "@/components/templates/copy-command";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
@@ -10,9 +11,16 @@ import { getTemplatePackageJsonFn } from "@/lib/templates.functions";
 
 export const Route = createFileRoute("/$templateName")({
   component: RouteComponent,
-  loader: async ({ params }) => ({
-    template: await getTemplatePackageJsonFn({ data: params.templateName }),
-  }),
+  loader: async ({ params }) => {
+    try {
+      const template = await getTemplatePackageJsonFn({ data: params.templateName });
+      return {
+        template,
+      };
+    } catch {
+      throw notFound();
+    }
+  },
 });
 
 function DependencyList({ dependencies }: { dependencies: Record<string, string> }) {
@@ -58,6 +66,7 @@ function RouteComponent() {
 
       <div className="flex flex-col gap-3">
         <div className="flex flex-wrap items-center gap-3">
+          <LogoMark className="size-8" />
           <h1 className="font-mono text-3xl font-semibold">{template.name}</h1>
         </div>
         <p className="text-muted-foreground">{template.description}</p>

@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { GitBranch } from "lucide-react";
 
+import { LogoMark } from "@/components/logo-mark";
 import { TemplateCard } from "@/components/templates/template-card";
 import { Button } from "@/components/ui/button";
 import { GITPICK_REPO } from "@/lib/gitpick";
@@ -19,7 +20,10 @@ function RouteComponent() {
     <div className="mx-auto flex max-w-5xl flex-col gap-24 px-6 py-16 sm:px-10">
       <section className="flex flex-col gap-6">
         <div className="flex items-start justify-between gap-4">
-          <h1 className="font-mono text-4xl font-semibold">Roy's Templates</h1>
+          <div className="flex items-center gap-3">
+            <LogoMark />
+            <h1 className="font-mono text-4xl font-semibold">Roy's Templates</h1>
+          </div>
           <Button
             variant="ghost"
             size="sm"
@@ -43,6 +47,8 @@ function RouteComponent() {
               key={template.name}
               name={template.name}
               description={template.description}
+              dependencyCount={Object.keys(template.dependencies).length}
+              devDependencyCount={Object.keys(template.devDependencies).length}
             />
           ))}
         </div>
