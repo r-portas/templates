@@ -1,5 +1,5 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
-import { SquareArrowOutUpRight } from "lucide-react";
+import { GitBranch } from "lucide-react";
 
 import { PageHeader } from "@/components/page-header";
 import { CopyCommand } from "@/components/templates/copy-command";
@@ -63,7 +63,7 @@ function RouteComponent() {
             rel="noreferrer"
             className={buttonVariants({ variant: "ghost", size: "sm" })}
           >
-            <SquareArrowOutUpRight data-icon="inline-start" />
+            <GitBranch data-icon="inline-start" />
             GitHub
           </a>
         }
