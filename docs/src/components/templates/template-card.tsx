@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { GitBranch } from "lucide-react";
 
-import { CopyCommand } from "@/components/copy-command";
+import { CopyCommand } from "@/components/templates/copy-command";
 import { Badge } from "@/components/ui/badge";
 import {
   Card,

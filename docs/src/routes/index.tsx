@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { GitBranch } from "lucide-react";
 
-import { TemplateCard } from "@/components/template-card";
+import { TemplateCard } from "@/components/templates/template-card";
 import { Button } from "@/components/ui/button";
 import { GITPICK_REPO } from "@/lib/gitpick";
 import { LINEAGE } from "@/lib/lineage";

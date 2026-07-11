@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft, GitBranch, SquareArrowOutUpRight } from "lucide-react";
 
-import { CopyCommand } from "@/components/copy-command";
+import { CopyCommand } from "@/components/templates/copy-command";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { Card, CardAction, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
