@@ -46,7 +46,7 @@ function TemplateCard({
           )}
         </CardAction>
       </CardHeader>
-      <CardContent>
+      <CardContent className="relative">
         <CopyCommand command={gitpickCommand(name)} size="sm" />
       </CardContent>
     </Card>
