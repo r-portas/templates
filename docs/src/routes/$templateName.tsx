@@ -1,7 +1,7 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { ArrowLeft, SquareArrowOutUpRight } from "lucide-react";
+import { createFileRoute, notFound } from "@tanstack/react-router";
+import { SquareArrowOutUpRight } from "lucide-react";
 
-import { LogoMark } from "@/components/logo-mark";
+import { PageHeader } from "@/components/page-header";
 import { CopyCommand } from "@/components/templates/copy-command";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
@@ -51,26 +51,24 @@ function RouteComponent() {
   const { template } = Route.useLoaderData();
 
   return (
-    <div className="mx-auto flex max-w-3xl flex-col gap-10 px-6 py-16 sm:px-10">
-      <Link
-        to="/"
-        className={buttonVariants({
-          variant: "ghost",
-          size: "sm",
-          className: "w-fit text-muted-foreground",
-        })}
-      >
-        <ArrowLeft className="size-4" />
-        All templates
-      </Link>
-
-      <div className="flex flex-col gap-3">
-        <div className="flex flex-wrap items-center gap-3">
-          <LogoMark className="size-8" />
-          <h1 className="font-mono text-3xl font-semibold">{template.name}</h1>
-        </div>
-        <p className="text-muted-foreground">{template.description}</p>
-      </div>
+    <div className="mx-auto flex max-w-4xl flex-col gap-10 px-6 py-16 sm:px-10">
+      <PageHeader
+        title={template.name}
+        titleId={template.name}
+        breadcrumb={{ label: "All templates", to: "/" }}
+        action={
+          <a
+            href={githubUrl(template.name)}
+            target="_blank"
+            rel="noreferrer"
+            className={buttonVariants({ variant: "ghost", size: "sm" })}
+          >
+            <SquareArrowOutUpRight data-icon="inline-start" />
+            GitHub
+          </a>
+        }
+      />
+      <p className="max-w-2xl text-muted-foreground">{template.description}</p>
 
       <CopyCommand command={gitpickCommand(template.name)} />
 
@@ -98,16 +96,6 @@ function RouteComponent() {
           </CardContent>
         </Card>
       </div>
-
-      <a
-        href={githubUrl(template.name)}
-        target="_blank"
-        rel="noreferrer"
-        className="inline-flex w-fit items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
-      >
-        View on GitHub
-        <SquareArrowOutUpRight className="size-3.5" />
-      </a>
     </div>
   );
 }

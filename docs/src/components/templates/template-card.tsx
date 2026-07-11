@@ -27,7 +27,12 @@ function TemplateCard({
       />
       <CardHeader>
         <div className="flex items-start justify-between gap-4">
-          <CardTitle className="font-mono">{name}</CardTitle>
+          <CardTitle
+            className="pointer-events-none font-mono"
+            style={{ viewTransitionName: `template-title-${name}` }}
+          >
+            {name}
+          </CardTitle>
           <PackageCheck className="size-4 shrink-0 text-muted-foreground" />
         </div>
         <CardDescription>{description}</CardDescription>
