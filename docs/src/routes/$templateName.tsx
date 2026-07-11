@@ -6,7 +6,6 @@ import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { Card, CardAction, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { githubUrl, gitpickCommand } from "@/lib/gitpick";
-import { childTemplates, LINEAGE } from "@/lib/lineage";
 import { getTemplatePackageJsonFn } from "@/lib/templates.functions";
 
 export const Route = createFileRoute("/$templateName")({
@@ -42,8 +41,6 @@ function DependencyList({ dependencies }: { dependencies: Record<string, string>
 
 function RouteComponent() {
   const { template } = Route.useLoaderData();
-  const parent = LINEAGE[template.name]?.parent ?? null;
-  const children = childTemplates(template.name);
 
   return (
     <div className="mx-auto flex max-w-3xl flex-col gap-10 px-6 py-16 sm:px-10">
@@ -62,58 +59,11 @@ function RouteComponent() {
       <div className="flex flex-col gap-3">
         <div className="flex flex-wrap items-center gap-3">
           <h1 className="font-mono text-3xl font-semibold">{template.name}</h1>
-          {parent ? (
-            <Badge variant="secondary">
-              <GitBranch data-icon="inline-start" />
-              extends {parent}
-            </Badge>
-          ) : (
-            <Badge variant="outline">base</Badge>
-          )}
         </div>
         <p className="text-muted-foreground">{template.description}</p>
       </div>
 
       <CopyCommand command={gitpickCommand(template.name)} />
-
-      {(parent ?? children.length > 0) && (
-        <Card>
-          <CardHeader>
-            <CardTitle>Lineage</CardTitle>
-          </CardHeader>
-          <CardContent className="flex flex-col gap-2 text-sm">
-            {parent && (
-              <div>
-                Extends{" "}
-                <Link
-                  to="/$templateName"
-                  params={{ templateName: parent }}
-                  className="font-mono text-foreground underline underline-offset-2"
-                >
-                  {parent}
-                </Link>
-              </div>
-            )}
-            {children.length > 0 && (
-              <div>
-                Extended by{" "}
-                {children.map((child, index) => (
-                  <span key={child}>
-                    <Link
-                      to="/$templateName"
-                      params={{ templateName: child }}
-                      className="font-mono text-foreground underline underline-offset-2"
-                    >
-                      {child}
-                    </Link>
-                    {index < children.length - 1 ? ", " : ""}
-                  </span>
-                ))}
-              </div>
-            )}
-          </CardContent>
-        </Card>
-      )}
 
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
         <Card>

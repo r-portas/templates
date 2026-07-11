@@ -4,7 +4,6 @@ import { GitBranch } from "lucide-react";
 import { TemplateCard } from "@/components/templates/template-card";
 import { Button } from "@/components/ui/button";
 import { GITPICK_REPO } from "@/lib/gitpick";
-import { LINEAGE } from "@/lib/lineage";
 import { listTemplatesFn } from "@/lib/templates.functions";
 
 export const Route = createFileRoute("/")({
@@ -44,7 +43,6 @@ function RouteComponent() {
               key={template.name}
               name={template.name}
               description={template.description}
-              parent={LINEAGE[template.name]?.parent ?? null}
             />
           ))}
         </div>

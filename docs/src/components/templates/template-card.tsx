@@ -1,29 +1,11 @@
 import { Link } from "@tanstack/react-router";
-import { GitBranch } from "lucide-react";
 
 import { CopyCommand } from "@/components/templates/copy-command";
-import { Badge } from "@/components/ui/badge";
-import {
-  Card,
-  CardAction,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { gitpickCommand } from "@/lib/gitpick";
 import { cn } from "@/lib/utils";
 
-function TemplateCard({
-  name,
-  description,
-  parent,
-}: {
-  name: string;
-  description: string;
-  parent: string | null;
-}) {
+function TemplateCard({ name, description }: { name: string; description: string }) {
   return (
     <Card className={cn("relative transition-colors hover:ring-foreground/30 justify-between")}>
       <Link
@@ -35,16 +17,6 @@ function TemplateCard({
       <CardHeader>
         <CardTitle className="font-mono">{name}</CardTitle>
         <CardDescription>{description}</CardDescription>
-        <CardAction>
-          {parent ? (
-            <Badge variant="secondary">
-              <GitBranch data-icon="inline-start" />
-              extends {parent}
-            </Badge>
-          ) : (
-            <Badge variant="outline">base</Badge>
-          )}
-        </CardAction>
       </CardHeader>
       <CardContent className="relative">
         <CopyCommand command={gitpickCommand(name)} size="sm" />
