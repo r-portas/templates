@@ -3,6 +3,7 @@
   "ignorePatterns": ["*.gen.ts"],
   "sortImports": true,
   "sortTailwindcss": {
-    "stylesheet": "./src/styles.css"
+    "stylesheet": "./src/styles.css",
+    "functions": ["cn"]
   }
 }
