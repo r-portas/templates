@@ -12,6 +12,6 @@ jobs:
       - name: Install dependencies
         run: bun install
       - name: Lint project
-        run: bun run lint --format=github
+        run: bun run lint --format=${{ matrix.bogus }}
       - name: Build project
         run: bun run build
