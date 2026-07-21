@@ -26,7 +26,9 @@ updates:
 
   # Version updates for Github Actions
   - package-ecosystem: "github-actions"
-    directory: "/"
+    directories:
+      - "/"
+      - "/templates/*"
     schedule:
       interval: "weekly"
     groups:
