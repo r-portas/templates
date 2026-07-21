@@ -29,6 +29,19 @@ jobs:
       - name: Build project
         run: bun run build
 
+  lint-workflows:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+      - name: Download actionlint
+        id: get_actionlint
+        run: bash <(curl https://raw.githubusercontent.com/rhysd/actionlint/main/scripts/download-actionlint.bash)
+        shell: bash
+      - name: Check workflow files
+        run: ${{ steps.get_actionlint.outputs.executable }} -color .github/workflows/*.yml templates/*/.github/workflows/*.yml
+        shell: bash
+
   build-docs:
     runs-on: ubuntu-latest
     defaults:
