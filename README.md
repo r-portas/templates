@@ -54,3 +54,8 @@ live in [`./.claude/skills`](./.claude/skills). Invoke one by typing
 | Name                                                                          | Description                                                                                       |
 | ----------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
 | [check-best-practises](./.claude/skills/check-best-practises/SKILL.md)         | Audits each template against the latest official docs for the libraries it uses and aligns them.  |
+
+Each template also ships its own self-contained Claude Code configuration —
+`CLAUDE.md`, `.claude/settings.json`, `.claude/hooks/`, `.claude/rules/`, and a
+vendored `.claude/skills/shadcn` for `tss-shadcn` — so a fresh clone needs no
+user-level setup. See the template's own README for the details.

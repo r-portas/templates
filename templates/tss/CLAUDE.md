@@ -26,4 +26,5 @@ Before editing files for a substantial task:
 
 - After making changes:
   - Run the linter with `bun run lint`
+  - Run unit tests with `bun test`, if the project has any
   - Build and typecheck the project with `bun run build`

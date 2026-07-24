@@ -1,4 +1,19 @@
 {
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "allow": [
+      "Bash(bun install)",
+      "Bash(bun run build)",
+      "Bash(bun run format)",
+      "Bash(bun run lint)",
+      "Bash(bun run lint *)",
+      "Bash(bun test)",
+      "Bash(bun test *)",
+      "Bash(bunx --bun shadcn@latest *)",
+      "Bash(bunx @tanstack/intent@latest *)"
+    ],
+    "deny": ["Read(./.env)", "Read(./.env.*)"]
+  },
   "hooks": {
     "PostToolUse": [
       {
@@ -6,7 +21,9 @@
         "hooks": [
           {
             "type": "command",
-            "command": "jq -r '.tool_input.file_path' | xargs $CLAUDE_PROJECT_DIR/node_modules/.bin/oxfmt",
+            "command": "bun",
+            "args": ["${CLAUDE_PROJECT_DIR}/.claude/hooks/format.ts"],
+            "timeout": 10,
             "statusMessage": "Formatting..."
           }
         ]

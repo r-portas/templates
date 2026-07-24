@@ -24,12 +24,12 @@ Before editing files for a substantial task:
 
 ## User Interface
 
-- This project uses Tailwind CSS (v4) for styling.
-- Tailwind is configured CSS-first via `src/styles.css` (`@import "tailwindcss";`); there is no `tailwind.config.js`. Customise the theme with `@theme` in that file.
-- Tailwind class sorting is handled by Oxfmt's `sortTailwindcss` option in `.oxfmtrc.json`, so classes are reordered automatically on format.
+- Styled with Tailwind CSS (v4), configured CSS-first via `src/styles.css`.
+- Conventions and pitfalls live in `.claude/rules/ui.md`, which loads automatically when working on `src/**/*.{tsx,css}`. Read it before writing UI code.
 
 ## Workflow
 
 - After making changes:
   - Run the linter with `bun run lint`
+  - Run unit tests with `bun test`, if the project has any
   - Build and typecheck the project with `bun run build`

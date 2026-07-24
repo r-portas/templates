@@ -15,6 +15,12 @@
   - Should this change be made to any other templates? If so, make the change in all templates to keep them consistent.
   - Does the change apply to `./docs`? Since it builds on `tss-shadcn`, any change made to `tss-shadcn` should generally be migrated over to `./docs` as well.
   - Does the documentation need updating? The README.md file in each template should be kept up to date.
+- Claude Code configuration is self-contained in each template — a clone must never depend on user-level (`~/.claude`) setup:
+  - `CLAUDE.md` holds facts needed in every session; keep it well under 200 lines.
+  - Guidance that only matters for part of the codebase belongs in `.claude/rules/*.md` with `paths` frontmatter, so it loads on demand rather than every session.
+  - Third-party skills are vendored with `bunx skills add <repo> --skill <name> --agent claude-code --copy` and tracked in the template's `skills-lock.json`; refresh them with `bunx skills update <name> --project`.
+  - `.claude/settings.json` carries the permission allowlist and hooks; hook scripts live in `.claude/hooks/`.
+  - These files follow the same lineage rules as the rest of the template.
 - When adding a new template consider:
   - Is the root @README.md updated with the new template
   - Is the template added to the @.github/workflows/build.yml

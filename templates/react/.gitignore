@@ -1,3 +1,7 @@
 .DS_Store
 node_modules
 dist
+
+# Claude Code personal overrides
+.claude/settings.local.json
+CLAUDE.local.md

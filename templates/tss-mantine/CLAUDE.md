@@ -24,10 +24,12 @@ Before editing files for a substantial task:
 
 ## User Interface
 
-- This project uses Mantine for UI components, see https://mantine.dev/llms.txt for documentation.
+- Components come from [Mantine](https://mantine.dev).
+- Conventions and pitfalls live in `.claude/rules/ui.md`, which loads automatically when working on `src/**/*.{tsx,css}`. Read it before writing UI code.
 
 ## Workflow
 
 - After making changes:
   - Run the linter with `bun run lint`
+  - Run unit tests with `bun test`, if the project has any
   - Build and typecheck the project with `bun run build`
