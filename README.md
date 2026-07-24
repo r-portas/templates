@@ -31,19 +31,16 @@ All templates share a common set of tooling:
 | [tss-mantine](./templates/tss-mantine)     | A blank minimal TanStack Start application configured with Mantine      |
 | [tss-shadcn](./templates/tss-shadcn)       | A blank minimal TanStack Start application configured with Tailwind CSS and shadcn/ui |
 
-## Scripts
+## Development
 
-Repository maintenance scripts live in [`./scripts`](./scripts):
+This repo is a [Bun workspace](https://bun.sh/docs/install/workspaces), with each
+template (and `./docs`) as a workspace package. Run these from the repo root:
 
-| Script                                 | Description                                                                |
-| -------------------------------------- | -------------------------------------------------------------------------- |
-| [`update.sh`](./scripts/update.sh)     | Update every template's dependencies to the latest versions via `bun update --latest` |
-
-Run from anywhere in the repo:
-
-```bash
-./scripts/update.sh
-```
+| Command          | Description                                                  |
+| ----------------- | -------------------------------------------------------------- |
+| `bun run update` | Update every template's dependencies to the latest versions  |
+| `bun run lint`   | Lint every template                                           |
+| `bun run build`  | Build every template, verifying it still works                |
 
 ## Skills
 

@@ -1,0 +1,13 @@
+{
+  "name": "templates",
+  "private": true,
+  "workspaces": [
+    "templates/*",
+    "docs"
+  ],
+  "scripts": {
+    "update": "bun update -r --latest",
+    "build": "bun run --workspaces build",
+    "lint": "bun run --workspaces lint"
+  }
+}
