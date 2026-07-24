@@ -38,11 +38,13 @@ Repository maintenance scripts live in [`./scripts`](./scripts):
 | Script                                 | Description                                                                |
 | -------------------------------------- | -------------------------------------------------------------------------- |
 | [`update.sh`](./scripts/update.sh)     | Update every template's dependencies to the latest versions via `bun update --latest` |
+| [`lint.sh`](./scripts/lint.sh)         | Lint every template (and the docs site) via `bun run lint`                |
 
 Run from anywhere in the repo:
 
 ```bash
 ./scripts/update.sh
+./scripts/lint.sh
 ```
 
 ## Skills
