@@ -34,7 +34,7 @@ export function PageHeader({
         <div className="flex flex-col gap-1">
           {breadcrumb && <BreadcrumbLink {...breadcrumb} />}
           <h1
-            className="font-mono text-3xl font-semibold"
+            className="font-heading text-3xl font-semibold"
             style={titleId ? { viewTransitionName: `template-title-${titleId}` } : undefined}
           >
             {title}

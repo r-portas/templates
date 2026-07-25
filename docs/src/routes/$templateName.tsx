@@ -77,7 +77,7 @@ function RouteComponent() {
           <CardHeader>
             <CardTitle>Dependencies</CardTitle>
             <CardAction>
-              <Badge variant="secondary">{Object.keys(template.dependencies).length}</Badge>
+              <Badge variant="outline">{Object.keys(template.dependencies).length}</Badge>
             </CardAction>
           </CardHeader>
           <CardContent>
@@ -88,7 +88,7 @@ function RouteComponent() {
           <CardHeader>
             <CardTitle>Dev dependencies</CardTitle>
             <CardAction>
-              <Badge variant="secondary">{Object.keys(template.devDependencies).length}</Badge>
+              <Badge variant="outline">{Object.keys(template.devDependencies).length}</Badge>
             </CardAction>
           </CardHeader>
           <CardContent>
