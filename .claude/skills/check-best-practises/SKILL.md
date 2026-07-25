@@ -9,7 +9,7 @@ description: Checks the alignment of templates against best practises, use this 
 - Search online for the official documentation of the dependency and check the usage of the library aligns with the best practices recommended by the library maintainers.
 - When aligning a library with the best practice, make sure to tell the user about the changes you made, the reason behind the changes and links to the documentation you used.
 - Work from the most basic template to the most complex one, replicate the changes to the other templates that use the library
-- Make sure to run the `format`, `lint` and `build` scripts after updating the template to verify it still works.
+- Make sure to run the `format`, `lint` and `build` scripts after updating the template to verify it still works. From the repo root you can also run `bun run lint` and `bun run build` to check every template at once.
 
 ## Templates
 
