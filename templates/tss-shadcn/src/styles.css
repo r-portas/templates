@@ -126,5 +126,8 @@
   }
   html {
     @apply font-sans;
+    /* Always reserve scrollbar space so short/tall pages don't shift the layout. */
+    overflow-y: auto;
+    scrollbar-gutter: stable;
   }
 }

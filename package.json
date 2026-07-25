@@ -6,7 +6,7 @@
     "docs"
   ],
   "scripts": {
-    "update": "bun update -r --latest",
+    "update": "bun update -r -i --latest",
     "build": "bun run --workspaces build",
     "lint": "bun run --workspaces lint"
   }
