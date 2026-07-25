@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { GitBranch } from "lucide-react";
 
+import { GettingStarted } from "@/components/getting-started";
 import { PageHeader } from "@/components/page-header";
 import { TemplateCard } from "@/components/templates/template-card";
 import { buttonVariants } from "@/components/ui/button";
@@ -32,12 +33,7 @@ function RouteComponent() {
           </a>
         }
       />
-      <p className="max-w-2xl text-muted-foreground">
-        Click <span className="font-medium">copy to clipboard</span> on a template below and paste
-        the command into a terminal. Replace <code className="font-mono">my-project</code> with the
-        name of the folder you want created, or use <code className="font-mono">.</code> to scaffold
-        into the current directory.
-      </p>
+      <GettingStarted />
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         {templates.map((template) => (
           <TemplateCard
