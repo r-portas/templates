@@ -23,7 +23,7 @@ function Step({
         {!isLast && <div className="w-px flex-1 bg-border" />}
       </div>
       <div className={cn("flex min-w-0 flex-1 flex-col gap-1 pt-0.5", !isLast && "pb-6")}>
-        <p className="font-medium">{title}</p>
+        <h3 className="font-medium">{title}</h3>
         {children}
       </div>
     </li>
