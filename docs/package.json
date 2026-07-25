@@ -7,7 +7,8 @@
     "build": "bun --bun vite build && tsc --noEmit",
     "lint": "oxlint .",
     "format": "oxfmt .",
-    "test": "bun test"
+    "test": "bun test",
+    "update": "bun update --interactive --latest"
   },
   "dependencies": {
     "@base-ui/react": "^1.6.0",

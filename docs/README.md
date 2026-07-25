@@ -19,3 +19,11 @@ Add shadcn/ui components with the CLI:
 ```bash
 bunx --bun shadcn@latest add <component>
 ```
+
+## Updating dependencies
+
+Update dependencies to their latest versions:
+
+```bash
+bun run update
+```
