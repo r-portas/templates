@@ -10,6 +10,9 @@ bun install
 
 # Start the development server
 bun dev
+
+# Update dependencies to the latest versions
+bun run update
 ```
 
 ## Adding components
@@ -18,12 +21,4 @@ Add shadcn/ui components with the CLI:
 
 ```bash
 bunx --bun shadcn@latest add <component>
-```
-
-## Updating dependencies
-
-Update dependencies to their latest versions:
-
-```bash
-bun run update
 ```

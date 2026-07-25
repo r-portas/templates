@@ -10,12 +10,7 @@ bun install
 
 # Start the development server
 bun dev
-```
 
-## Updating dependencies
-
-Update dependencies to their latest versions:
-
-```bash
+# Update dependencies to the latest versions
 bun run update
 ```
