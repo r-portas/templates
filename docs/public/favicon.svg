@@ -1,11 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
   <style>
-    .bg { fill: #fa6e22; }
-    .icon { stroke: #fefcf4; }
-    @media (prefers-color-scheme: dark) {
-      .bg { fill: #ff9639; }
-      .icon { stroke: #1e0d01; }
-    }
+    .bg { fill: #f59e0b; }
+    .icon { stroke: #000000; }
   </style>
   <rect class="bg" width="24" height="24" rx="6" />
   <g
