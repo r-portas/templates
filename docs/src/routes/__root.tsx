@@ -1,5 +1,4 @@
 import { Outlet, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
-import type { ReactNode } from "react";
 
 import { TooltipProvider } from "@/components/ui/tooltip";
 
@@ -36,25 +35,19 @@ export const Route = createRootRoute({
       },
     ],
   }),
-  component: RootComponent,
+  component: RootDocument,
 });
 
-function RootComponent() {
-  return (
-    <RootDocument>
-      <Outlet />
-    </RootDocument>
-  );
-}
-
-function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
+function RootDocument() {
   return (
     <html className="dark" lang="en">
       <head>
         <HeadContent />
       </head>
       <body className="min-h-screen bg-background text-foreground">
-        <TooltipProvider>{children}</TooltipProvider>
+        <TooltipProvider>
+          <Outlet />
+        </TooltipProvider>
         <Scripts />
       </body>
     </html>
