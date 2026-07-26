@@ -14,6 +14,7 @@
   - `tss-tw` and `tss-mantine` both build on `tss`, adding Tailwind CSS and Mantine respectively
   - `tss-shadcn` builds on `tss-tw`, adding shadcn/ui
   - `./docs` (the documentation site, outside `./templates`) is built on `tss-shadcn`, so it sits at the end of this lineage too
+  - `next-tw` is a separate base template (Next.js + Tailwind CSS), independent of the `react`/`tss` lineage above
 - When making changes to a template consider:
   - Does this change apply to the template's base (per the lineage above)? If so, make the change there first, then propagate it downstream to each template that builds on it.
   - Should this change be made to any other templates? If so, make the change in all templates to keep them consistent.

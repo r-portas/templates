@@ -14,6 +14,7 @@ jobs:
           - tss-tw
           - tss-mantine
           - tss-shadcn
+          - next-tw
     defaults:
       run:
         working-directory: templates/${{ matrix.directory }}

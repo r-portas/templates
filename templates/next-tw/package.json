@@ -1,0 +1,28 @@
+{
+  "name": "next-tw",
+  "private": true,
+  "scripts": {
+    "dev": "bun --bun next dev",
+    "build": "bun --bun next build",
+    "start": "bun --bun next start",
+    "lint": "oxlint .",
+    "format": "oxfmt .",
+    "update": "bun update --interactive --latest"
+  },
+  "dependencies": {
+    "next": "16.3.0-preview.9",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^26.1.1",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "oxfmt": "^0.60.0",
+    "oxlint": "^1.75.0",
+    "tailwindcss": "^4",
+    "typescript": "^6"
+  },
+  "packageManager": "bun@1.3.14"
+}
