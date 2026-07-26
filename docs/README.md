@@ -10,6 +10,9 @@ bun install
 
 # Start the development server
 bun dev
+
+# Update dependencies to the latest versions
+bun run update
 ```
 
 ## Adding components

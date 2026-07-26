@@ -6,7 +6,8 @@
     "dev": "bun --bun vite dev",
     "build": "bun --bun vite build && tsc --noEmit",
     "lint": "oxlint .",
-    "format": "oxfmt ."
+    "format": "oxfmt .",
+    "update": "bun update --interactive --latest"
   },
   "dependencies": {
     "@tanstack/react-router": "^1.170.18",
