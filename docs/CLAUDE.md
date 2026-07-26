@@ -36,11 +36,11 @@ Before editing files for a substantial task:
 - UI primitives (e.g. `Button`) are built on `@base-ui/react`, not Radix. Base UI uses a `render` prop to swap the rendered element (e.g. `<Dialog.Trigger render={<a href="..." />}>`), **not** `asChild`. Using `asChild` silently does nothing and produces invalid nested markup (e.g. `<button><a>...</a></button>`).
 - For links styled as buttons, use the `buttonVariants` helper on a plain `<a>` tag instead — do **not** wrap the anchor in `<Button render={<a/>} />`. `Button` forces `role="button"`, which overrides the anchor's native link semantics:
   ```tsx
-  import { buttonVariants } from "@/components/ui/button";
+  import { buttonVariants } from "@/components/ui/button"
 
   <a href="/somewhere" className={buttonVariants({ variant: "secondary", size: "sm" })}>
     Login
-  </a>;
+  </a>
   ```
 
 ## Workflow
