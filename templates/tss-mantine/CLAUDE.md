@@ -40,6 +40,7 @@ Before editing files for a substantial task:
   - A group of related components for a specific feature/domain is grouped into a subfolder named after that domain (e.g. `components/templates`).
   - UI primitives (e.g. from shadcn/ui) live in `components/ui`.
   - A component used by only one route should stay colocated in that route file rather than being pulled into `src/components` prematurely.
+- `src/hooks` contains reusable React hooks shared across multiple components/routes, one hook per file (e.g. `use-media-query.ts` exporting `useMediaQuery`). A hook used by only one component should stay colocated with that component rather than being pulled into `src/hooks` prematurely.
 - `src/lib` contains the project's library code, grouped by domain via this naming convention (e.g. for a `todos` domain):
   - `todos.server.ts` — server-only code, usually paired with `todos.server.test.ts` to unit test it.
   - `todos.functions.ts` — a thin wrapper exposing server functions, importing from `todos.server.ts`.
