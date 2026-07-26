@@ -1,6 +1,5 @@
 import { ColorSchemeScript, mantineHtmlProps, MantineProvider } from "@mantine/core";
 import { Outlet, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
-import type { ReactNode } from "react";
 
 import { AppLayout } from "@/components/app-layout";
 
@@ -22,20 +21,10 @@ export const Route = createRootRoute({
       },
     ],
   }),
-  component: RootComponent,
+  component: RootDocument,
 });
 
-function RootComponent() {
-  return (
-    <RootDocument>
-      <AppLayout>
-        <Outlet />
-      </AppLayout>
-    </RootDocument>
-  );
-}
-
-function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
+function RootDocument() {
   return (
     <html {...mantineHtmlProps}>
       <head>
@@ -44,7 +33,9 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
       </head>
       <body>
         <MantineProvider theme={theme} forceColorScheme="dark">
-          {children}
+          <AppLayout>
+            <Outlet />
+          </AppLayout>
         </MantineProvider>
         <Scripts />
       </body>

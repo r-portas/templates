@@ -1,5 +1,4 @@
 import { Outlet, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
-import type { ReactNode } from "react";
 
 import appCss from "@/styles.css?url";
 
@@ -24,25 +23,17 @@ export const Route = createRootRoute({
       },
     ],
   }),
-  component: RootComponent,
+  component: RootDocument,
 });
 
-function RootComponent() {
-  return (
-    <RootDocument>
-      <Outlet />
-    </RootDocument>
-  );
-}
-
-function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
+function RootDocument() {
   return (
     <html>
       <head>
         <HeadContent />
       </head>
       <body className="min-h-screen bg-background text-foreground">
-        {children}
+        <Outlet />
         <Scripts />
       </body>
     </html>
