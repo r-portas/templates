@@ -1,4 +1,9 @@
-import { Outlet, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
+import {
+  Outlet,
+  createRootRoute,
+  HeadContent,
+  Scripts,
+} from "@tanstack/react-router";
 
 import { TooltipProvider } from "@/components/ui/tooltip";
 
@@ -44,7 +49,7 @@ function RootDocument() {
       <head>
         <HeadContent />
       </head>
-      <body className="min-h-screen bg-background text-foreground">
+      <body className="min-h-screen bg-background text-foreground antialiased">
         <TooltipProvider>
           <Outlet />
         </TooltipProvider>

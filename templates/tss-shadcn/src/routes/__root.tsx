@@ -1,4 +1,9 @@
-import { Outlet, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
+import {
+  Outlet,
+  createRootRoute,
+  HeadContent,
+  Scripts,
+} from "@tanstack/react-router";
 
 import appCss from "@/styles.css?url";
 
@@ -32,7 +37,7 @@ function RootDocument() {
       <head>
         <HeadContent />
       </head>
-      <body className="min-h-screen bg-background text-foreground">
+      <body className="min-h-screen bg-background text-foreground antialiased">
         <Outlet />
         <Scripts />
       </body>
