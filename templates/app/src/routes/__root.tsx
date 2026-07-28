@@ -1,4 +1,9 @@
-import { Outlet, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
+import {
+  Outlet,
+  createRootRoute,
+  HeadContent,
+  Scripts,
+} from "@tanstack/react-router";
 
 import { Navbar } from "@/components/navbar";
 import { TooltipProvider } from "@/components/ui/tooltip";
