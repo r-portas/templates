@@ -25,6 +25,6 @@ Before editing files for a substantial task:
 ## User Interface
 
 - Tailwind CSS v4, configured CSS-first in `src/styles.css` (no `tailwind.config.js`) — customise the theme with `@theme` there. Oxfmt auto-sorts classes via its `sortTailwindcss` option in `.oxfmtrc.json`.
-- [shadcn/ui](https://ui.shadcn.com) is configured via `components.json`; add components with `bunx --bun shadcn@latest add <component>` (installed into `src/components/ui`).
+- [shadcn/ui](https://ui.shadcn.com) is configured via `components.json`; add components with `bunx --bun shadcn add <component>` (installed into `src/components/ui`).
 - UI primitives (e.g. `Button`) are built on `@base-ui/react`, not Radix. Swap the rendered element with a `render` prop (e.g. `<Dialog.Trigger render={<a href="..." />}>`), **not** `asChild`
 - For links styled as buttons, apply `buttonVariants` to a plain `<a>` instead of wrapping it in `<Button render={<a/>} />`
