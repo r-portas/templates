@@ -2,7 +2,7 @@ import { Outlet, createRootRoute, HeadContent, Scripts } from "@tanstack/react-r
 
 import { Navbar } from "@/components/navbar";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { clientEnv } from "@/lib/env";
+import clientEnv from "@/lib/env";
 
 import appCss from "@/styles.css?url";
 

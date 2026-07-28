@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import { clientEnv } from "@/lib/env";
+import clientEnv from "@/lib/env";
 
 export const Route = createFileRoute("/")({
   component: RouteComponent,
