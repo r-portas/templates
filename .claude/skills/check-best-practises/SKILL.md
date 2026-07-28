@@ -32,3 +32,12 @@ description: Checks the alignment of templates against best practises, use this 
     - `@phosphor-icons/react`
     - `postcss-preset-mantine`
     - `postcss-simple-vars`
+  - `tss-shadcn`: Builds off the `tss-tw` template adding shadcn/ui, check the following dependencies:
+    - `shadcn`: https://ui.shadcn.com/docs
+    - `@base-ui/react`: https://base-ui.com/llms.txt
+    - `class-variance-authority`
+    - `clsx`
+    - `tailwind-merge`
+    - `tw-animate-css`
+    - `lucide-react`
+  - `app`: Builds off the `tss-shadcn` template adding a more opinionated, batteries-included setup, check the dependencies above from `tss-shadcn` plus any additional dependencies unique to this template's `package.json`

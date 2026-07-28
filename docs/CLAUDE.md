@@ -16,22 +16,7 @@ Before editing files for a substantial task:
 
 ## User Interface
 
-- This project uses Tailwind CSS (v4) for styling.
-- Tailwind is configured CSS-first via `src/styles.css` (`@import "tailwindcss";`); there is no `tailwind.config.js`. Customise the theme with `@theme` in that file.
-- Tailwind class sorting is handled by Oxfmt's `sortTailwindcss` option in `.oxfmtrc.json`, so classes are reordered automatically on format.
-- This project is configured with [shadcn/ui](https://ui.shadcn.com). Configuration lives in `components.json`; components are added via `bunx --bun shadcn@latest add <component>` and installed into `src/components/ui`.
-- UI primitives (e.g. `Button`) are built on `@base-ui/react`, not Radix. Base UI uses a `render` prop to swap the rendered element (e.g. `<Dialog.Trigger render={<a href="..." />}>`), **not** `asChild`. Using `asChild` silently does nothing and produces invalid nested markup (e.g. `<button><a>...</a></button>`).
-- For links styled as buttons, use the `buttonVariants` helper on a plain `<a>` tag instead — do **not** wrap the anchor in `<Button render={<a/>} />`. `Button` forces `role="button"`, which overrides the anchor's native link semantics:
-  ```tsx
-  import { buttonVariants } from "@/components/ui/button"
-
-  <a href="/somewhere" className={buttonVariants({ variant: "secondary", size: "sm" })}>
-    Login
-  </a>
-  ```
-
-## Workflow
-
-- After making changes:
-  - Run the linter with `bun run lint`
-  - Build and typecheck the project with `bun run build`
+- Tailwind CSS v4, configured CSS-first in `src/styles.css` (no `tailwind.config.js`) — customise the theme with `@theme` there. Oxfmt auto-sorts classes via its `sortTailwindcss` option in `.oxfmtrc.json`.
+- [shadcn/ui](https://ui.shadcn.com) is configured via `components.json`; add components with `bunx --bun shadcn add <component>` (installed into `src/components/ui`).
+- UI primitives (e.g. `Button`) are built on `@base-ui/react`, not Radix. Swap the rendered element with a `render` prop (e.g. `<Dialog.Trigger render={<a href="..." />}>`), **not** `asChild`
+- For links styled as buttons, apply `buttonVariants` to a plain `<a>` instead of wrapping it in `<Button render={<a/>} />`

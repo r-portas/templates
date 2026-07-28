@@ -13,6 +13,7 @@
   - `tss` builds on `react`, adding TanStack Start
   - `tss-tw` and `tss-mantine` both build on `tss`, adding Tailwind CSS and Mantine respectively
   - `tss-shadcn` builds on `tss-tw`, adding shadcn/ui
+  - `app` builds on `tss-shadcn`, adding a more opinionated, batteries-included setup for building new web apps
   - `./docs` (the documentation site, outside `./templates`) is built on `tss-shadcn`, so it sits at the end of this lineage too
 - When making changes to a template consider:
   - Does this change apply to the template's base (per the lineage above)? If so, make the change there first, then propagate it downstream to each template that builds on it.
@@ -23,3 +24,4 @@
   - Is the root @README.md updated with the new template
   - Is the template added to the @.github/workflows/build.yml
   - Is the template's lineage recorded in the list above
+  - Is the template (and its dependencies to check) added to @.claude/skills/check-best-practises/SKILL.md

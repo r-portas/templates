@@ -20,7 +20,7 @@ bun run update
 Add shadcn/ui components with the CLI:
 
 ```bash
-bunx --bun shadcn@latest add <component>
+bunx --bun shadcn add <component>
 ```
 
 ## AI assistant skill

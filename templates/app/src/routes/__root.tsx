@@ -1,5 +1,9 @@
 import { Outlet, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 
+import { Navbar } from "@/components/navbar";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import clientEnv from "@/lib/env";
+
 import appCss from "@/styles.css?url";
 
 export const Route = createRootRoute({
@@ -13,7 +17,7 @@ export const Route = createRootRoute({
         content: "width=device-width, initial-scale=1",
       },
       {
-        title: "tss-shadcn",
+        title: clientEnv.VITE_APP_NAME,
       },
     ],
     links: [
@@ -32,8 +36,11 @@ function RootDocument() {
       <head>
         <HeadContent />
       </head>
-      <body className="min-h-screen bg-background text-foreground antialiased">
-        <Outlet />
+      <body className="dark min-h-screen bg-background text-foreground antialiased">
+        <TooltipProvider>
+          <Navbar />
+          <Outlet />
+        </TooltipProvider>
         <Scripts />
       </body>
     </html>
