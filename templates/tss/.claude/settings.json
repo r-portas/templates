@@ -1,4 +1,9 @@
 {
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "deny": ["Read(.env.local)"],
+    "defaultMode": "auto"
+  },
   "hooks": {
     "PostToolUse": [
       {
