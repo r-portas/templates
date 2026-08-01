@@ -24,17 +24,12 @@
   projects (e.g. a database, a Dockerfile, a test framework), written as instructions for a
   coding agent to follow. Addons deliberately live outside `./templates` so the templates stay
   minimal.
-  - Each addon needs `name` and `description` frontmatter — the docs site reads these to render
-    the addon cards on `/`.
-  - The docs site serves the raw markdown at `/addons/<filename>` via
-    `docs/src/routes/addons.$filename.ts`, reading from `./addons` through
-    `docs/src/lib/addons.server.ts`.
   - Keep addons consistent with the templates: if an addon configures a tool the templates also
     use, the config it writes should match what the templates already have.
 - When adding a new addon consider:
   - Is the root @README.md addons table updated
-  - Does the addon target the conventions used by the `app` template (`src/lib` domain naming,
-    Zod-validated env in `src/lib/env.server.ts`)
+  - Does the addon target the conventions used by the `app` template
+    (`src/lib` domain naming, Zod-validated env in `src/lib/env.server.ts`)
 - When adding a new template consider:
   - Is the root @README.md updated with the new template
   - Is the template added to the @.github/workflows/build.yml

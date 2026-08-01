@@ -104,18 +104,12 @@ export const notesTable = sqliteTable("notes", {
 `int({ mode: "timestamp_ms" })` stores timestamps as milliseconds since epoch and maps them to JS
 `Date` objects — assign `new Date()` or `Date.now()` directly.
 
-> [!IMPORTANT]
-> Do not add `import "@tanstack/react-start/server-only"` to this file. drizzle-kit imports it
-> standalone from the CLI, where the server-only marker would fail. The server-only boundary
-> belongs on the client below, which is what application code imports.
-
 ## Client
 
 Create `src/lib/db.server.ts`. Use `drizzle-orm/bun-sqlite` — the Bun-native driver, not the
 generic sqlite adapter:
 
 ```ts
-import "@tanstack/react-start/server-only";
 import { drizzle } from "drizzle-orm/bun-sqlite";
 
 import * as schema from "@/lib/db.schema";
@@ -137,8 +131,6 @@ results through server functions, following the existing `src/lib` domain conven
 
 ```ts
 // src/lib/notes.server.ts
-import "@tanstack/react-start/server-only";
-
 import { db } from "@/lib/db.server";
 import { notesTable } from "@/lib/db.schema";
 

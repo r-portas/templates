@@ -109,8 +109,7 @@ hook configured before adding it.
 }
 ```
 
-> oxfmt ignores files it doesn't support, so the hook can run on every edit without filtering by
-> extension.
+> oxfmt ignores files it doesn't support, so the hook can run on every edit without filtering by extension.
 
 ### 6. Verify
 
