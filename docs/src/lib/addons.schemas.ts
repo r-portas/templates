@@ -11,8 +11,3 @@ export type Addon = AddonFrontmatter & {
   /** The addon's filename without its extension, used as the URL slug. */
   slug: string;
 };
-
-export type AddonWithContent = Addon & {
-  /** The raw markdown source, frontmatter included. */
-  content: string;
-};

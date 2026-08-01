@@ -1,3 +1,5 @@
+import { basename } from "node:path";
+
 import { createFileRoute } from "@tanstack/react-router";
 
 import { isValidAddonSlug } from "@/lib/addons";
@@ -21,9 +23,7 @@ export const Route = createFileRoute("/addons/$filename")({
           return notFound();
         }
 
-        // `filename` is user supplied and feeds a filesystem read, so reject anything that isn't
-        // a plain slug before it reaches `getAddon`.
-        const slug = filename.slice(0, -EXTENSION.length);
+        const slug = basename(filename, EXTENSION);
         if (!isValidAddonSlug(slug)) {
           return notFound();
         }

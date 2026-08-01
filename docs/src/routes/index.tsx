@@ -40,7 +40,10 @@ function RouteComponent() {
       <Section title="Getting started" description="Three steps to your first project.">
         <GettingStarted />
       </Section>
-      <Section title="Templates">
+      <Section
+        title="Templates"
+        description="Self-contained starters, ready to pull into a new project."
+      >
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           {templates.map((template) => (
             <TemplateCard

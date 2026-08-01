@@ -10,7 +10,7 @@ const DEFAULT_RESET_MS = 1600;
  */
 export function useCopyToClipboard({ resetMs = DEFAULT_RESET_MS }: { resetMs?: number } = {}) {
   const [copied, setCopied] = useState(false);
-  const timeoutRef = useRef<ReturnType<typeof setTimeout>>(undefined);
+  const timeoutRef = useRef<NodeJS.Timeout>(undefined);
 
   useEffect(() => () => clearTimeout(timeoutRef.current), []);
 

@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-import { CopyCommand } from "@/components/templates/copy-command";
+import { CopyCommand } from "@/components/copy-command";
 import { cn } from "@/lib/utils";
 
 function Step({

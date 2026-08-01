@@ -9,10 +9,14 @@ export function CopyCommand({
   command,
   className,
   size = "default",
+  prefix = "$",
+  truncate = true,
 }: {
   command: string;
   className?: string;
   size?: "default" | "sm";
+  prefix?: string;
+  truncate?: boolean;
 }) {
   const { copied, copy } = useCopyToClipboard();
 
@@ -28,9 +32,11 @@ export function CopyCommand({
       )}
     >
       <span aria-hidden="true" className="shrink-0 text-muted-foreground select-none">
-        $
+        {prefix}
       </span>
-      <span className="min-w-0 flex-1 truncate text-foreground">{command}</span>
+      <span className={cn("min-w-0 flex-1 text-foreground", truncate && "truncate")}>
+        {command}
+      </span>
       <Tooltip>
         <TooltipTrigger
           type="button"

@@ -23,7 +23,7 @@ mock.module("node:fs/promises", () => ({
   },
 }));
 
-const { getAddon, listAddons } = await import("./addons.server");
+import { getAddon, listAddons } from "./addons.server";
 
 test("listAddons returns the markdown addons without their content", async () => {
   expect(await listAddons()).toEqual([
