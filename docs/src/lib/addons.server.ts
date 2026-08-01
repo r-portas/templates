@@ -1,5 +1,5 @@
 import { readdir, readFile } from "node:fs/promises";
-import { resolve } from "node:path";
+import { basename, resolve } from "node:path";
 
 import { isValidAddonSlug, parseFrontmatter } from "@/lib/addons";
 import { addonFrontmatterSchema } from "@/lib/addons.schemas";
@@ -14,7 +14,7 @@ export async function listAddons() {
   const entries = await readdir(ADDONS_DIR);
   const slugs = entries
     .filter((entry) => entry.endsWith(ADDON_EXTENSION))
-    .map((entry) => entry.slice(0, -ADDON_EXTENSION.length))
+    .map((entry) => basename(entry, ADDON_EXTENSION))
     .sort((a, b) => a.localeCompare(b));
 
   const addons = await Promise.all(slugs.map(async (slug) => getAddon(slug)));
