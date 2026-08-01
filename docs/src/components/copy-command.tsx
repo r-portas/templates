@@ -34,7 +34,7 @@ export function CopyCommand({
       <span aria-hidden="true" className="shrink-0 text-muted-foreground select-none">
         {prefix}
       </span>
-      <span className={cn("min-w-0 flex-1 text-foreground", truncate && "truncate")}>
+      <span className={cn("min-w-0 flex-1 text-foreground", truncate ? "truncate" : "break-all")}>
         {command}
       </span>
       <Tooltip>
