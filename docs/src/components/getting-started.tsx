@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-import { CopyCommand } from "@/components/templates/copy-command";
+import { CopyCommand } from "@/components/copy-command";
 import { cn } from "@/lib/utils";
 
 function Step({
@@ -45,13 +45,18 @@ export function GettingStarted() {
           <span className="font-medium">copy to clipboard</span> on the one you want.
         </p>
       </Step>
-      <Step number={3} title="Scaffold and run" isLast>
+      <Step number={3} title="Scaffold and run">
         <p className="text-sm text-muted-foreground">
           Paste the command, then install and start the dev server. Replace{" "}
           <code className="font-mono">my-project</code> with your folder name, or use{" "}
           <code className="font-mono">.</code> to scaffold into the current directory.
         </p>
         <CopyCommand command="cd my-project && bun install && bun dev" size="sm" />
+      </Step>
+      <Step number={4} title="(Optional) Configure addons" isLast>
+        <p className="text-sm text-muted-foreground">
+          Addons are optional setup steps that can be applied to a template by coding agents.
+        </p>
       </Step>
     </ol>
   );

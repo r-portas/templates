@@ -1,15 +1,15 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
 import { GitBranch } from "lucide-react";
 
+import { CopyCommand } from "@/components/copy-command";
 import { PageHeader } from "@/components/page-header";
-import { CopyCommand } from "@/components/templates/copy-command";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { Card, CardAction, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { githubUrl, gitpickCommand } from "@/lib/gitpick";
 import { getTemplatePackageJsonFn } from "@/lib/templates.functions";
 
-export const Route = createFileRoute("/$templateName")({
+export const Route = createFileRoute("/templates/$templateName")({
   component: RouteComponent,
   loader: async ({ params }) => {
     try {
