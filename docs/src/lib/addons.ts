@@ -1,8 +1,8 @@
 /** Matches a leading `---` delimited frontmatter block. */
 const FRONTMATTER_PATTERN = /^---\r?\n([\s\S]*?)\r?\n---/;
 
-/** Addon slugs are filenames, so keep them to characters that are safe in a path segment. */
-const SLUG_PATTERN = /^[a-z0-9-]+$/;
+/** Addon filenames are resolved against the addons directory, so keep them to characters that are safe in a path segment, and require the markdown extension. */
+const ADDON_FILENAME_PATTERN = /^[a-z0-9-]+\.md$/;
 
 /**
  * Parses the leading frontmatter block of a markdown document into a flat record.
@@ -38,15 +38,15 @@ export function parseFrontmatter(source: string): Record<string, string> {
 }
 
 /**
- * Whether a slug is safe to resolve against the addons directory.
+ * Whether a filename is safe to resolve against the addons directory.
  */
-export function isValidAddonSlug(slug: string) {
-  return SLUG_PATTERN.test(slug);
+export function isValidAddonFilename(filename: string) {
+  return ADDON_FILENAME_PATTERN.test(filename);
 }
 
 /**
  * The site-relative path the raw markdown for an addon is served from.
  */
-export function addonPath(slug: string) {
-  return `/addons/${slug}.md`;
+export function addonPath(filename: string) {
+  return `/addons/${filename}`;
 }

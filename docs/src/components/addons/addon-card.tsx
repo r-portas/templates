@@ -9,16 +9,16 @@ import { cn } from "@/lib/utils";
 
 import { CopyCommand } from "../copy-command";
 
-function getAddonUrl(slug: string) {
-  return new URL(addonPath(slug), window.location.origin).toString();
+function getAddonUrl(filename: string) {
+  return new URL(addonPath(filename), window.location.origin).toString();
 }
 
 function AddonCard({
-  slug,
+  filename,
   name,
   description,
 }: {
-  slug: string;
+  filename: string;
   name: string;
   description: string;
 }) {
@@ -33,7 +33,7 @@ function AddonCard({
               render={
                 <Link
                   to="/addons/$filename"
-                  params={{ filename: `${slug}.md` }}
+                  params={{ filename }}
                   reloadDocument
                   aria-label={`View the raw markdown for the ${name} addon`}
                   className={cn(
@@ -52,15 +52,15 @@ function AddonCard({
       </CardHeader>
       <CardContent>
         <ClientOnly>
-          <AgentCommand slug={slug} />
+          <AgentCommand filename={filename} />
         </ClientOnly>
       </CardContent>
     </Card>
   );
 }
 
-function AgentCommand({ slug }: { slug: string }) {
-  const url = getAddonUrl(slug);
+function AgentCommand({ filename }: { filename: string }) {
+  const url = getAddonUrl(filename);
   return (
     <CopyCommand
       command={`Follow the setup instructions at ${url}`}

@@ -8,6 +8,6 @@ export const addonFrontmatterSchema = z.object({
 export type AddonFrontmatter = z.infer<typeof addonFrontmatterSchema>;
 
 export type Addon = AddonFrontmatter & {
-  /** The addon's filename without its extension, used as the URL slug. */
-  slug: string;
+  /** The addon's markdown filename, e.g. `drizzle.md`. */
+  filename: string;
 };

@@ -1,13 +1,14 @@
 import { expect, mock, test } from "bun:test";
 
-function mockAddon(slug: string) {
+function mockAddon(filename: string) {
+  const name = filename.replace(".md", "");
   return [
     "---",
-    `name: ${slug}`,
-    `description: ${slug} description`,
+    `name: ${name}`,
+    `description: ${name} description`,
     "---",
     "",
-    `# ${slug}`,
+    `# ${name}`,
     "",
   ].join("\n");
 }
@@ -15,11 +16,11 @@ function mockAddon(slug: string) {
 mock.module("node:fs/promises", () => ({
   readdir: async () => ["drizzle.md", "oxlint-oxfmt.md", "README.txt"],
   readFile: async (path: string) => {
-    const slug = path.split("/").pop()?.replace(".md", "");
-    if (slug !== "drizzle" && slug !== "oxlint-oxfmt") {
+    const filename = path.split("/").pop();
+    if (filename !== "drizzle.md" && filename !== "oxlint-oxfmt.md") {
       throw new Error(`ENOENT: ${path}`);
     }
-    return mockAddon(slug);
+    return mockAddon(filename);
   },
 }));
 
@@ -27,24 +28,24 @@ import { getAddon, listAddons } from "./addons.server";
 
 test("listAddons returns the markdown addons without their content", async () => {
   expect(await listAddons()).toEqual([
-    { slug: "drizzle", name: "drizzle", description: "drizzle description" },
-    { slug: "oxlint-oxfmt", name: "oxlint-oxfmt", description: "oxlint-oxfmt description" },
+    { filename: "drizzle.md", name: "drizzle", description: "drizzle description" },
+    { filename: "oxlint-oxfmt.md", name: "oxlint-oxfmt", description: "oxlint-oxfmt description" },
   ]);
 });
 
 test("getAddon returns the frontmatter alongside the raw content", async () => {
-  expect(await getAddon("drizzle")).toEqual({
-    slug: "drizzle",
+  expect(await getAddon("drizzle.md")).toEqual({
+    filename: "drizzle.md",
     name: "drizzle",
     description: "drizzle description",
-    content: mockAddon("drizzle"),
+    content: mockAddon("drizzle.md"),
   });
 });
 
-test("getAddon rejects a slug that would escape the addons directory", async () => {
-  expect(getAddon("../package")).rejects.toThrow('Invalid addon slug "../package"');
+test("getAddon rejects a filename that would escape the addons directory", async () => {
+  expect(getAddon("../package.md")).rejects.toThrow('Invalid addon filename "../package.md"');
 });
 
-test("getAddon rejects a slug that already carries the extension", async () => {
-  expect(getAddon("drizzle.md")).rejects.toThrow('Invalid addon slug "drizzle.md"');
+test("getAddon rejects a filename without the markdown extension", async () => {
+  expect(getAddon("drizzle")).rejects.toThrow('Invalid addon filename "drizzle"');
 });

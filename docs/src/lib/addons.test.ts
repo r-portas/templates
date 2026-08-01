@@ -1,6 +1,6 @@
 import { describe, expect, test } from "bun:test";
 
-import { addonPath, isValidAddonSlug, parseFrontmatter } from "@/lib/addons";
+import { addonPath, isValidAddonFilename, parseFrontmatter } from "@/lib/addons";
 
 describe("parseFrontmatter", () => {
   test("parses the fields of a leading frontmatter block", () => {
@@ -47,21 +47,26 @@ describe("parseFrontmatter", () => {
   });
 });
 
-describe("isValidAddonSlug", () => {
-  test.each(["drizzle", "oxlint-oxfmt", "vitest2"])("accepts %p", (slug) => {
-    expect(isValidAddonSlug(slug)).toBe(true);
+describe("isValidAddonFilename", () => {
+  test.each(["drizzle.md", "oxlint-oxfmt.md", "vitest2.md"])("accepts %p", (filename) => {
+    expect(isValidAddonFilename(filename)).toBe(true);
   });
 
-  test.each(["../package", "drizzle/../secret", "Drizzle", "drizzle.md", "", "a b"])(
-    "rejects %p",
-    (slug) => {
-      expect(isValidAddonSlug(slug)).toBe(false);
-    },
-  );
+  test.each([
+    "drizzle",
+    "../package.md",
+    "drizzle/../secret.md",
+    "Drizzle.md",
+    "drizzle.txt",
+    "",
+    "a b.md",
+  ])("rejects %p", (filename) => {
+    expect(isValidAddonFilename(filename)).toBe(false);
+  });
 });
 
 describe("addonPath", () => {
   test("builds the raw markdown path for an addon", () => {
-    expect(addonPath("drizzle")).toBe("/addons/drizzle.md");
+    expect(addonPath("drizzle.md")).toBe("/addons/drizzle.md");
   });
 });
