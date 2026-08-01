@@ -1,11 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { GitBranch } from "lucide-react";
 
+import { AddonCard } from "@/components/addons/addon-card";
 import { GettingStarted } from "@/components/getting-started";
 import { PageHeader } from "@/components/page-header";
 import { Section } from "@/components/section";
 import { TemplateCard } from "@/components/templates/template-card";
 import { buttonVariants } from "@/components/ui/button";
+import { listAddonsFn } from "@/lib/addons.functions";
 import { GITPICK_REPO } from "@/lib/gitpick";
 import { listTemplatesFn } from "@/lib/templates.functions";
 
@@ -13,11 +15,12 @@ export const Route = createFileRoute("/")({
   component: RouteComponent,
   loader: async () => ({
     templates: await listTemplatesFn(),
+    addons: await listAddonsFn(),
   }),
 });
 
 function RouteComponent() {
-  const { templates } = Route.useLoaderData();
+  const { templates, addons } = Route.useLoaderData();
   return (
     <div className="mx-auto flex max-w-4xl flex-col gap-10 px-6 py-16 sm:px-10">
       <PageHeader
@@ -46,6 +49,21 @@ function RouteComponent() {
               description={template.description}
               dependencyCount={Object.keys(template.dependencies).length}
               devDependencyCount={Object.keys(template.devDependencies).length}
+            />
+          ))}
+        </div>
+      </Section>
+      <Section
+        title="Addons"
+        description="Optional setup steps to apply on top of a template. Copy the URL and point your coding agent at it."
+      >
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          {addons.map((addon) => (
+            <AddonCard
+              key={addon.slug}
+              slug={addon.slug}
+              name={addon.name}
+              description={addon.description}
             />
           ))}
         </div>

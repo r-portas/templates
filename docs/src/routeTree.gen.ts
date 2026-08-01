@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as TemplateNameRouteImport } from './routes/$templateName'
+import { Route as AddonsFilenameRouteImport } from './routes/addons.$filename'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -22,31 +23,40 @@ const TemplateNameRoute = TemplateNameRouteImport.update({
   path: '/$templateName',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AddonsFilenameRoute = AddonsFilenameRouteImport.update({
+  id: '/addons/$filename',
+  path: '/addons/$filename',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/$templateName': typeof TemplateNameRoute
+  '/addons/$filename': typeof AddonsFilenameRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/$templateName': typeof TemplateNameRoute
+  '/addons/$filename': typeof AddonsFilenameRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/$templateName': typeof TemplateNameRoute
+  '/addons/$filename': typeof AddonsFilenameRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/$templateName'
+  fullPaths: '/' | '/$templateName' | '/addons/$filename'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/$templateName'
-  id: '__root__' | '/' | '/$templateName'
+  to: '/' | '/$templateName' | '/addons/$filename'
+  id: '__root__' | '/' | '/$templateName' | '/addons/$filename'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   TemplateNameRoute: typeof TemplateNameRoute
+  AddonsFilenameRoute: typeof AddonsFilenameRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -65,12 +75,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TemplateNameRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/addons/$filename': {
+      id: '/addons/$filename'
+      path: '/addons/$filename'
+      fullPath: '/addons/$filename'
+      preLoaderRoute: typeof AddonsFilenameRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   TemplateNameRoute: TemplateNameRoute,
+  AddonsFilenameRoute: AddonsFilenameRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

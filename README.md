@@ -32,6 +32,26 @@ All templates share a common set of tooling:
 | [tss-shadcn](./templates/tss-shadcn)       | A blank minimal TanStack Start application configured with Tailwind CSS and shadcn/ui |
 | [app](./templates/app)                     | A batteries-included, opinionated template for building new web apps                  |
 
+## Addons
+
+Optional setup steps that are only needed on some projects — a database, a linting
+migration — don't belong in the templates themselves. They live as markdown
+instructions in [`./addons`](./addons) instead, one file per concern.
+
+The docs site serves each one as raw markdown at `/addons/<name>.md`, so you can
+point a coding agent straight at it rather than copying steps by hand:
+
+```
+Follow the setup instructions at <docs-site>/addons/drizzle.md
+```
+
+Every addon card on the docs site has a button that copies that URL.
+
+| Name                                       | Description                                                                            |
+| ------------------------------------------ | -------------------------------------------------------------------------------------- |
+| [drizzle](./addons/drizzle.md)             | Add Drizzle ORM with SQLite, wired into the project's env validation and `src/lib` conventions |
+| [oxlint-oxfmt](./addons/oxlint-oxfmt.md)   | Replace ESLint and Prettier with oxlint and oxfmt, including editor and Claude Code integration |
+
 ## Development
 
 This repo is a [Bun workspace](https://bun.sh/docs/install/workspaces), with each

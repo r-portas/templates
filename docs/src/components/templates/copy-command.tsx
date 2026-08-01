@@ -1,8 +1,8 @@
 import { Check, Copy } from "lucide-react";
-import { useState } from "react";
 
 import { buttonVariants } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
 import { cn } from "@/lib/utils";
 
 export function CopyCommand({
@@ -14,17 +14,7 @@ export function CopyCommand({
   className?: string;
   size?: "default" | "sm";
 }) {
-  const [copied, setCopied] = useState(false);
-
-  async function handleCopy() {
-    try {
-      await navigator.clipboard.writeText(command);
-    } catch {
-      return;
-    }
-    setCopied(true);
-    window.setTimeout(() => setCopied(false), 1600);
-  }
+  const { copied, copy } = useCopyToClipboard();
 
   return (
     <div
@@ -44,7 +34,7 @@ export function CopyCommand({
       <Tooltip>
         <TooltipTrigger
           type="button"
-          onClick={handleCopy}
+          onClick={() => copy(command)}
           aria-label={copied ? "Command copied" : `Copy command: ${command}`}
           className={cn(
             buttonVariants({ variant: "ghost", size: size === "default" ? "icon-sm" : "icon-xs" }),
