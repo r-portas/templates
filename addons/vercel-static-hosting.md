@@ -3,11 +3,11 @@ name: vercel-static-hosting
 description: Configures Vercel for static hosting of a Bun project, including build and output settings
 ---
 
-# Vercel Static Hosting Setup
+# Vercel Static Hosting
 
-## Steps
+Configures Vercel for static hosting of a Bun project, including build and output settings.
 
-### 1. Create the `vercel.json` file
+## 1. Create the `vercel.json` file
 
 ```json
 {
@@ -30,7 +30,7 @@ description: Configures Vercel for static hosting of a Bun project, including bu
 }
 ```
 
-### 2. Configure prerendering in the `vite.config.ts`
+## 2. Configure prerendering in the `vite.config.ts`
 
 Set the `prerender` option in the `tanstackStart` plugin.
 

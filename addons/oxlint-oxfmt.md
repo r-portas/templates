@@ -3,19 +3,18 @@ name: oxlint-oxfmt
 description: Replace ESLint and Prettier with oxlint and oxfmt, including editor and Claude Code integration
 ---
 
-# oxfmt + oxlint Setup
+# oxfmt + oxlint
 
-oxfmt and oxlint are always configured together — oxfmt for formatting, oxlint for linting.
+Replaces ESLint and Prettier with oxlint and oxfmt — oxfmt and oxlint are always configured
+together, oxfmt for formatting and oxlint for linting.
 
-## Steps
-
-### 1. Install as dev dependencies
+## 1. Install as dev dependencies
 
 ```bash
 bun add -D oxfmt oxlint
 ```
 
-### 2. Add scripts to `package.json`
+## 2. Add scripts to `package.json`
 
 ```json
 {
@@ -26,7 +25,7 @@ bun add -D oxfmt oxlint
 }
 ```
 
-### 3. Create config files
+## 3. Create config files
 
 `.oxfmtrc.json`:
 
@@ -60,7 +59,7 @@ bun add -D oxfmt oxlint
 > Add the `nextjs` plugin if the project uses Next.js. Drop `react` and `react-perf` if it isn't
 > a React project.
 
-### 4. VS Code setup
+## 4. VS Code setup
 
 `.vscode/extensions.json`:
 
@@ -79,7 +78,7 @@ bun add -D oxfmt oxlint
 }
 ```
 
-### 5. Auto-format on save with a Claude hook (optional)
+## 5. Auto-format on save with a Claude hook (optional)
 
 A `PostToolUse` hook formats files with oxfmt every time Claude writes or edits one.
 
@@ -111,14 +110,14 @@ hook configured before adding it.
 
 > oxfmt ignores files it doesn't support, so the hook can run on every edit without filtering by extension.
 
-### 6. Verify
+## 6. Verify
 
 ```bash
 bun run format
 bun run lint
 ```
 
-### 7. Remove old Prettier / ESLint
+## 7. Remove old Prettier / ESLint
 
 - Delete config files: `.prettierrc`, `.eslintrc`, `eslint.config.*`, etc.
 - Remove packages: `prettier`, `eslint`, and related plugins from `package.json`
