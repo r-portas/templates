@@ -36,10 +36,12 @@ All templates share a common set of tooling:
 
 Addons are optional setup steps that can be applied to a template by coding agents.
 
-| Name                                     | Description                                                                                     |
-| ---------------------------------------- | ----------------------------------------------------------------------------------------------- |
-| [drizzle](./addons/drizzle.md)           | Add Drizzle ORM with SQLite, wired into the project's env validation and `src/lib` conventions  |
-| [oxlint-oxfmt](./addons/oxlint-oxfmt.md) | Replace ESLint and Prettier with oxlint and oxfmt, including editor and Claude Code integration |
+| Name                                                       | Description                                                                                     |
+| ---------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| [docker](./addons/docker.md)                               | Configures Docker for a TanStack Start project                                                  |
+| [drizzle](./addons/drizzle.md)                             | Add Drizzle ORM with SQLite, wired into the project's env validation and `src/lib` conventions  |
+| [oxlint-oxfmt](./addons/oxlint-oxfmt.md)                   | Replace ESLint and Prettier with oxlint and oxfmt, including editor and Claude Code integration |
+| [vercel-static-hosting](./addons/vercel-static-hosting.md) | Configures Vercel for static hosting of a Bun project, including build and output settings      |
 
 ## Development
 
