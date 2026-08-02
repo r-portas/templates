@@ -10,8 +10,8 @@
     "update": "bun update --interactive --latest"
   },
   "dependencies": {
-    "@mantine/core": "^9.5.0",
-    "@mantine/hooks": "^9.5.0",
+    "@mantine/core": "^9.5.1",
+    "@mantine/hooks": "^9.5.1",
     "@phosphor-icons/react": "^2.1.10",
     "@tanstack/react-router": "^1.170.18",
     "@tanstack/react-start": "^1.168.34",
