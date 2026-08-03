@@ -35,3 +35,9 @@
   - Is the template added to the @.github/workflows/build.yml
   - Is the template's lineage recorded in the list above
   - Is the template (and its dependencies to check) added to @.claude/skills/check-best-practises/SKILL.md
+- For repo-wide changes (e.g. a shared convention or dependency bump), check every workspace package,
+  not just `./templates/*` — `./docs` is easy to miss since it lives outside `./templates`. Scope
+  searches to the repo root; never run `find` or similar from `/` or `~`.
+- Keep changes to the smallest diff that satisfies the request — avoid adding abstractions,
+  memoization, or verbose comments/docstrings that aren't already conventional in the surrounding
+  code, in keeping with the "minimal, focused" goal above.
