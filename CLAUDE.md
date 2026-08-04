@@ -38,6 +38,10 @@
 - For repo-wide changes (e.g. a shared convention or dependency bump), check every workspace package,
   not just `./templates/*` — `./docs` is easy to miss since it lives outside `./templates`. Scope
   searches to the repo root; never run `find` or similar from `/` or `~`.
-- Keep changes to the smallest diff that satisfies the request — avoid adding abstractions,
-  memoization, or verbose comments/docstrings that aren't already conventional in the surrounding
-  code, in keeping with the "minimal, focused" goal above.
+- Code style, in keeping with the "minimal, focused" goal above:
+  - Keep changes to the smallest diff that satisfies the request — don't add abstractions that
+    weren't asked for.
+  - Only reach for `useMemo`/`useCallback` when there's a concrete reason (e.g. a stable reference
+    a hook must return), not by default.
+  - Comments should explain *why*, not restate the code — see
+    `docs/src/hooks/use-copy-to-clipboard.ts` for the level of brevity to aim for.
