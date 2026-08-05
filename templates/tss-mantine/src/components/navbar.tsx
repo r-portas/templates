@@ -1,8 +1,9 @@
-import { AppShell, Button, Group, Title } from "@mantine/core";
+import { AppShell, Group, Title } from "@mantine/core";
 import { HouseIcon, InfoIcon } from "@phosphor-icons/react";
-import { Link, linkOptions, useMatchRoute } from "@tanstack/react-router";
+import { linkOptions, useMatchRoute } from "@tanstack/react-router";
 
 import clientEnv from "@/lib/env";
+import { ButtonLink } from "@/link";
 
 const NAV_ITEMS = linkOptions([
   { to: "/", label: "Home", icon: HouseIcon },
@@ -18,18 +19,15 @@ export function Navbar() {
         <Title order={5}>{clientEnv.VITE_APP_NAME}</Title>
         <Group gap="xs">
           {NAV_ITEMS.map(({ label, icon: Icon, ...linkOption }) => (
-            <Button
+            <ButtonLink
               key={linkOption.to}
-              component={Link}
               {...linkOption}
-              variant={
-                matchRoute({ to: linkOption.to }) === false ? "subtle" : "light"
-              }
+              variant={matchRoute({ to: linkOption.to }) === false ? "subtle" : "light"}
               leftSection={<Icon />}
               size="compact-sm"
             >
               {label}
-            </Button>
+            </ButtonLink>
           ))}
         </Group>
       </Group>

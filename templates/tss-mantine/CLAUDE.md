@@ -63,7 +63,6 @@ Before editing files for a substantial task:
 ## User Interface
 
 - This project uses Mantine for UI components, see https://mantine.dev/llms.txt for documentation.
+- For internal navigation, always use `AnchorLink`, `ButtonLink`, and `ActionIconLink` from `src/link.tsx`.
 - Icons come from `@phosphor-icons/react`, imported with the `Icon` suffix (e.g. `HouseIcon`).
 - For component-specific custom styling, use a co-located CSS module (`component-name.module.css`) rather than adding to a global stylesheet.
-- `src/components/app-layout.tsx` holds the `AppShell` wrapper and `src/components/navbar.tsx` the header bar; add new navigation links to `NAV_ITEMS` there.
-- The default not found and error components are defined in `src/router.tsx` using Mantine's `EmptyState`.
