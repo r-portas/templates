@@ -16,7 +16,9 @@ export async function listTemplates() {
 }
 
 /**
- * Gets the full package.json for a given template name
+ * Gets the full package.json for a given template name.
+ *
+ * @param templateName - The template's directory name under `./templates`.
  */
 export async function getTemplatePackageJson(templateName: string) {
   try {
@@ -25,7 +27,6 @@ export async function getTemplatePackageJson(templateName: string) {
     const rawPackageJson = JSON.parse(packageJsonContent);
     return packageJsonSchema.parse(rawPackageJson);
   } catch (error) {
-    console.error(`Error reading package.json for template "${templateName}":`, error);
-    throw new Error(`Failed to read package.json for template "${templateName}"`);
+    throw new Error(`Failed to read package.json for template "${templateName}"`, { cause: error });
   }
 }

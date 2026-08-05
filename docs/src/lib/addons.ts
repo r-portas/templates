@@ -9,6 +9,8 @@ const ADDON_FILENAME_PATTERN = /^[a-z0-9-]+\.md$/;
  *
  * Only supports the flat `key: value` scalars the addons use — nested structures, lists and
  * multiline values are not handled. Validate the result with `addonFrontmatterSchema`.
+ *
+ * @param source - The full markdown document, including its frontmatter block.
  */
 export function parseFrontmatter(source: string): Record<string, string> {
   const block = source.match(FRONTMATTER_PATTERN)?.[1];
@@ -40,7 +42,10 @@ export function parseFrontmatter(source: string): Record<string, string> {
 /**
  * Whether a filename is safe to resolve against the addons directory.
  *
- * @remark Excludes filenames starting with `_` (e.g. `_template.md`), so authoring templates
+ * @param filename - The filename to validate.
+ *
+ * @remarks
+ * Excludes filenames starting with `_` (e.g. `_template.md`), so authoring templates
  * placed alongside real addons aren't listed or served.
  */
 export function isValidAddonFilename(filename: string) {

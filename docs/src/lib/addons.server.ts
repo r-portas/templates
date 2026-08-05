@@ -11,7 +11,7 @@ const ADDONS_DIR = resolve("../addons");
  */
 export async function listAddons() {
   const entries = await readdir(ADDONS_DIR);
-  const filenames = entries.filter(isValidAddonFilename).sort((a, b) => a.localeCompare(b));
+  const filenames = entries.filter(isValidAddonFilename).toSorted((a, b) => a.localeCompare(b));
 
   const addons = await Promise.all(filenames.map((filename) => getAddon(filename)));
   return addons.map(({ content: _content, ...addon }) => addon);
@@ -19,6 +19,8 @@ export async function listAddons() {
 
 /**
  * Gets a single addon, including its raw markdown source.
+ *
+ * @param filename - The addon's filename, e.g. `docker.md`.
  */
 export async function getAddon(filename: string) {
   if (!isValidAddonFilename(filename)) {

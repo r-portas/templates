@@ -25,10 +25,44 @@ Before editing files for a substantial task:
   - `src/lib/env.ts` — client-readable variables, which must be prefixed with `VITE_`. Values come from `.env` (committed) and `.env.local` (gitignored, for secrets).
   - `src/lib/env.server.ts` — server-only variables.
 
+## Code Style
+
+- Exports benefit from a short tsdoc comment describing intent and any non-obvious behaviour. Not required for every export — use judgment based on complexity. When you do add one, use the following format:
+  ```ts
+  /**
+   * <short description>
+   *
+   * @param myParam - <short description>
+   * ...
+   *
+   * @remarks
+   * <optional: mention any behaviour that might trip up another developer>
+   *
+   * @example
+   * \`\`\`ts
+   * <example usage>
+   * \`\`\`
+   */
+  ```
+- Inline Comments
+  - Add inline comments for any non-obvious behavior
+  - Inline comments should explain the _why_
+  - Inline comments should be concise and useful (1-2 lines max)
+
+## Testing
+
+- Always use Bun's test runner (`bun test`), see [the documentation](https://bun.com/docs/test.md) for more information.
+- Before writing tests, extract pure functions and presentational components out of framework wrappers (e.g. `createServerFn`, route files) so tests don't need runtime context.
+
+## Planning
+
+- Before planning, check documentation using TanStack Intent
+- Always prefer simpler, robust solutions
+  - If you see a way to solve a problem simpler or most robustly, flag it with the user
+
 ## User Interface
 
 - This project uses Mantine for UI components, see https://mantine.dev/llms.txt for documentation.
+- For internal navigation, always use `AnchorLink`, `ButtonLink`, and `ActionIconLink` from `src/components/link.tsx`.
 - Icons come from `@phosphor-icons/react`, imported with the `Icon` suffix (e.g. `HouseIcon`).
 - For component-specific custom styling, use a co-located CSS module (`component-name.module.css`) rather than adding to a global stylesheet.
-- `src/components/app-layout.tsx` holds the `AppShell` wrapper and `src/components/navbar.tsx` the header bar; add new navigation links to `NAV_ITEMS` there.
-- The default not found and error components are defined in `src/router.tsx` using Mantine's `EmptyState`.

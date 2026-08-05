@@ -33,7 +33,7 @@ export const Route = createFileRoute("/templates/$templateName")({
 });
 
 function DependencyList({ dependencies }: { dependencies: Record<string, string> }) {
-  const entries = Object.entries(dependencies).sort(([a], [b]) => a.localeCompare(b));
+  const entries = Object.entries(dependencies).toSorted(([a], [b]) => a.localeCompare(b));
   if (entries.length === 0) {
     return <Text c="dimmed">None</Text>;
   }
