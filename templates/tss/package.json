@@ -10,8 +10,8 @@
     "update": "bun update --interactive --latest"
   },
   "dependencies": {
-    "@tanstack/react-router": "^1.170.18",
-    "@tanstack/react-start": "^1.168.34",
+    "@tanstack/react-router": "^1.170.20",
+    "@tanstack/react-start": "^1.168.37",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "zod": "^4.4.3"
@@ -21,8 +21,8 @@
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.4",
     "@vitejs/plugin-react": "^6.0.5",
-    "oxfmt": "^0.61.0",
-    "oxlint": "^1.76.0",
+    "oxfmt": "^0.62.0",
+    "oxlint": "^1.77.0",
     "typescript": "^7.0.2",
     "vite": "^8.2.0"
   }
