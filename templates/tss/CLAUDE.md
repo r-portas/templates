@@ -24,7 +24,7 @@ Before editing files for a substantial task:
 
 ## Code Style
 
-- All exports need a tsdoc comment, in the following format:
+- Exports benefit from a short tsdoc comment describing intent and any non-obvious behaviour. Not required for every export — use judgment based on complexity. When you do add one, use the following format:
   ```ts
   /**
    * <short description>
