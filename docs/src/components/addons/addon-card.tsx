@@ -1,13 +1,10 @@
-import { ClientOnly, Link } from "@tanstack/react-router";
-import { FileText } from "lucide-react";
+import { Card, Group, Stack, Text, Title, Tooltip } from "@mantine/core";
+import { FileTextIcon } from "@phosphor-icons/react";
+import { ClientOnly } from "@tanstack/react-router";
 
-import { buttonVariants } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import { CopyCommand } from "@/components/copy-command";
+import { ActionIconLink } from "@/components/link";
 import { addonPath } from "@/lib/addons";
-import { cn } from "@/lib/utils";
-
-import { CopyCommand } from "../copy-command";
 
 function getAddonUrl(filename: string) {
   return new URL(addonPath(filename), window.location.origin).toString();
@@ -23,38 +20,31 @@ function AddonCard({
   description: string;
 }) {
   return (
-    <Card className="justify-between">
-      <CardHeader>
-        <div className="flex items-start justify-between gap-4">
-          <CardTitle className="font-mono">{name}</CardTitle>
-          <Tooltip>
-            <TooltipTrigger
-              // `reloadDocument` because the target is a server route with no component
-              render={
-                <Link
-                  to="/addons/$filename"
-                  params={{ filename }}
-                  reloadDocument
-                  aria-label={`View the raw markdown for the ${name} addon`}
-                  className={cn(
-                    buttonVariants({ variant: "ghost", size: "icon-sm" }),
-                    "text-muted-foreground hover:text-foreground",
-                  )}
-                />
-              }
-            >
-              <FileText />
-            </TooltipTrigger>
-            <TooltipContent>View raw markdown</TooltipContent>
-          </Tooltip>
-        </div>
-        <CardDescription>{description}</CardDescription>
-      </CardHeader>
-      <CardContent>
+    <Card withBorder h="100%">
+      <Stack gap="md" justify="space-between" h="100%">
+        <Stack gap="xs">
+          <Group justify="space-between" align="flex-start" gap="md" wrap="nowrap">
+            <Title order={3}>{name}</Title>
+            <Tooltip label="View raw markdown" withArrow>
+              <ActionIconLink
+                to="/addons/$filename"
+                params={{ filename }}
+                // `reloadDocument` because the target is a server route with no component
+                reloadDocument
+                variant="subtle"
+                color="gray"
+                aria-label={`View the raw markdown for the ${name} addon`}
+              >
+                <FileTextIcon />
+              </ActionIconLink>
+            </Tooltip>
+          </Group>
+          <Text c="dimmed">{description}</Text>
+        </Stack>
         <ClientOnly>
           <AgentCommand filename={filename} />
         </ClientOnly>
-      </CardContent>
+      </Stack>
     </Card>
   );
 }

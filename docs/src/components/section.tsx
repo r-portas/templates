@@ -1,3 +1,4 @@
+import { Stack, Text, Title } from "@mantine/core";
 import type { ReactNode } from "react";
 
 export function Section({
@@ -10,12 +11,12 @@ export function Section({
   children: ReactNode;
 }) {
   return (
-    <section className="flex flex-col gap-4">
-      <div className="flex flex-col gap-1">
-        <h2 className="font-heading text-lg font-semibold">{title}</h2>
-        {description && <p className="text-sm text-muted-foreground">{description}</p>}
-      </div>
+    <Stack component="section" gap="md">
+      <Stack gap="xs">
+        <Title order={2}>{title}</Title>
+        {description && <Text c="dimmed">{description}</Text>}
+      </Stack>
       {children}
-    </section>
+    </Stack>
   );
 }

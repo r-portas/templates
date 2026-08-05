@@ -1,10 +1,11 @@
+import { Badge, Card, Group, Stack, Text, Title } from "@mantine/core";
+import { PackageIcon } from "@phosphor-icons/react";
 import { Link } from "@tanstack/react-router";
-import { PackageCheck } from "lucide-react";
 
 import { CopyCommand } from "@/components/copy-command";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { gitpickCommand } from "@/lib/gitpick";
-import { cn } from "@/lib/utils";
+
+import classes from "./template-card.module.css";
 
 function TemplateCard({
   name,
@@ -18,37 +19,36 @@ function TemplateCard({
   devDependencyCount: number;
 }) {
   return (
-    <Card className={cn("relative transition-colors hover:ring-foreground/30 justify-between")}>
+    <Card className={classes.card} withBorder pos="relative" h="100%">
+      {/* Covers the whole card so it's clickable; the copy button below stays clickable because it
+          comes later in the DOM, not because of a stacking context */}
       <Link
         to="/templates/$templateName"
         params={{ templateName: name }}
-        className="absolute inset-0"
         aria-label={`View ${name} template`}
+        style={{ position: "absolute", inset: 0 }}
       />
-      <CardHeader>
-        <div className="flex items-start justify-between gap-4">
-          <CardTitle
-            className="pointer-events-none font-mono"
-            style={{ viewTransitionName: `template-title-${name}` }}
-          >
-            {name}
-          </CardTitle>
-          <PackageCheck className="size-4 shrink-0 text-muted-foreground" />
-        </div>
-        <CardDescription>{description}</CardDescription>
-      </CardHeader>
-      <CardContent className="relative flex flex-col gap-3">
-        <CopyCommand command={gitpickCommand(name)} size="sm" />
-        <div className="flex items-center gap-3 font-mono text-xs text-muted-foreground">
-          <span>
-            <span className="text-foreground">{dependencyCount}</span> dependencies
-          </span>
-          <span className="text-border">|</span>
-          <span>
-            <span className="text-foreground">{devDependencyCount}</span> dev dependencies
-          </span>
-        </div>
-      </CardContent>
+      <Stack gap="md" justify="space-between" h="100%">
+        <Stack gap="xs">
+          <Group justify="space-between" align="flex-start" gap="md" wrap="nowrap">
+            <Title
+              order={3}
+              style={{ pointerEvents: "none", viewTransitionName: `template-title-${name}` }}
+            >
+              {name}
+            </Title>
+            <PackageIcon color="var(--mantine-color-dimmed)" />
+          </Group>
+          <Text c="dimmed">{description}</Text>
+        </Stack>
+        <Stack gap="xs">
+          <CopyCommand command={gitpickCommand(name)} size="sm" />
+          <Group gap="xs">
+            <Badge variant="light">{dependencyCount} dependencies</Badge>
+            <Badge variant="default">{devDependencyCount} dev dependencies</Badge>
+          </Group>
+        </Stack>
+      </Stack>
     </Card>
   );
 }

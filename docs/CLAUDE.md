@@ -16,7 +16,17 @@ Before editing files for a substantial task:
 
 ## User Interface
 
-- Tailwind CSS v4, configured CSS-first in `src/styles.css` (no `tailwind.config.js`) — customise the theme with `@theme` there. Oxfmt auto-sorts classes via its `sortTailwindcss` option in `.oxfmtrc.json`.
-- [shadcn/ui](https://ui.shadcn.com) is configured via `components.json`; add components with `bunx --bun shadcn add <component>` (installed into `src/components/ui`).
-- UI primitives (e.g. `Button`) are built on `@base-ui/react`, not Radix. Swap the rendered element with a `render` prop (e.g. `<Dialog.Trigger render={<a href="..." />}>`), **not** `asChild`
-- For links styled as buttons, apply `buttonVariants` to a plain `<a>` instead of wrapping it in `<Button render={<a/>} />`
+- This project uses Mantine for UI components, see https://mantine.dev/llms.txt for documentation.
+  It follows the `tss-mantine` template, so keep shared conventions aligned with it.
+- Icons come from `@phosphor-icons/react`, imported with the `Icon` suffix (e.g. `PackageIcon`).
+- `src/lib/theme.ts` — the Mantine theme, applied by the `MantineProvider` in `src/routes/__root.tsx`.
+  The site is dark-only, forced via `forceColorScheme="dark"` on both the provider and
+  `ColorSchemeScript`.
+- `src/styles.css` holds only global rules that Mantine has no equivalent for (the JetBrains Mono
+  `@fontsource` import and reserving scrollbar space). For component-specific styling, use a
+  co-located CSS module (`component-name.module.css`) rather than adding to it.
+- For router links, use `AnchorLink` / `ActionIconLink` from `src/components/link.tsx` instead of
+  Mantine's `component={Link}`. The polymorphic `component` prop widens the router to `AnyRouter`
+  and loses typed `to`/`params` inference; those wrappers use `createLink` to keep it.
+- The default not found and error components are defined in `src/router.tsx` using Mantine's
+  `EmptyState`.

@@ -1,63 +1,34 @@
-import type { ReactNode } from "react";
+import { Code, Text, Timeline } from "@mantine/core";
 
 import { CopyCommand } from "@/components/copy-command";
-import { cn } from "@/lib/utils";
-
-function Step({
-  number,
-  title,
-  children,
-  isLast,
-}: {
-  number: number;
-  title: string;
-  children: ReactNode;
-  isLast?: boolean;
-}) {
-  return (
-    <li className="flex gap-4">
-      <div className="flex flex-col items-center">
-        <div className="flex size-7 shrink-0 items-center justify-center rounded-full border border-border bg-card font-mono text-sm font-medium">
-          {number}
-        </div>
-        {!isLast && <div className="w-px flex-1 bg-border" />}
-      </div>
-      <div className={cn("flex min-w-0 flex-1 flex-col gap-1 pt-0.5", !isLast && "pb-6")}>
-        <h3 className="font-medium">{title}</h3>
-        {children}
-      </div>
-    </li>
-  );
-}
 
 export function GettingStarted() {
   return (
-    <ol className="flex flex-col">
-      <Step number={1} title="Install bun">
-        <p className="text-sm text-muted-foreground">
+    // `bulletSize` so the step numbers fit inside the bullets
+    <Timeline bulletSize={28}>
+      <Timeline.Item bullet={1} title="Install bun">
+        <Text c="dimmed" mb="xs">
           The runtime and package manager every template uses.
-        </p>
+        </Text>
         <CopyCommand command="curl -fsSL https://bun.sh/install | bash" size="sm" />
-      </Step>
-      <Step number={2} title="Pick a template">
-        <p className="text-sm text-muted-foreground">
-          Browse the templates below and click{" "}
-          <span className="font-medium">copy to clipboard</span> on the one you want.
-        </p>
-      </Step>
-      <Step number={3} title="Scaffold and run">
-        <p className="text-sm text-muted-foreground">
-          Paste the command, then install and start the dev server. Replace{" "}
-          <code className="font-mono">my-project</code> with your folder name, or use{" "}
-          <code className="font-mono">.</code> to scaffold into the current directory.
-        </p>
+      </Timeline.Item>
+      <Timeline.Item bullet={2} title="Pick a template">
+        <Text c="dimmed">
+          Browse the templates below and click copy to clipboard on the one you want.
+        </Text>
+      </Timeline.Item>
+      <Timeline.Item bullet={3} title="Scaffold and run">
+        <Text c="dimmed" mb="xs">
+          Paste the command, then install and start the dev server. Replace <Code>my-project</Code>{" "}
+          with your folder name, or use <Code>.</Code> to scaffold into the current directory.
+        </Text>
         <CopyCommand command="cd my-project && bun install && bun dev" size="sm" />
-      </Step>
-      <Step number={4} title="(Optional) Configure addons" isLast>
-        <p className="text-sm text-muted-foreground">
+      </Timeline.Item>
+      <Timeline.Item bullet={4} title="(Optional) Configure addons">
+        <Text c="dimmed">
           Addons are optional setup steps that can be applied to a template by coding agents.
-        </p>
-      </Step>
-    </ol>
+        </Text>
+      </Timeline.Item>
+    </Timeline>
   );
 }

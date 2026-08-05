@@ -1,8 +1,8 @@
 # docs
 
 The documentation site for this repository, listing the available templates and
-addons. It is a TanStack Start application configured with Tailwind CSS and
-shadcn/ui.
+addons. It is a TanStack Start application using Mantine, following the
+[`tss-mantine`](../templates/tss-mantine) template.
 
 The template list is generated at build time by reading the `package.json` of
 each directory under `../templates` (see `src/lib/templates.server.ts`), and the
@@ -30,20 +30,16 @@ Non-secret configuration lives in `.env`, which is committed in git and
 validated with Zod in `src/lib/env.ts`. Variables must be prefixed with `VITE_`
 to be readable on the client.
 
-## Adding components
+## User interface
 
-Add shadcn/ui components with the CLI:
+UI components come from [Mantine](https://mantine.dev), which needs no install
+step — import what you need from `@mantine/core`. Icons come from
+[Phosphor](https://phosphoricons.com) via `@phosphor-icons/react`.
 
-```bash
-bunx --bun shadcn add <component>
-```
+- `src/lib/theme.ts` — the Mantine theme, applied by the `MantineProvider` in `src/routes/__root.tsx`
+- `src/components/link.tsx` — Mantine components wired up as typed router links via `createLink`
+- `src/router.tsx` — the default not found and error components
 
-## AI assistant skill
-
-Install the [shadcn/ui skill](https://ui.shadcn.com/docs/skills) to give AI assistants like Claude Code project-aware context about this project's shadcn/ui setup:
-
-```bash
-bunx --bun skills add shadcn/ui
-```
-
-Once installed, the assistant reads this project's `components.json` to find, install, compose, and customize components using the correct APIs and patterns.
+The site is dark-only. Component-specific styling lives in a co-located CSS
+module; `src/styles.css` is reserved for the few global rules Mantine has no
+equivalent for.

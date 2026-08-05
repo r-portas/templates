@@ -1,18 +1,23 @@
-import { Link, type LinkProps } from "@tanstack/react-router";
-import { ArrowLeft } from "lucide-react";
+import { Group, Stack, Title } from "@mantine/core";
+import { ArrowLeftIcon } from "@phosphor-icons/react";
+import type { LinkProps } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 
+import { AnchorLink } from "@/components/link";
 import { LogoMark } from "@/components/logo-mark";
 
 function BreadcrumbLink({ label, ...linkProps }: { label: string } & LinkProps) {
   return (
-    <Link
+    <AnchorLink
       {...linkProps}
-      className="flex w-fit items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-foreground"
+      c="dimmed"
+      // `fit-content` so only the text is clickable, not the full width of the header column
+      w="fit-content"
+      style={{ display: "flex", alignItems: "center", gap: "var(--mantine-spacing-xs)" }}
     >
-      <ArrowLeft className="size-3.5" />
+      <ArrowLeftIcon />
       {label}
-    </Link>
+    </AnchorLink>
   );
 }
 
@@ -28,20 +33,20 @@ export function PageHeader({
   action?: ReactNode;
 }) {
   return (
-    <div className="flex items-start justify-between gap-4">
-      <div className="flex gap-3">
-        <LogoMark style={{ viewTransitionName: "logo-mark" }} />
-        <div className="flex flex-col gap-1">
-          {breadcrumb && <BreadcrumbLink {...breadcrumb} />}
-          <h1
-            className="font-heading text-3xl font-semibold"
+    <Group justify="space-between" align="flex-start" gap="md" wrap="nowrap">
+      <Stack gap="xs">
+        {breadcrumb && <BreadcrumbLink {...breadcrumb} />}
+        <Group gap="sm" align="center" wrap="nowrap">
+          <LogoMark style={{ viewTransitionName: "logo-mark" }} />
+          <Title
+            order={1}
             style={titleId ? { viewTransitionName: `template-title-${titleId}` } : undefined}
           >
             {title}
-          </h1>
-        </div>
-      </div>
+          </Title>
+        </Group>
+      </Stack>
       {action}
-    </div>
+    </Group>
   );
 }
