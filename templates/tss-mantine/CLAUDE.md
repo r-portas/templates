@@ -63,6 +63,6 @@ Before editing files for a substantial task:
 ## User Interface
 
 - This project uses Mantine for UI components, see https://mantine.dev/llms.txt for documentation.
-- For internal navigation, always use `AnchorLink`, `ButtonLink`, and `ActionIconLink` from `src/link.tsx`.
+- For internal navigation, always use `AnchorLink`, `ButtonLink`, and `ActionIconLink` from `src/components/link.tsx`.
 - Icons come from `@phosphor-icons/react`, imported with the `Icon` suffix (e.g. `HouseIcon`).
 - For component-specific custom styling, use a co-located CSS module (`component-name.module.css`) rather than adding to a global stylesheet.

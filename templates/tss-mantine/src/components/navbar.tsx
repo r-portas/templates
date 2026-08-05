@@ -2,8 +2,8 @@ import { AppShell, Group, Title } from "@mantine/core";
 import { HouseIcon, InfoIcon } from "@phosphor-icons/react";
 import { linkOptions, useMatchRoute } from "@tanstack/react-router";
 
+import { ButtonLink } from "@/components/link";
 import clientEnv from "@/lib/env";
-import { ButtonLink } from "@/link";
 
 const NAV_ITEMS = linkOptions([
   { to: "/", label: "Home", icon: HouseIcon },

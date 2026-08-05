@@ -1,7 +1,7 @@
 import { EmptyState } from "@mantine/core";
 import { MagnifyingGlassIcon } from "@phosphor-icons/react";
 
-import { ButtonLink } from "../link";
+import { ButtonLink } from "@/components/link";
 
 export function NotFound() {
   return (

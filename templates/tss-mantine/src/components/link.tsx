@@ -1,8 +1,23 @@
-import { Anchor, Button, ActionIcon, type ButtonProps, type ActionIconProps } from "@mantine/core";
+import {
+  Anchor,
+  Button,
+  ActionIcon,
+  type ButtonProps,
+  type ActionIconProps,
+  type AnchorProps,
+} from "@mantine/core";
 import { createLink } from "@tanstack/react-router";
 import type { Ref } from "react";
 
 // #region AnchorLink
+interface AnchorLinkComponentProps extends AnchorProps {
+  ref?: Ref<HTMLAnchorElement>;
+}
+
+function AnchorLinkComponent({ ref, ...props }: AnchorLinkComponentProps) {
+  return <Anchor ref={ref} component="a" {...props} />;
+}
+
 /**
  * Mantine's `Anchor`, wired up as a TanStack Router `Link`.
  *
@@ -14,7 +29,7 @@ import type { Ref } from "react";
  * <AnchorLink to="/about">About</AnchorLink>
  * ```
  */
-export const AnchorLink = createLink(Anchor);
+export const AnchorLink = createLink(AnchorLinkComponent);
 // #endregion AnchorLink
 
 // #region ButtonLink
