@@ -11,7 +11,7 @@ const ADDONS_DIR = resolve("../addons");
  */
 export async function listAddons() {
   const entries = await readdir(ADDONS_DIR);
-  const filenames = entries.filter(isValidAddonFilename).sort((a, b) => a.localeCompare(b));
+  const filenames = entries.filter(isValidAddonFilename).toSorted((a, b) => a.localeCompare(b));
 
   const addons = await Promise.all(filenames.map((filename) => getAddon(filename)));
   return addons.map(({ content: _content, ...addon }) => addon);

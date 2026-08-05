@@ -14,6 +14,41 @@ Before editing files for a substantial task:
 
 <!-- intent-skills:end -->
 
+## Code Style
+
+- All exports need a tsdoc comment, in the following format:
+  ```ts
+  /**
+   * <short description>
+   *
+   * @param myParam - <short description>
+   * ...
+   *
+   * @remarks
+   * <optional: mention any behaviour that might trip up another developer>
+   *
+   * @example
+   * \`\`\`ts
+   * <example usage>
+   * \`\`\`
+   */
+  ```
+- Inline Comments
+  - Add inline comments for any non-obvious behavior
+  - Inline comments should explain the _why_
+  - Inline comments should be concise and useful (1-2 lines max)
+
+## Testing
+
+- Always use Bun's test runner (`bun test`), see [the documentation](https://bun.com/docs/test.md) for more information.
+- Before writing tests, extract pure functions and presentational components out of framework wrappers (e.g. `createServerFn`, route files) so tests don't need runtime context.
+
+## Planning
+
+- Before planning, check documentation using TanStack Intent
+- Always prefer simpler, robust solutions
+  - If you see a way to solve a problem simpler or most robustly, flag it with the user
+
 ## User Interface
 
 - This project uses Mantine for UI components, see https://mantine.dev/llms.txt for documentation.

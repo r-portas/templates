@@ -40,7 +40,7 @@ export function parseFrontmatter(source: string): Record<string, string> {
 /**
  * Whether a filename is safe to resolve against the addons directory.
  *
- * @remark Excludes filenames starting with `_` (e.g. `_template.md`), so authoring templates
+ * @remarks Excludes filenames starting with `_` (e.g. `_template.md`), so authoring templates
  * placed alongside real addons aren't listed or served.
  */
 export function isValidAddonFilename(filename: string) {
