@@ -20,7 +20,8 @@ function TemplateCard({
 }) {
   return (
     <Card className={classes.card} withBorder pos="relative" h="100%">
-      {/* Covers the whole card so it's clickable; the copy button sits above it via its own stacking context */}
+      {/* Covers the whole card so it's clickable; the copy button below stays clickable because it
+          comes later in the DOM, not because of a stacking context */}
       <Link
         to="/templates/$templateName"
         params={{ templateName: name }}
@@ -36,12 +37,12 @@ function TemplateCard({
             >
               {name}
             </Title>
-            <PackageIcon />
+            <PackageIcon color="var(--mantine-color-dimmed)" />
           </Group>
           <Text c="dimmed">{description}</Text>
         </Stack>
-        <Stack gap="xs" pos="relative">
-          <CopyCommand command={gitpickCommand(name)} />
+        <Stack gap="xs">
+          <CopyCommand command={gitpickCommand(name)} size="sm" />
           <Group gap="xs">
             <Badge variant="light">{dependencyCount} dependencies</Badge>
             <Badge variant="default">{devDependencyCount} dev dependencies</Badge>

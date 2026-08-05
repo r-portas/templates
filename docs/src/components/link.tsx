@@ -1,4 +1,11 @@
-import { ActionIcon, type ActionIconProps, Anchor, type AnchorProps } from "@mantine/core";
+import {
+  ActionIcon,
+  type ActionIconProps,
+  Anchor,
+  type AnchorProps,
+  Button,
+  type ButtonProps,
+} from "@mantine/core";
 import { createLink, type LinkComponent } from "@tanstack/react-router";
 import type { Ref } from "react";
 
@@ -30,4 +37,14 @@ const CreatedActionIconLink = createLink(ActionIconLinkComponent);
 
 export const ActionIconLink: LinkComponent<typeof ActionIconLinkComponent> = (props) => (
   <CreatedActionIconLink {...props} />
+);
+
+function ButtonLinkComponent(props: Omit<ButtonProps, "href"> & { ref?: Ref<HTMLAnchorElement> }) {
+  return <Button component="a" {...props} />;
+}
+
+const CreatedButtonLink = createLink(ButtonLinkComponent);
+
+export const ButtonLink: LinkComponent<typeof ButtonLinkComponent> = (props) => (
+  <CreatedButtonLink {...props} />
 );

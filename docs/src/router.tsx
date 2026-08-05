@@ -1,7 +1,9 @@
 import { Button, EmptyState } from "@mantine/core";
 import { ArrowClockwiseIcon, MagnifyingGlassIcon, WarningCircleIcon } from "@phosphor-icons/react";
-import { createRouter, Link } from "@tanstack/react-router";
+import { createRouter } from "@tanstack/react-router";
 import type { ErrorComponentProps } from "@tanstack/react-router";
+
+import { ButtonLink } from "@/components/link";
 
 import { routeTree } from "./routeTree.gen";
 
@@ -15,9 +17,7 @@ function NotFound() {
       m="lg"
     >
       <EmptyState.Actions>
-        <Button component={Link} to="/">
-          Go home
-        </Button>
+        <ButtonLink to="/">Go home</ButtonLink>
       </EmptyState.Actions>
     </EmptyState>
   );

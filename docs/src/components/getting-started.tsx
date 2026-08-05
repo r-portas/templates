@@ -10,7 +10,7 @@ export function GettingStarted() {
         <Text c="dimmed" mb="xs">
           The runtime and package manager every template uses.
         </Text>
-        <CopyCommand command="curl -fsSL https://bun.sh/install | bash" />
+        <CopyCommand command="curl -fsSL https://bun.sh/install | bash" size="sm" />
       </Timeline.Item>
       <Timeline.Item bullet={2} title="Pick a template">
         <Text c="dimmed">
@@ -22,7 +22,7 @@ export function GettingStarted() {
           Paste the command, then install and start the dev server. Replace <Code>my-project</Code>{" "}
           with your folder name, or use <Code>.</Code> to scaffold into the current directory.
         </Text>
-        <CopyCommand command="cd my-project && bun install && bun dev" />
+        <CopyCommand command="cd my-project && bun install && bun dev" size="sm" />
       </Timeline.Item>
       <Timeline.Item bullet={4} title="(Optional) Configure addons">
         <Text c="dimmed">

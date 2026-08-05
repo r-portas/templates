@@ -52,7 +52,12 @@ function AddonCard({
 function AgentCommand({ filename }: { filename: string }) {
   const url = getAddonUrl(filename);
   return (
-    <CopyCommand command={`Follow the setup instructions at ${url}`} truncate={false} prefix=">" />
+    <CopyCommand
+      command={`Follow the setup instructions at ${url}`}
+      size="sm"
+      truncate={false}
+      prefix=">"
+    />
   );
 }
 

@@ -42,12 +42,18 @@ function DependencyList({ dependencies }: { dependencies: Record<string, string>
       <Table.Tbody>
         {entries.map(([name, version]) => (
           <Table.Tr key={name}>
-            <Table.Td>
-              <Anchor href={`https://npmx.dev/package/${name}`} target="_blank" rel="noreferrer">
+            <Table.Td maw={0} w="100%">
+              <Anchor
+                href={`https://npmx.dev/package/${name}`}
+                target="_blank"
+                rel="noreferrer"
+                truncate="end"
+                display="block"
+              >
                 {name}
               </Anchor>
             </Table.Td>
-            <Table.Td ta="right" c="dimmed">
+            <Table.Td ta="right" c="dimmed" w={1} style={{ whiteSpace: "nowrap" }}>
               {version}
             </Table.Td>
           </Table.Tr>
