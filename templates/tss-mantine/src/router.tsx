@@ -16,6 +16,7 @@ function NotFound() {
       icon={<MagnifyingGlassIcon />}
       title="Page not found"
       description="The page you're looking for doesn't exist or has been moved."
+      m="lg"
     >
       <EmptyState.Actions>
         <Button component={Link} to="/">
@@ -39,6 +40,7 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
       icon={<WarningCircleIcon />}
       title="Something went wrong"
       description={message}
+      m="lg"
     >
       <EmptyState.Actions>
         <Button onClick={reset} leftSection={<ArrowClockwiseIcon />}>

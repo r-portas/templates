@@ -1,5 +1,5 @@
-import { AppShell, Button, Group, ThemeIcon, Title } from "@mantine/core";
-import { AirTrafficControlIcon, HouseIcon, InfoIcon } from "@phosphor-icons/react";
+import { AppShell, Button, Group, Title } from "@mantine/core";
+import { HouseIcon, InfoIcon } from "@phosphor-icons/react";
 import { Link, linkOptions, useMatchRoute } from "@tanstack/react-router";
 
 import clientEnv from "@/lib/env";
@@ -14,25 +14,24 @@ export function Navbar() {
 
   return (
     <AppShell.Header>
-      <Group h="100%" px="md" gap="xs">
-        <Group gap="sm" mr="md">
-          <ThemeIcon>
-            <AirTrafficControlIcon />
-          </ThemeIcon>
-          <Title order={5}>{clientEnv.VITE_APP_NAME}</Title>
+      <Group px="sm" justify="space-between">
+        <Title order={5}>{clientEnv.VITE_APP_NAME}</Title>
+        <Group gap="xs">
+          {NAV_ITEMS.map(({ label, icon: Icon, ...linkOption }) => (
+            <Button
+              key={linkOption.to}
+              component={Link}
+              {...linkOption}
+              variant={
+                matchRoute({ to: linkOption.to }) === false ? "subtle" : "light"
+              }
+              leftSection={<Icon />}
+              size="compact-sm"
+            >
+              {label}
+            </Button>
+          ))}
         </Group>
-        {NAV_ITEMS.map(({ label, icon: Icon, ...linkOption }) => (
-          <Button
-            key={linkOption.to}
-            component={Link}
-            {...linkOption}
-            variant={matchRoute({ to: linkOption.to }) === false ? "subtle" : "light"}
-            leftSection={<Icon />}
-            size="compact-sm"
-          >
-            {label}
-          </Button>
-        ))}
       </Group>
     </AppShell.Header>
   );
