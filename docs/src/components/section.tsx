@@ -12,15 +12,9 @@ export function Section({
 }) {
   return (
     <Stack component="section" gap="md">
-      <Stack gap={4}>
-        <Title order={2} fz="h4">
-          {title}
-        </Title>
-        {description && (
-          <Text size="sm" c="dimmed">
-            {description}
-          </Text>
-        )}
+      <Stack gap="xs">
+        <Title order={2}>{title}</Title>
+        {description && <Text c="dimmed">{description}</Text>}
       </Stack>
       {children}
     </Stack>

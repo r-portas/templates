@@ -22,8 +22,8 @@ export const Route = createFileRoute("/")({
 function RouteComponent() {
   const { templates, addons } = Route.useLoaderData();
   return (
-    <Container size="md" py={64}>
-      <Stack gap={40}>
+    <Container py="xl">
+      <Stack gap="xl">
         <PageHeader
           title="Roy's Templates"
           action={<GithubButton href={`https://github.com/${GITPICK_REPO}`} />}
@@ -35,7 +35,7 @@ function RouteComponent() {
           title="Templates"
           description="Self-contained starters, ready to pull into a new project."
         >
-          <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="md">
+          <SimpleGrid cols={{ base: 1, sm: 2 }}>
             {templates.map((template) => (
               <TemplateCard
                 key={template.name}
@@ -51,7 +51,7 @@ function RouteComponent() {
           title="Addons"
           description="Optional setup steps to apply on top of a template. Copy the URL and point your coding agent at it."
         >
-          <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="md">
+          <SimpleGrid cols={{ base: 1, sm: 2 }}>
             {addons.map((addon) => (
               <AddonCard
                 key={addon.filename}

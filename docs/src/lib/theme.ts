@@ -7,4 +7,5 @@ export default createTheme({
   fontFamily: MONO,
   fontFamilyMonospace: MONO,
   headings: { fontFamily: MONO },
+  scale: 0.75,
 });

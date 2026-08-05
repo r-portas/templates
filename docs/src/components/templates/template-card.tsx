@@ -1,4 +1,4 @@
-import { Badge, Card, Group, Stack, Text } from "@mantine/core";
+import { Badge, Card, Group, Stack, Text, Title } from "@mantine/core";
 import { PackageIcon } from "@phosphor-icons/react";
 import { Link } from "@tanstack/react-router";
 
@@ -19,7 +19,7 @@ function TemplateCard({
   devDependencyCount: number;
 }) {
   return (
-    <Card className={classes.card} withBorder radius="md" padding="lg" pos="relative" h="100%">
+    <Card className={classes.card} withBorder pos="relative" h="100%">
       {/* Covers the whole card so it's clickable; the copy button sits above it via its own stacking context */}
       <Link
         to="/templates/$templateName"
@@ -28,30 +28,23 @@ function TemplateCard({
         style={{ position: "absolute", inset: 0 }}
       />
       <Stack gap="md" justify="space-between" h="100%">
-        <Stack gap={4}>
+        <Stack gap="xs">
           <Group justify="space-between" align="flex-start" gap="md" wrap="nowrap">
-            <Text
-              fw={600}
-              ff="monospace"
+            <Title
+              order={3}
               style={{ pointerEvents: "none", viewTransitionName: `template-title-${name}` }}
             >
               {name}
-            </Text>
-            <PackageIcon size={16} color="var(--mantine-color-dimmed)" />
+            </Title>
+            <PackageIcon />
           </Group>
-          <Text size="sm" c="dimmed">
-            {description}
-          </Text>
+          <Text c="dimmed">{description}</Text>
         </Stack>
         <Stack gap="xs" pos="relative">
-          <CopyCommand command={gitpickCommand(name)} size="sm" />
+          <CopyCommand command={gitpickCommand(name)} />
           <Group gap="xs">
-            <Badge variant="light" size="sm" radius="sm">
-              {dependencyCount} dependencies
-            </Badge>
-            <Badge variant="default" size="sm" radius="sm">
-              {devDependencyCount} dev dependencies
-            </Badge>
+            <Badge variant="light">{dependencyCount} dependencies</Badge>
+            <Badge variant="default">{devDependencyCount} dev dependencies</Badge>
           </Group>
         </Stack>
       </Stack>

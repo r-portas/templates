@@ -1,4 +1,4 @@
-import { Card, Group, Stack, Text, Tooltip } from "@mantine/core";
+import { Card, Group, Stack, Text, Title, Tooltip } from "@mantine/core";
 import { FileTextIcon } from "@phosphor-icons/react";
 import { ClientOnly } from "@tanstack/react-router";
 
@@ -20,13 +20,11 @@ function AddonCard({
   description: string;
 }) {
   return (
-    <Card withBorder radius="md" padding="lg" h="100%">
+    <Card withBorder h="100%">
       <Stack gap="md" justify="space-between" h="100%">
-        <Stack gap={4}>
+        <Stack gap="xs">
           <Group justify="space-between" align="flex-start" gap="md" wrap="nowrap">
-            <Text fw={600} ff="monospace">
-              {name}
-            </Text>
+            <Title order={3}>{name}</Title>
             <Tooltip label="View raw markdown" withArrow>
               <ActionIconLink
                 to="/addons/$filename"
@@ -41,9 +39,7 @@ function AddonCard({
               </ActionIconLink>
             </Tooltip>
           </Group>
-          <Text size="sm" c="dimmed">
-            {description}
-          </Text>
+          <Text c="dimmed">{description}</Text>
         </Stack>
         <ClientOnly>
           <AgentCommand filename={filename} />
@@ -56,12 +52,7 @@ function AddonCard({
 function AgentCommand({ filename }: { filename: string }) {
   const url = getAddonUrl(filename);
   return (
-    <CopyCommand
-      command={`Follow the setup instructions at ${url}`}
-      size="sm"
-      truncate={false}
-      prefix=">"
-    />
+    <CopyCommand command={`Follow the setup instructions at ${url}`} truncate={false} prefix=">" />
   );
 }
 

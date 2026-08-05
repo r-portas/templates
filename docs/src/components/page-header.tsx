@@ -11,12 +11,11 @@ function BreadcrumbLink({ label, ...linkProps }: { label: string } & LinkProps) 
     <AnchorLink
       {...linkProps}
       c="dimmed"
-      size="sm"
-      underline="hover"
+      // `fit-content` so only the text is clickable, not the full width of the header column
       w="fit-content"
       style={{ display: "flex", alignItems: "center", gap: "var(--mantine-spacing-xs)" }}
     >
-      <ArrowLeftIcon size={14} />
+      <ArrowLeftIcon />
       {label}
     </AnchorLink>
   );
@@ -35,19 +34,18 @@ export function PageHeader({
 }) {
   return (
     <Group justify="space-between" align="flex-start" gap="md" wrap="nowrap">
-      <Group gap="sm" align="flex-start" wrap="nowrap">
-        <LogoMark style={{ viewTransitionName: "logo-mark" }} />
-        <Stack gap={4}>
-          {breadcrumb && <BreadcrumbLink {...breadcrumb} />}
+      <Stack gap="xs">
+        {breadcrumb && <BreadcrumbLink {...breadcrumb} />}
+        <Group gap="sm" align="center" wrap="nowrap">
+          <LogoMark style={{ viewTransitionName: "logo-mark" }} />
           <Title
             order={1}
-            fz="h2"
             style={titleId ? { viewTransitionName: `template-title-${titleId}` } : undefined}
           >
             {title}
           </Title>
-        </Stack>
-      </Group>
+        </Group>
+      </Stack>
       {action}
     </Group>
   );

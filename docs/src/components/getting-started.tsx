@@ -2,42 +2,30 @@ import { Code, Text, Timeline } from "@mantine/core";
 
 import { CopyCommand } from "@/components/copy-command";
 
-/** Renders the step number inside a `Timeline.Item` bullet. */
-function StepBullet({ number }: { number: number }) {
-  return (
-    <Text fz="xs" fw={500} ff="monospace">
-      {number}
-    </Text>
-  );
-}
-
 export function GettingStarted() {
   return (
-    <Timeline bulletSize={28} lineWidth={1}>
-      <Timeline.Item bullet={<StepBullet number={1} />} title="Install bun">
-        <Text size="sm" c="dimmed" mb="xs">
+    // `bulletSize` so the step numbers fit inside the bullets
+    <Timeline bulletSize={28}>
+      <Timeline.Item bullet={1} title="Install bun">
+        <Text c="dimmed" mb="xs">
           The runtime and package manager every template uses.
         </Text>
-        <CopyCommand command="curl -fsSL https://bun.sh/install | bash" size="sm" />
+        <CopyCommand command="curl -fsSL https://bun.sh/install | bash" />
       </Timeline.Item>
-      <Timeline.Item bullet={<StepBullet number={2} />} title="Pick a template">
-        <Text size="sm" c="dimmed">
-          Browse the templates below and click{" "}
-          <Text span fw={500}>
-            copy to clipboard
-          </Text>{" "}
-          on the one you want.
+      <Timeline.Item bullet={2} title="Pick a template">
+        <Text c="dimmed">
+          Browse the templates below and click copy to clipboard on the one you want.
         </Text>
       </Timeline.Item>
-      <Timeline.Item bullet={<StepBullet number={3} />} title="Scaffold and run">
-        <Text size="sm" c="dimmed" mb="xs">
+      <Timeline.Item bullet={3} title="Scaffold and run">
+        <Text c="dimmed" mb="xs">
           Paste the command, then install and start the dev server. Replace <Code>my-project</Code>{" "}
           with your folder name, or use <Code>.</Code> to scaffold into the current directory.
         </Text>
-        <CopyCommand command="cd my-project && bun install && bun dev" size="sm" />
+        <CopyCommand command="cd my-project && bun install && bun dev" />
       </Timeline.Item>
-      <Timeline.Item bullet={<StepBullet number={4} />} title="(Optional) Configure addons">
-        <Text size="sm" c="dimmed">
+      <Timeline.Item bullet={4} title="(Optional) Configure addons">
+        <Text c="dimmed">
           Addons are optional setup steps that can be applied to a template by coding agents.
         </Text>
       </Timeline.Item>
