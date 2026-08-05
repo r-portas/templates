@@ -1,18 +1,10 @@
-import { PackageCheck } from "lucide-react";
-import type { ComponentProps } from "react";
+import { ThemeIcon, type ThemeIconProps } from "@mantine/core";
+import { PackageIcon } from "@phosphor-icons/react";
 
-import { cn } from "@/lib/utils";
-
-export function LogoMark({ className, ...props }: ComponentProps<"div">) {
+export function LogoMark(props: ThemeIconProps) {
   return (
-    <div
-      className={cn(
-        "flex size-9 shrink-0 items-center justify-center rounded-lg bg-primary text-primary-foreground",
-        className,
-      )}
-      {...props}
-    >
-      <PackageCheck className="size-5" />
-    </div>
+    <ThemeIcon size={36} radius="md" {...props}>
+      <PackageIcon size={20} weight="duotone" />
+    </ThemeIcon>
   );
 }

@@ -13,7 +13,7 @@
   - `tss` builds on `react`, adding TanStack Start
   - `tss-tw` and `tss-mantine` both build on `tss`, adding Tailwind CSS and Mantine respectively
   - `tss-mantine` is the end of the lineage, and is the opinionated, batteries-included template for building new web apps
-  - `./docs` (the documentation site, outside `./templates`) is not part of this lineage. It is a standalone TanStack Start site using Tailwind CSS and shadcn/ui, maintained directly.
+  - `./docs` (the documentation site, outside `./templates`) is not part of this lineage. It is a standalone TanStack Start site using Mantine, maintained directly, and follows the conventions of the `tss-mantine` template.
 - When making changes to a template consider:
   - Does this change apply to the template's base (per the lineage above)? If so, make the change there first, then propagate it downstream to each template that builds on it.
   - Should this change be made to any other templates? If so, make the change in all templates to keep them consistent.

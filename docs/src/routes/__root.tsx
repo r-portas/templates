@@ -1,7 +1,9 @@
+import { ColorSchemeScript, mantineHtmlProps, MantineProvider } from "@mantine/core";
 import { Outlet, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 
-import { TooltipProvider } from "@/components/ui/tooltip";
+import "@mantine/core/styles.css";
 import clientEnv from "@/lib/env";
+import theme from "@/lib/theme";
 
 import appCss from "@/styles.css?url";
 
@@ -41,14 +43,15 @@ export const Route = createRootRoute({
 
 function RootDocument() {
   return (
-    <html className="dark" lang="en">
+    <html lang="en" {...mantineHtmlProps}>
       <head>
         <HeadContent />
+        <ColorSchemeScript forceColorScheme="dark" />
       </head>
-      <body className="min-h-screen bg-background text-foreground antialiased">
-        <TooltipProvider>
+      <body>
+        <MantineProvider theme={theme} forceColorScheme="dark">
           <Outlet />
-        </TooltipProvider>
+        </MantineProvider>
         <Scripts />
       </body>
     </html>
