@@ -1,50 +1,79 @@
 import {
-  ActionIcon,
-  type ActionIconProps,
   Anchor,
-  type AnchorProps,
   Button,
+  ActionIcon,
   type ButtonProps,
+  type ActionIconProps,
+  type AnchorProps,
 } from "@mantine/core";
-import { createLink, type LinkComponent } from "@tanstack/react-router";
+import { createLink } from "@tanstack/react-router";
 import type { Ref } from "react";
 
+// #region AnchorLink
+interface AnchorLinkComponentProps extends AnchorProps {
+  ref?: Ref<HTMLAnchorElement>;
+}
+
+function AnchorLinkComponent({ ref, ...props }: AnchorLinkComponentProps) {
+  return <Anchor ref={ref} component="a" {...props} />;
+}
+
 /**
- * Mantine components wired up as router links.
+ * Mantine's `Anchor`, wired up as a TanStack Router `Link`.
  *
- * Mantine's polymorphic `component={Link}` prop widens the router to `AnyRouter`, which loses the
- * typed `to`/`params` inference. `createLink` keeps it, so prefer these over `component={Link}`.
- * See https://tanstack.com/router/latest/docs/framework/react/guide/custom-link
+ * @remarks
+ * Accepts both `Anchor`'s props and `Link`'s routing props (`to`, `params`, `search`, ...).
+ *
+ * @example
+ * ```tsx
+ * <AnchorLink to="/about">About</AnchorLink>
+ * ```
  */
+export const AnchorLink = createLink(AnchorLinkComponent);
+// #endregion AnchorLink
 
-function AnchorLinkComponent(props: Omit<AnchorProps, "href"> & { ref?: Ref<HTMLAnchorElement> }) {
-  return <Anchor {...props} />;
+// #region ButtonLink
+interface ButtonLinkComponentProps extends Omit<ButtonProps, "component"> {
+  ref?: Ref<HTMLAnchorElement>;
 }
 
-const CreatedAnchorLink = createLink(AnchorLinkComponent);
-
-export const AnchorLink: LinkComponent<typeof AnchorLinkComponent> = (props) => (
-  <CreatedAnchorLink {...props} />
-);
-
-function ActionIconLinkComponent(
-  props: Omit<ActionIconProps, "href"> & { ref?: Ref<HTMLAnchorElement> },
-) {
-  return <ActionIcon component="a" {...props} />;
+function ButtonLinkComponent({ ref, ...props }: ButtonLinkComponentProps) {
+  return <Button ref={ref} component="a" {...props} />;
 }
 
-const CreatedActionIconLink = createLink(ActionIconLinkComponent);
+/**
+ * Mantine's `Button` rendered as an anchor, wired up as a TanStack Router `Link`.
+ *
+ * @remarks
+ * Accepts both `Button`'s props and `Link`'s routing props (`to`, `params`, `search`, ...).
+ *
+ * @example
+ * ```tsx
+ * <ButtonLink to="/about">About</ButtonLink>
+ * ```
+ */
+export const ButtonLink = createLink(ButtonLinkComponent);
+// #endregion ButtonLink
 
-export const ActionIconLink: LinkComponent<typeof ActionIconLinkComponent> = (props) => (
-  <CreatedActionIconLink {...props} />
-);
-
-function ButtonLinkComponent(props: Omit<ButtonProps, "href"> & { ref?: Ref<HTMLAnchorElement> }) {
-  return <Button component="a" {...props} />;
+// #region ActionIconLink
+interface ActionIconComponentProps extends Omit<ActionIconProps, "component"> {
+  ref?: Ref<HTMLAnchorElement>;
 }
 
-const CreatedButtonLink = createLink(ButtonLinkComponent);
+function ActionIconComponent({ ref, ...props }: ActionIconComponentProps) {
+  return <ActionIcon ref={ref} component="a" {...props} />;
+}
 
-export const ButtonLink: LinkComponent<typeof ButtonLinkComponent> = (props) => (
-  <CreatedButtonLink {...props} />
-);
+/**
+ * Mantine's `ActionIcon` rendered as an anchor, wired up as a TanStack Router `Link`.
+ *
+ * @remarks
+ * Accepts both `ActionIcon`'s props and `Link`'s routing props (`to`, `params`, `search`, ...).
+ *
+ * @example
+ * ```tsx
+ * <ActionIconLink to="/about"><InfoIcon /></ActionIconLink>
+ * ```
+ */
+export const ActionIconLink = createLink(ActionIconComponent);
+// #endregion ActionIconLink

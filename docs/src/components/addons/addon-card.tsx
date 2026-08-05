@@ -24,7 +24,7 @@ function AddonCard({
       <Stack gap="md" justify="space-between" h="100%">
         <Stack gap="xs">
           <Group justify="space-between" align="flex-start" gap="md" wrap="nowrap">
-            <Title order={3}>{name}</Title>
+            <Title order={4}>{name}</Title>
             <Tooltip label="View raw markdown" withArrow>
               <ActionIconLink
                 to="/addons/$filename"

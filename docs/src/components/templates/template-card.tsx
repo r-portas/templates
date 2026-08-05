@@ -19,7 +19,7 @@ function TemplateCard({
   devDependencyCount: number;
 }) {
   return (
-    <Card className={classes.card} withBorder pos="relative" h="100%">
+    <Card className={classes.card} withBorder pos="relative">
       {/* Covers the whole card so it's clickable; the copy button below stays clickable because it
           comes later in the DOM, not because of a stacking context */}
       <Link
@@ -28,11 +28,11 @@ function TemplateCard({
         aria-label={`View ${name} template`}
         style={{ position: "absolute", inset: 0 }}
       />
-      <Stack gap="md" justify="space-between" h="100%">
+      <Stack gap="md" justify="space-between">
         <Stack gap="xs">
           <Group justify="space-between" align="flex-start" gap="md" wrap="nowrap">
             <Title
-              order={3}
+              order={4}
               style={{ pointerEvents: "none", viewTransitionName: `template-title-${name}` }}
             >
               {name}
@@ -44,7 +44,7 @@ function TemplateCard({
         <Stack gap="xs">
           <CopyCommand command={gitpickCommand(name)} size="sm" />
           <Group gap="xs">
-            <Badge variant="light">{dependencyCount} dependencies</Badge>
+            <Badge variant="default">{dependencyCount} dependencies</Badge>
             <Badge variant="default">{devDependencyCount} dev dependencies</Badge>
           </Group>
         </Stack>

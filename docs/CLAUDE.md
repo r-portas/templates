@@ -1,5 +1,9 @@
 # CLAUDE.md
 
+## General
+
+- This project is based on the [tss-mantine](../templates/tss-mantine) template, keep this site aligned with the conventions in that template.
+
 <!-- intent-skills:start -->
 
 ## Skill Loading
@@ -52,16 +56,6 @@ Before editing files for a substantial task:
 ## User Interface
 
 - This project uses Mantine for UI components, see https://mantine.dev/llms.txt for documentation.
-  It follows the `tss-mantine` template, so keep shared conventions aligned with it.
-- Icons come from `@phosphor-icons/react`, imported with the `Icon` suffix (e.g. `PackageIcon`).
-- `src/lib/theme.ts` — the Mantine theme, applied by the `MantineProvider` in `src/routes/__root.tsx`.
-  The site is dark-only, forced via `forceColorScheme="dark"` on both the provider and
-  `ColorSchemeScript`.
-- `src/styles.css` holds only global rules that Mantine has no equivalent for (the JetBrains Mono
-  `@fontsource` import and reserving scrollbar space). For component-specific styling, use a
-  co-located CSS module (`component-name.module.css`) rather than adding to it.
-- For router links, use `AnchorLink` / `ActionIconLink` from `src/components/link.tsx` instead of
-  Mantine's `component={Link}`. The polymorphic `component` prop widens the router to `AnyRouter`
-  and loses typed `to`/`params` inference; those wrappers use `createLink` to keep it.
-- The default not found and error components are defined in `src/router.tsx` using Mantine's
-  `EmptyState`.
+- For internal navigation, always use `AnchorLink`, `ButtonLink`, and `ActionIconLink` from `src/components/link.tsx`.
+- Icons come from `@phosphor-icons/react`, imported with the `Icon` suffix (e.g. `HouseIcon`).
+- For component-specific custom styling, use a co-located CSS module (`component-name.module.css`) rather than adding to a global stylesheet.
