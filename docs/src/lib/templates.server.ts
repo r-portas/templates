@@ -16,7 +16,9 @@ export async function listTemplates() {
 }
 
 /**
- * Gets the full package.json for a given template name
+ * Gets the full package.json for a given template name.
+ *
+ * @param templateName - The template's directory name under `./templates`.
  */
 export async function getTemplatePackageJson(templateName: string) {
   try {

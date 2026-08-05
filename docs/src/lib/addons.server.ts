@@ -19,6 +19,8 @@ export async function listAddons() {
 
 /**
  * Gets a single addon, including its raw markdown source.
+ *
+ * @param filename - The addon's filename, e.g. `docker.md`.
  */
 export async function getAddon(filename: string) {
   if (!isValidAddonFilename(filename)) {
