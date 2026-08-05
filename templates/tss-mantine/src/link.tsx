@@ -2,6 +2,7 @@ import { Anchor, Button, ActionIcon, type ButtonProps, type ActionIconProps } fr
 import { createLink } from "@tanstack/react-router";
 import type { Ref } from "react";
 
+// #region AnchorLink
 /**
  * Mantine's `Anchor`, wired up as a TanStack Router `Link`.
  *
@@ -14,7 +15,9 @@ import type { Ref } from "react";
  * ```
  */
 export const AnchorLink = createLink(Anchor);
+// #endregion AnchorLink
 
+// #region ButtonLink
 interface ButtonLinkComponentProps extends Omit<ButtonProps, "component"> {
   ref?: Ref<HTMLAnchorElement>;
 }
@@ -35,7 +38,9 @@ function ButtonLinkComponent({ ref, ...props }: ButtonLinkComponentProps) {
  * ```
  */
 export const ButtonLink = createLink(ButtonLinkComponent);
+// #endregion ButtonLink
 
+// #region ActionIconLink
 interface ActionIconComponentProps extends Omit<ActionIconProps, "component"> {
   ref?: Ref<HTMLAnchorElement>;
 }
@@ -56,3 +61,4 @@ function ActionIconComponent({ ref, ...props }: ActionIconComponentProps) {
  * ```
  */
 export const ActionIconLink = createLink(ActionIconComponent);
+// #endregion ActionIconLink
