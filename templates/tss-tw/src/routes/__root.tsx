@@ -1,5 +1,7 @@
 import { Outlet, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 
+import clientEnv from "@/lib/env";
+
 import appCss from "@/styles.css?url";
 
 export const Route = createRootRoute({
@@ -13,7 +15,7 @@ export const Route = createRootRoute({
         content: "width=device-width, initial-scale=1",
       },
       {
-        title: "tss-tw",
+        title: clientEnv.VITE_APP_NAME,
       },
     ],
     links: [

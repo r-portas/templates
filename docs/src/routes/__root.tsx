@@ -1,6 +1,7 @@
 import { Outlet, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 
 import { TooltipProvider } from "@/components/ui/tooltip";
+import clientEnv from "@/lib/env";
 
 import appCss from "@/styles.css?url";
 
@@ -15,7 +16,7 @@ export const Route = createRootRoute({
         content: "width=device-width, initial-scale=1",
       },
       {
-        title: "Roy's Templates",
+        title: clientEnv.VITE_APP_NAME,
       },
       {
         name: "description",

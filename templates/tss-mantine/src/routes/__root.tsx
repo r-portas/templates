@@ -4,6 +4,7 @@ import { Outlet, createRootRoute, HeadContent, Scripts } from "@tanstack/react-r
 import { AppLayout } from "@/components/app-layout";
 
 import "@mantine/core/styles.css";
+import clientEnv from "@/lib/env";
 import theme from "@/lib/theme";
 
 export const Route = createRootRoute({
@@ -17,7 +18,7 @@ export const Route = createRootRoute({
         content: "width=device-width, initial-scale=1",
       },
       {
-        title: "tss-mantine",
+        title: clientEnv.VITE_APP_NAME,
       },
     ],
   }),

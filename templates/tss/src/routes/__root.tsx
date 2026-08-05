@@ -1,5 +1,7 @@
 import { Outlet, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 
+import clientEnv from "@/lib/env";
+
 export const Route = createRootRoute({
   head: () => ({
     meta: [
@@ -11,7 +13,7 @@ export const Route = createRootRoute({
         content: "width=device-width, initial-scale=1",
       },
       {
-        title: "tss",
+        title: clientEnv.VITE_APP_NAME,
       },
     ],
   }),

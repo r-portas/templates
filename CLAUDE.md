@@ -12,13 +12,12 @@
   - `react` is the base template
   - `tss` builds on `react`, adding TanStack Start
   - `tss-tw` and `tss-mantine` both build on `tss`, adding Tailwind CSS and Mantine respectively
-  - `tss-shadcn` builds on `tss-tw`, adding shadcn/ui
-  - `app` builds on `tss-shadcn`, adding a more opinionated, batteries-included setup for building new web apps
-  - `./docs` (the documentation site, outside `./templates`) is built on `tss-shadcn`, so it sits at the end of this lineage too
+  - `tss-mantine` is the end of the lineage, and is the opinionated, batteries-included template for building new web apps
+  - `./docs` (the documentation site, outside `./templates`) is not part of this lineage. It is a standalone TanStack Start site using Tailwind CSS and shadcn/ui, maintained directly.
 - When making changes to a template consider:
   - Does this change apply to the template's base (per the lineage above)? If so, make the change there first, then propagate it downstream to each template that builds on it.
   - Should this change be made to any other templates? If so, make the change in all templates to keep them consistent.
-  - Does the change apply to `./docs`? Since it builds on `tss-shadcn`, any change made to `tss-shadcn` should generally be migrated over to `./docs` as well.
+  - Does the change apply to `./docs`? Changes to shared tooling (Bun, Oxlint, Oxfmt, TanStack Start config) should generally be migrated over to `./docs` as well.
   - Does the documentation need updating? The README.md file in each template should be kept up to date.
 - Each markdown file under `./addons` is an optional setup step that is only needed on some
   projects (e.g. a database, a Dockerfile, a test framework), written as instructions for a
@@ -28,7 +27,7 @@
     use, the config it writes should match what the templates already have.
 - When adding a new addon consider:
   - Is the root @README.md addons table updated
-  - Does the addon target the conventions used by the `app` template
+  - Does the addon target the conventions used by the `tss-mantine` template
     (`src/lib` domain naming, Zod-validated env in `src/lib/env.server.ts`)
 - When adding a new template consider:
   - Is the root @README.md updated with the new template
