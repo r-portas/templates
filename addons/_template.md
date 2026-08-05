@@ -49,5 +49,5 @@ Notes for authoring a new addon from this template:
   build the docs site's addon list. `name` should match the filename stem (`my-addon.md` →
   `name: my-addon`).
 - Add the new addon to the root `README.md` addons table.
-- Follow the general guidance in `CLAUDE.md` for addons: match the conventions used by the `app`
-  template (`src/lib` domain naming, Zod-validated env in `src/lib/env.server.ts`).
+- Follow the general guidance in `CLAUDE.md` for addons: match the conventions used by the
+  `tss-mantine` template (`src/lib` domain naming, Zod-validated env in `src/lib/env.server.ts`).

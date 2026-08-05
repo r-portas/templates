@@ -10,8 +10,8 @@ describe("gitpickCommand", () => {
   });
 
   test("uses a custom project name when given", () => {
-    expect(gitpickCommand("tss-shadcn", "my-app")).toBe(
-      `bunx --bun gitpick ${GITPICK_REPO}/tree/main/templates/tss-shadcn my-app`,
+    expect(gitpickCommand("tss-mantine", "my-app")).toBe(
+      `bunx --bun gitpick ${GITPICK_REPO}/tree/main/templates/tss-mantine my-app`,
     );
   });
 });

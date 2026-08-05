@@ -23,21 +23,14 @@ description: Checks the alignment of templates against best practises, use this 
   - `tss`: Builds off the `react` template adding TanStack Start, check the following dependencies:
     - `@tanstack/react-router`: https://tanstack.com/router/latest/llms.txt
     - `@tanstack/react-start`: https://tanstack.com/start/latest/llms.txt
+    - `zod`: https://zod.dev/llms.txt
   - `tss-tw`: Builds off the `tss` template adding Tailwind, check the following dependencies:
     - `tailwindcss`
     - `@tailwindcss/vite`
-  - `tss-mantine`: Builds off the `tss` template adding Mantine, check the following dependencies:
+  - `tss-mantine`: Builds off the `tss` template adding Mantine, and is the opinionated, batteries-included template. Check the following dependencies:
     - `@mantine/core`: https://mantine.dev/llms.txt
     - `@mantine/hooks`: https://mantine.dev/llms.txt
     - `@phosphor-icons/react`
     - `postcss-preset-mantine`
     - `postcss-simple-vars`
-  - `tss-shadcn`: Builds off the `tss-tw` template adding shadcn/ui, check the following dependencies:
-    - `shadcn`: https://ui.shadcn.com/docs
-    - `@base-ui/react`: https://base-ui.com/llms.txt
-    - `class-variance-authority`
-    - `clsx`
-    - `tailwind-merge`
-    - `tw-animate-css`
-    - `lucide-react`
-  - `app`: Builds off the `tss-shadcn` template adding a more opinionated, batteries-included setup, check the dependencies above from `tss-shadcn` plus any additional dependencies unique to this template's `package.json`
+    - plus any additional dependencies unique to this template's `package.json`
