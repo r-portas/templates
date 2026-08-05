@@ -21,6 +21,9 @@ Before editing files for a substantial task:
   - `todos.functions.ts` — a thin wrapper exposing server functions, importing from `todos.server.ts`.
   - `todos.schemas.ts` — Zod schemas for the domain.
   - `todos.ts` — isomorphic code that can run on either the client or server (e.g. date helpers), usually paired with `todos.test.ts` to unit test it.
+- Environment variables are validated with Zod, and must be added to the relevant schema before use:
+  - `src/lib/env.ts` — client-readable variables, which must be prefixed with `VITE_`. Values come from `.env` (committed) and `.env.local` (gitignored, for secrets).
+  - `src/lib/env.server.ts` — server-only variables.
 
 ## Code Style
 
