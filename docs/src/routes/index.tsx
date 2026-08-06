@@ -1,4 +1,4 @@
-import { Container, SimpleGrid, Stack } from "@mantine/core";
+import { Container, Group, SimpleGrid, Stack } from "@mantine/core";
 import { createFileRoute } from "@tanstack/react-router";
 
 import { AddonCard } from "@/components/addons/addon-card";
@@ -7,6 +7,7 @@ import { GithubButton } from "@/components/github-button";
 import { PageHeader } from "@/components/page-header";
 import { Section } from "@/components/section";
 import { TemplateCard } from "@/components/templates/template-card";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { listAddonsFn } from "@/lib/addons.functions";
 import { GITPICK_REPO } from "@/lib/gitpick";
 import { listTemplatesFn } from "@/lib/templates.functions";
@@ -26,7 +27,12 @@ function RouteComponent() {
       <Stack gap="xl">
         <PageHeader
           title="Roy's Templates"
-          action={<GithubButton href={`https://github.com/${GITPICK_REPO}`} />}
+          action={
+            <Group gap="xs" wrap="nowrap">
+              <ThemeToggle />
+              <GithubButton href={`https://github.com/${GITPICK_REPO}`} />
+            </Group>
+          }
         />
         <Section title="Getting started" description="Three steps to your first project.">
           <GettingStarted />
