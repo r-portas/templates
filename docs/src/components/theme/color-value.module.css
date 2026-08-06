@@ -1,0 +1,9 @@
+/* Keeps shades that sit close to the page background — gray.0 in light, dark.9 in dark — readable
+   as a distinct swatch rather than blending into the row. */
+.swatch {
+  border: 1px solid var(--mantine-color-default-border);
+}
+
+.usage {
+  cursor: help;
+}

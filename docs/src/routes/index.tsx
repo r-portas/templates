@@ -1,9 +1,11 @@
 import { Container, Group, SimpleGrid, Stack } from "@mantine/core";
+import { PaletteIcon } from "@phosphor-icons/react";
 import { createFileRoute } from "@tanstack/react-router";
 
 import { AddonCard } from "@/components/addons/addon-card";
 import { GettingStarted } from "@/components/getting-started";
 import { GithubButton } from "@/components/github-button";
+import { ActionIconLink } from "@/components/link";
 import { PageHeader } from "@/components/page-header";
 import { Section } from "@/components/section";
 import { TemplateCard } from "@/components/templates/template-card";
@@ -29,6 +31,9 @@ function RouteComponent() {
           title="Roy's Templates"
           action={
             <Group gap="xs" wrap="nowrap">
+              <ActionIconLink to="/theme" variant="subtle" size="lg" aria-label="Theme colors">
+                <PaletteIcon />
+              </ActionIconLink>
               <ThemeToggle />
               <GithubButton href={`https://github.com/${GITPICK_REPO}`} />
             </Group>

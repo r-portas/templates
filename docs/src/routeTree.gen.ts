@@ -10,12 +10,18 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ThemeRouteImport } from './routes/theme'
 import { Route as AddonsFilenameRouteImport } from './routes/addons.$filename'
 import { Route as TemplatesTemplateNameRouteImport } from './routes/templates.$templateName'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ThemeRoute = ThemeRouteImport.update({
+  id: '/theme',
+  path: '/theme',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AddonsFilenameRoute = AddonsFilenameRouteImport.update({
@@ -31,30 +37,39 @@ const TemplatesTemplateNameRoute = TemplatesTemplateNameRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/theme': typeof ThemeRoute
   '/addons/$filename': typeof AddonsFilenameRoute
   '/templates/$templateName': typeof TemplatesTemplateNameRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/theme': typeof ThemeRoute
   '/addons/$filename': typeof AddonsFilenameRoute
   '/templates/$templateName': typeof TemplatesTemplateNameRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/theme': typeof ThemeRoute
   '/addons/$filename': typeof AddonsFilenameRoute
   '/templates/$templateName': typeof TemplatesTemplateNameRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/addons/$filename' | '/templates/$templateName'
+  fullPaths: '/' | '/theme' | '/addons/$filename' | '/templates/$templateName'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/addons/$filename' | '/templates/$templateName'
-  id: '__root__' | '/' | '/addons/$filename' | '/templates/$templateName'
+  to: '/' | '/theme' | '/addons/$filename' | '/templates/$templateName'
+  id:
+    | '__root__'
+    | '/'
+    | '/theme'
+    | '/addons/$filename'
+    | '/templates/$templateName'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ThemeRoute: typeof ThemeRoute
   AddonsFilenameRoute: typeof AddonsFilenameRoute
   TemplatesTemplateNameRoute: typeof TemplatesTemplateNameRoute
 }
@@ -66,6 +81,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/theme': {
+      id: '/theme'
+      path: '/theme'
+      fullPath: '/theme'
+      preLoaderRoute: typeof ThemeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/addons/$filename': {
@@ -87,6 +109,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ThemeRoute: ThemeRoute,
   AddonsFilenameRoute: AddonsFilenameRoute,
   TemplatesTemplateNameRoute: TemplatesTemplateNameRoute,
 }
