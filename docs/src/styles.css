@@ -6,8 +6,3 @@ html {
   overflow-y: auto;
   scrollbar-gutter: stable;
 }
-
-/* Inter is loose by default at display sizes; tighten it so headings read like shadcn's. */
-:where(h1, h2, h3) {
-  letter-spacing: -0.02em;
-}

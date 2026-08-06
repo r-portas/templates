@@ -13,7 +13,7 @@ export function CopyCommand({
   truncate?: boolean;
 }) {
   return (
-    <Paper withBorder p={size === "sm" ? "xs" : "sm"}>
+    <Paper bg="gray.0" p={size === "sm" ? "xs" : "sm"}>
       <Group gap="sm" wrap="nowrap">
         <Text
           span
