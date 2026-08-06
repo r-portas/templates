@@ -49,11 +49,12 @@ function DependencyList({ dependencies }: { dependencies: Record<string, string>
                 rel="noreferrer"
                 truncate="end"
                 display="block"
+                ff="monospace"
               >
                 {name}
               </Anchor>
             </Table.Td>
-            <Table.Td ta="right" c="dimmed" w={1} style={{ whiteSpace: "nowrap" }}>
+            <Table.Td ta="right" c="dimmed" ff="monospace" w={1} style={{ whiteSpace: "nowrap" }}>
               {version}
             </Table.Td>
           </Table.Tr>
@@ -74,7 +75,7 @@ function DependencyCard({
     <Card withBorder>
       <Group justify="space-between" mb="md">
         <Title order={3}>{title}</Title>
-        <Badge variant="default">{Object.keys(dependencies).length}</Badge>
+        <Badge variant="filled">{Object.keys(dependencies).length}</Badge>
       </Group>
       <DependencyList dependencies={dependencies} />
     </Card>

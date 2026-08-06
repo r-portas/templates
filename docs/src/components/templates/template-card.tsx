@@ -44,8 +44,8 @@ function TemplateCard({
         <Stack gap="xs">
           <CopyCommand command={gitpickCommand(name)} size="sm" />
           <Group gap="xs">
-            <Badge variant="default">{dependencyCount} dependencies</Badge>
-            <Badge variant="default">{devDependencyCount} dev dependencies</Badge>
+            <Badge variant="default">{dependencyCount} Dependencies</Badge>
+            <Badge variant="default">{devDependencyCount} Dev Dependencies</Badge>
           </Group>
         </Stack>
       </Stack>

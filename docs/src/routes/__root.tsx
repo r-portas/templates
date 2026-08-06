@@ -46,10 +46,10 @@ function RootDocument() {
     <html lang="en" {...mantineHtmlProps}>
       <head>
         <HeadContent />
-        <ColorSchemeScript forceColorScheme="dark" />
+        <ColorSchemeScript forceColorScheme="light" />
       </head>
       <body>
-        <MantineProvider theme={theme} forceColorScheme="dark">
+        <MantineProvider theme={theme} forceColorScheme="light">
           <Outlet />
         </MantineProvider>
         <Scripts />

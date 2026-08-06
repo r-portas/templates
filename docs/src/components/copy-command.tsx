@@ -13,14 +13,22 @@ export function CopyCommand({
   truncate?: boolean;
 }) {
   return (
-    <Paper withBorder p={size === "sm" ? "xs" : "sm"}>
+    <Paper bg="gray.0" p={size === "sm" ? "xs" : "sm"}>
       <Group gap="sm" wrap="nowrap">
-        <Text span aria-hidden="true" size={size} c="dimmed" style={{ userSelect: "none" }}>
+        <Text
+          span
+          aria-hidden="true"
+          size={size}
+          c="dimmed"
+          ff="monospace"
+          style={{ userSelect: "none" }}
+        >
           {prefix}
         </Text>
         <Text
           span
           size={size}
+          ff="monospace"
           truncate={truncate ? "end" : undefined}
           style={{ flex: 1, minWidth: 0, overflowWrap: truncate ? undefined : "anywhere" }}
         >
@@ -32,7 +40,6 @@ export function CopyCommand({
               <ActionIcon
                 variant="subtle"
                 size={size}
-                color={copied ? "yellow" : "gray"}
                 onClick={copy}
                 aria-label={copied ? "Command copied" : `Copy command: ${command}`}
               >

@@ -40,6 +40,7 @@ step — import what you need from `@mantine/core`. Icons come from
 - `src/components/link.tsx` — Mantine components wired up as typed router links via `createLink`
 - `src/router.tsx` — the default not found and error components
 
-The site is dark-only. Component-specific styling lives in a co-located CSS
-module; `src/styles.css` is reserved for the few global rules Mantine has no
-equivalent for.
+The site is light-only, on a monochrome palette ported from shadcn's neutral
+theme, set in Inter with JetBrains Mono for code. Component-specific styling
+lives in a co-located CSS module; `src/styles.css` is reserved for the few
+global rules Mantine has no equivalent for.
