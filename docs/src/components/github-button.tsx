@@ -9,7 +9,6 @@ export function GithubButton({ href }: { href: string }) {
       target="_blank"
       rel="noreferrer"
       variant="subtle"
-      color="gray"
       leftSection={<GitBranchIcon />}
     >
       GitHub

@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
   <style>
-    .bg { fill: #f59e0b; }
-    .icon { stroke: #000000; }
+    .bg { fill: #171717; }
+    .icon { stroke: #fafafa; }
   </style>
   <rect class="bg" width="24" height="24" rx="6" />
   <g

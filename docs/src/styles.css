@@ -1,7 +1,13 @@
+@import "@fontsource-variable/inter";
 @import "@fontsource-variable/jetbrains-mono";
 
 html {
   /* Always reserve scrollbar space so short/tall pages don't shift the layout. */
   overflow-y: auto;
   scrollbar-gutter: stable;
+}
+
+/* Inter is loose by default at display sizes; tighten it so headings read like shadcn's. */
+:where(h1, h2, h3) {
+  letter-spacing: -0.02em;
 }

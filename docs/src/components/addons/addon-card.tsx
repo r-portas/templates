@@ -32,7 +32,6 @@ function AddonCard({
                 // `reloadDocument` because the target is a server route with no component
                 reloadDocument
                 variant="subtle"
-                color="gray"
                 aria-label={`View the raw markdown for the ${name} addon`}
               >
                 <FileTextIcon />

@@ -3,21 +3,14 @@ import { ArrowLeftIcon } from "@phosphor-icons/react";
 import type { LinkProps } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 
-import { AnchorLink } from "@/components/link";
+import { ButtonLink } from "@/components/link";
 import { LogoMark } from "@/components/logo-mark";
 
 function BreadcrumbLink({ label, ...linkProps }: { label: string } & LinkProps) {
   return (
-    <AnchorLink
-      {...linkProps}
-      c="dimmed"
-      // `fit-content` so only the text is clickable, not the full width of the header column
-      w="fit-content"
-      style={{ display: "flex", alignItems: "center", gap: "var(--mantine-spacing-xs)" }}
-    >
-      <ArrowLeftIcon />
+    <ButtonLink {...linkProps} variant="subtle" leftSection={<ArrowLeftIcon />}>
       {label}
-    </AnchorLink>
+    </ButtonLink>
   );
 }
 
