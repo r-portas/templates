@@ -20,7 +20,7 @@ function AddonCard({
   description: string;
 }) {
   return (
-    <Card withBorder h="100%">
+    <Card withBorder>
       <Stack gap="md" justify="space-between" h="100%">
         <Stack gap="xs">
           <Group justify="space-between" align="flex-start" gap="md" wrap="nowrap">

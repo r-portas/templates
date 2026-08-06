@@ -15,6 +15,7 @@ import { createFileRoute, notFound } from "@tanstack/react-router";
 import { CopyCommand } from "@/components/copy-command";
 import { GithubButton } from "@/components/github-button";
 import { PageHeader } from "@/components/page-header";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { githubUrl, gitpickCommand } from "@/lib/gitpick";
 import { getTemplatePackageJsonFn } from "@/lib/templates.functions";
 
@@ -92,7 +93,12 @@ function RouteComponent() {
           title={template.name}
           titleId={template.name}
           breadcrumb={{ label: "All templates", to: "/" }}
-          action={<GithubButton href={githubUrl(template.name)} />}
+          action={
+            <Group gap="xs" wrap="nowrap">
+              <ThemeToggle />
+              <GithubButton href={githubUrl(template.name)} />
+            </Group>
+          }
         />
         <Text c="dimmed">{template.description}</Text>
 
