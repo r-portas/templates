@@ -8,6 +8,21 @@ The template list is generated at build time by reading the `package.json` of
 each directory under `../templates` (see `src/lib/templates.server.ts`), and the
 addon list is parsed from the markdown files under `../addons`.
 
+## Theme builder
+
+`/theme` is an interactive builder for the colour half of a Mantine theme. Pick
+a primary and a neutral colour and it emits a `createTheme` block ready to drop
+into a project as `src/lib/theme.ts`.
+
+- `src/lib/palette.ts` — expands a hue and a chroma into ten shades along a
+  fixed OKLCH lightness ramp, using [culori](https://culorijs.org) to clamp each
+  shade into sRGB and format it as hex
+- `src/lib/theme-builder.ts` — turns the editor's config into a preview theme
+  and into the copyable snippet
+- `src/components/theme-builder/theme-preview.tsx` — scopes the generated theme
+  to the preview subtree with a nested `MantineProvider`, so the surrounding
+  site keeps its own palette
+
 ## Getting Started
 
 ```bash

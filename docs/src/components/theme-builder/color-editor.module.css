@@ -1,0 +1,61 @@
+/*
+ * Mantine paints the slider track with a `::before` and the filled portion with `.bar`.
+ * Both are single-class selectors, so these descendant rules win regardless of the order
+ * Vite happens to emit the stylesheets in.
+ */
+.hue :global(.mantine-Slider-track)::before {
+  background-image: linear-gradient(
+    to right,
+    oklch(0.7 0.16 0),
+    oklch(0.7 0.16 30),
+    oklch(0.7 0.16 60),
+    oklch(0.7 0.16 90),
+    oklch(0.7 0.16 120),
+    oklch(0.7 0.16 150),
+    oklch(0.7 0.16 180),
+    oklch(0.7 0.16 210),
+    oklch(0.7 0.16 240),
+    oklch(0.7 0.16 270),
+    oklch(0.7 0.16 300),
+    oklch(0.7 0.16 330),
+    oklch(0.7 0.16 360)
+  );
+}
+
+.chroma :global(.mantine-Slider-track)::before {
+  background-image: linear-gradient(
+    to right,
+    oklch(0.7 0 var(--editor-hue)),
+    oklch(0.7 0.37 var(--editor-hue))
+  );
+}
+
+/* The gradient already shows the value, so the filled bar would only obscure it. */
+.hue :global(.mantine-Slider-bar),
+.chroma :global(.mantine-Slider-bar) {
+  background-color: transparent;
+}
+
+.shade {
+  flex: 1;
+  height: 28px;
+  padding: 0;
+  border: 1px solid var(--mantine-color-gray-3);
+  border-radius: var(--mantine-radius-xs);
+  cursor: pointer;
+  transition: outline-color 100ms ease;
+  outline: 2px solid transparent;
+  outline-offset: 1px;
+}
+
+.shade[data-static] {
+  cursor: default;
+}
+
+.shade[data-selected] {
+  outline-color: var(--mantine-color-gray-9);
+}
+
+.shade:focus-visible {
+  outline-color: var(--mantine-color-gray-9);
+}

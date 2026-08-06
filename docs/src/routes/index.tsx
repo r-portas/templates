@@ -1,9 +1,11 @@
-import { Container, SimpleGrid, Stack } from "@mantine/core";
+import { Container, Group, SimpleGrid, Stack } from "@mantine/core";
+import { PaletteIcon } from "@phosphor-icons/react";
 import { createFileRoute } from "@tanstack/react-router";
 
 import { AddonCard } from "@/components/addons/addon-card";
 import { GettingStarted } from "@/components/getting-started";
 import { GithubButton } from "@/components/github-button";
+import { ButtonLink } from "@/components/link";
 import { PageHeader } from "@/components/page-header";
 import { Section } from "@/components/section";
 import { TemplateCard } from "@/components/templates/template-card";
@@ -26,7 +28,14 @@ function RouteComponent() {
       <Stack gap="xl">
         <PageHeader
           title="Roy's Templates"
-          action={<GithubButton href={`https://github.com/${GITPICK_REPO}`} />}
+          action={
+            <Group gap="xs" wrap="nowrap">
+              <ButtonLink to="/theme" variant="default" leftSection={<PaletteIcon />}>
+                Theme builder
+              </ButtonLink>
+              <GithubButton href={`https://github.com/${GITPICK_REPO}`} />
+            </Group>
+          }
         />
         <Section title="Getting started" description="Three steps to your first project.">
           <GettingStarted />

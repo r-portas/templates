@@ -1,0 +1,11 @@
+.sidebar {
+  position: sticky;
+  top: var(--mantine-spacing-xl);
+}
+
+/* Sticking would trap the controls off-screen once they stack above the preview. */
+@media (max-width: $mantine-breakpoint-md) {
+  .sidebar {
+    position: static;
+  }
+}

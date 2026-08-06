@@ -1,0 +1,10 @@
+.code {
+  /* Leave room for the floating copy button so long lines don't run underneath it. */
+  padding-right: calc(var(--mantine-spacing-xl) * 1.5);
+}
+
+.copy {
+  position: absolute;
+  top: var(--mantine-spacing-xs);
+  right: var(--mantine-spacing-xs);
+}
