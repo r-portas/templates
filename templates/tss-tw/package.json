@@ -10,8 +10,8 @@
     "update": "bun update --interactive --latest"
   },
   "dependencies": {
-    "@tanstack/react-router": "^1.170.21",
-    "@tanstack/react-start": "^1.168.38",
+    "@tanstack/react-router": "^1.170.25",
+    "@tanstack/react-start": "^1.168.42",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "tailwindcss": "^4.3.3",
