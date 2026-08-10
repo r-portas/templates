@@ -24,7 +24,7 @@ function AddonCard({ slug, description }: { slug: string; description: string })
     <Card className="justify-between">
       <CardHeader>
         <CardTitle className="font-mono">{slug}</CardTitle>
-        <CardAction>
+        <CardAction className="flex gap-1">
           <Tooltip>
             <TooltipTrigger
               render={

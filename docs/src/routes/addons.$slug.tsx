@@ -1,5 +1,5 @@
 import { Markdown } from "@tanstack/markdown/react";
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, notFound } from "@tanstack/react-router";
 import { ArrowLeft, FileText } from "lucide-react";
 
 import { ButtonLink } from "@/components/ui/button-link";
@@ -17,9 +17,13 @@ export const Route = createFileRoute("/addons/$slug")({
   component: RouteComponent,
   loader: async ({ params }) => {
     const { slug } = params;
-    // Don't include the raw markdown source, since only `document` is rendered and it can be large.
-    const { content: _content, ...addon } = await getAddonFn({ data: slug });
-    return { addon };
+    try {
+      // Don't include the raw markdown source, since only `document` is rendered and it can be large.
+      const { content: _content, ...addon } = await getAddonFn({ data: slug });
+      return { addon };
+    } catch {
+      throw notFound();
+    }
   },
 });
 
