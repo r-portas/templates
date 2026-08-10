@@ -1,8 +1,8 @@
-import type { LinkProps } from "@tanstack/react-router";
+import { Link, type LinkProps } from "@tanstack/react-router";
 import type { LucideIcon } from "lucide-react";
 import type { ComponentProps } from "react";
 
-import { ButtonLink } from "@/components/ui/button-link";
+import { buttonVariants } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
 
@@ -35,20 +35,29 @@ interface SidebarProps extends ComponentProps<"nav"> {
  */
 function Sidebar({ items, className, ...props }: SidebarProps) {
   return (
-    <nav className={cn("flex h-screen flex-col gap-1 bg-primary p-2", className)} {...props}>
+    <nav
+      className={cn(
+        "flex h-screen flex-col gap-1 border-r border-sidebar-border bg-sidebar p-2",
+        className,
+      )}
+      {...props}
+    >
       {items.map(({ icon: Icon, title, ...linkProps }) => (
         <Tooltip key={title}>
           <TooltipTrigger
             render={
-              <ButtonLink
+              <Link
                 {...linkProps}
-                variant="ghost"
-                size="icon"
                 aria-label={title}
-                className="text-primary-foreground/70 hover:bg-primary-foreground/10 hover:text-primary-foreground data-[status=active]:bg-primary-foreground/15 data-[status=active]:text-primary-foreground [&_svg]:size-5"
+                className={buttonVariants({
+                  variant: "ghost",
+                  size: "icon",
+                  className:
+                    "text-sidebar-foreground/70 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground data-[status=active]:bg-sidebar-accent data-[status=active]:text-sidebar-accent-foreground [&_svg]:size-5",
+                })}
               >
                 <Icon />
-              </ButtonLink>
+              </Link>
             }
           />
           <TooltipContent side="right">{title}</TooltipContent>

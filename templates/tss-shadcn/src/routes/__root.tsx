@@ -1,6 +1,7 @@
 import { createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 
 import { AppLayout } from "@/components/app-layout";
+import { Providers } from "@/components/providers";
 import clientEnv from "@/lib/env";
 
 import appCss from "@/styles.css?url";
@@ -31,12 +32,14 @@ export const Route = createRootRoute({
 
 function RootDocument() {
   return (
-    <html lang="en" className="font-sans antialiased" suppressHydrationWarning>
+    <html lang="en">
       <head>
         <HeadContent />
       </head>
       <body>
-        <AppLayout />
+        <Providers>
+          <AppLayout />
+        </Providers>
         <Scripts />
       </body>
     </html>
