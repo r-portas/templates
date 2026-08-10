@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
   <style>
-    .bg { fill: #212529; }
-    .icon { stroke: #f8f9fa; }
+    .bg { fill: #e7e5e4; }
+    .icon { stroke: #1c1917; }
   </style>
   <rect class="bg" width="24" height="24" rx="6" />
   <g
@@ -12,12 +12,8 @@
     stroke-linejoin="round"
     transform="translate(3.36 3.36) scale(0.72)"
   >
-    <path d="M12 22V12" />
-    <path d="m16 17 2 2 4-4" />
-    <path
-      d="M21 11.127V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.729l7 4a2 2 0 0 0 2 .001l1.32-.753"
-    />
-    <path d="M3.29 7 12 12l8.71-5" />
-    <path d="m7.5 4.27 8.997 5.148" />
+    <rect width="18" height="7" x="3" y="3" rx="1" />
+    <rect width="9" height="7" x="3" y="14" rx="1" />
+    <rect width="5" height="7" x="16" y="14" rx="1" />
   </g>
 </svg>

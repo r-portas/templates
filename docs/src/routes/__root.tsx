@@ -1,9 +1,7 @@
-import { ColorSchemeScript, mantineHtmlProps, MantineProvider } from "@mantine/core";
-import { Outlet, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
+import { createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 
-import "@mantine/core/styles.css";
-import clientEnv from "@/lib/env";
-import theme from "@/lib/theme";
+import { AppLayout } from "@/components/app-layout";
+import { Providers } from "@/components/providers";
 
 import appCss from "@/styles.css?url";
 
@@ -18,12 +16,7 @@ export const Route = createRootRoute({
         content: "width=device-width, initial-scale=1",
       },
       {
-        title: clientEnv.VITE_APP_NAME,
-      },
-      {
-        name: "description",
-        content:
-          "A quick reference to the templates repo — browse each starter and copy its gitpick command.",
+        title: "Roy's Templates",
       },
     ],
     links: [
@@ -43,15 +36,14 @@ export const Route = createRootRoute({
 
 function RootDocument() {
   return (
-    <html lang="en" {...mantineHtmlProps}>
+    <html lang="en">
       <head>
         <HeadContent />
-        <ColorSchemeScript defaultColorScheme="light" />
       </head>
       <body>
-        <MantineProvider theme={theme} defaultColorScheme="light">
-          <Outlet />
-        </MantineProvider>
+        <Providers>
+          <AppLayout />
+        </Providers>
         <Scripts />
       </body>
     </html>

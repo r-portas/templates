@@ -10,7 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as KitchenSinkRouteImport } from './routes/kitchen-sink'
+import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as AddonsFilenameRouteImport } from './routes/addons.$filename'
 import { Route as TemplatesTemplateNameRouteImport } from './routes/templates.$templateName'
 
@@ -19,9 +19,9 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const KitchenSinkRoute = KitchenSinkRouteImport.update({
-  id: '/kitchen-sink',
-  path: '/kitchen-sink',
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AddonsFilenameRoute = AddonsFilenameRouteImport.update({
@@ -37,40 +37,40 @@ const TemplatesTemplateNameRoute = TemplatesTemplateNameRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/kitchen-sink': typeof KitchenSinkRoute
+  '/settings': typeof SettingsRoute
   '/addons/$filename': typeof AddonsFilenameRoute
   '/templates/$templateName': typeof TemplatesTemplateNameRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/kitchen-sink': typeof KitchenSinkRoute
+  '/settings': typeof SettingsRoute
   '/addons/$filename': typeof AddonsFilenameRoute
   '/templates/$templateName': typeof TemplatesTemplateNameRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/kitchen-sink': typeof KitchenSinkRoute
+  '/settings': typeof SettingsRoute
   '/addons/$filename': typeof AddonsFilenameRoute
   '/templates/$templateName': typeof TemplatesTemplateNameRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/kitchen-sink' | '/addons/$filename' | '/templates/$templateName'
+    '/' | '/settings' | '/addons/$filename' | '/templates/$templateName'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/kitchen-sink' | '/addons/$filename' | '/templates/$templateName'
+  to: '/' | '/settings' | '/addons/$filename' | '/templates/$templateName'
   id:
     | '__root__'
     | '/'
-    | '/kitchen-sink'
+    | '/settings'
     | '/addons/$filename'
     | '/templates/$templateName'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  KitchenSinkRoute: typeof KitchenSinkRoute
+  SettingsRoute: typeof SettingsRoute
   AddonsFilenameRoute: typeof AddonsFilenameRoute
   TemplatesTemplateNameRoute: typeof TemplatesTemplateNameRoute
 }
@@ -84,11 +84,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/kitchen-sink': {
-      id: '/kitchen-sink'
-      path: '/kitchen-sink'
-      fullPath: '/kitchen-sink'
-      preLoaderRoute: typeof KitchenSinkRouteImport
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/addons/$filename': {
@@ -110,7 +110,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  KitchenSinkRoute: KitchenSinkRoute,
+  SettingsRoute: SettingsRoute,
   AddonsFilenameRoute: AddonsFilenameRoute,
   TemplatesTemplateNameRoute: TemplatesTemplateNameRoute,
 }
