@@ -1,0 +1,32 @@
+{
+  "name": "tss-shadcn",
+  "description": "A blank minimal TanStack Start application configured with shadcn/ui and Tailwind CSS",
+  "type": "module",
+  "scripts": {
+    "dev": "bun --bun vite dev",
+    "build": "bun --bun vite build && tsc --noEmit",
+    "lint": "oxlint .",
+    "format": "oxfmt .",
+    "update": "bun update --interactive --latest"
+  },
+  "dependencies": {
+    "@tanstack/react-router": "^1.170.25",
+    "@tanstack/react-start": "^1.168.42",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "tailwindcss": "^4.3.3",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/bun": "^1.3.14",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.4",
+    "@vitejs/plugin-react": "^6.0.5",
+    "oxfmt": "^0.62.0",
+    "oxlint": "^1.77.0",
+    "shadcn": "^4.16.2",
+    "typescript": "^7.0.2",
+    "vite": "^8.2.1"
+  }
+}
