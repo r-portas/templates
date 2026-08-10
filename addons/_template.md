@@ -50,4 +50,4 @@ Notes for authoring a new addon from this template:
   `name: my-addon`).
 - Add the new addon to the root `README.md` addons table.
 - Follow the general guidance in `CLAUDE.md` for addons: match the conventions used by the
-  `tss-mantine` template (`src/lib` domain naming, Zod-validated env in `src/lib/env.server.ts`).
+  `tss-shadcn` template (`src/lib` domain naming, Zod-validated env in `src/lib/env.server.ts`).
