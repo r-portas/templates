@@ -16,7 +16,9 @@ export function isValidAddonFilename(filename: string) {
 
 /**
  * The site-relative path the raw markdown for an addon is served from.
+ *
+ * @param slug - The addon's slug, excluding the file extension, e.g. `docker`.
  */
-export function addonPath(filename: string) {
-  return `/addons/${filename}`;
+export function addonPath(slug: string) {
+  return `/addons/${slug}/raw`;
 }

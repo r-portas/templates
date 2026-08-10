@@ -26,7 +26,7 @@ function RouteComponent() {
   const { addon } = Route.useLoaderData();
   return (
     <div className="mx-auto flex max-w-3xl flex-col gap-6">
-      <div className="items-centre flex justify-between">
+      <div className="flex items-center justify-between">
         <ButtonLink to="/" variant="ghost" className="w-fit">
           <ArrowLeft data-icon="inline-start" />
           All templates

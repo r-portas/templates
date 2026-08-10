@@ -22,6 +22,6 @@ describe("isValidAddonFilename", () => {
 
 describe("addonPath", () => {
   test("builds the raw markdown path for an addon", () => {
-    expect(addonPath("drizzle.md")).toBe("/addons/drizzle.md");
+    expect(addonPath("drizzle")).toBe("/addons/drizzle/raw");
   });
 });

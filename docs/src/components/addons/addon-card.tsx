@@ -15,8 +15,8 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip
 import { addonPath } from "@/lib/addons";
 import { cn } from "@/lib/utils";
 
-function getAddonUrl(filename: string) {
-  return new URL(addonPath(filename), window.location.origin).toString();
+function getAddonUrl(slug: string) {
+  return new URL(addonPath(slug), window.location.origin).toString();
 }
 
 function AddonCard({ slug, description }: { slug: string; description: string }) {
@@ -50,7 +50,6 @@ function AddonCard({ slug, description }: { slug: string; description: string })
                 <Link
                   to="/addons/$slug"
                   params={{ slug }}
-                  reloadDocument
                   aria-label={`View the details for the ${slug} addon`}
                   className={cn(
                     buttonVariants({ variant: "ghost", size: "icon-sm" }),
@@ -68,15 +67,15 @@ function AddonCard({ slug, description }: { slug: string; description: string })
       </CardHeader>
       <CardContent>
         <ClientOnly>
-          <AgentCommand filename={`${slug}/raw`} />
+          <AgentCommand slug={slug} />
         </ClientOnly>
       </CardContent>
     </Card>
   );
 }
 
-function AgentCommand({ filename }: { filename: string }) {
-  const url = getAddonUrl(filename);
+function AgentCommand({ slug }: { slug: string }) {
+  const url = getAddonUrl(slug);
   return (
     <CopyCommand
       command={`Follow the setup instructions at ${url}`}
