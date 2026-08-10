@@ -1,7 +1,8 @@
 import { Link } from "@tanstack/react-router";
-import { PackageCheck } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
 import { CopyCommand } from "@/components/copy-command";
+import { buttonVariants } from "@/components/ui/button";
 import {
   Card,
   CardAction,
@@ -10,7 +11,9 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { gitpickCommand } from "@/lib/gitpick";
+import { cn } from "@/lib/utils";
 
 function TemplateCard({
   name,
@@ -24,21 +27,32 @@ function TemplateCard({
   devDependencyCount: number;
 }) {
   return (
-    <Card className="relative justify-between transition-colors hover:ring-foreground/30">
-      <Link
-        to="/templates/$templateName"
-        params={{ templateName: name }}
-        className="absolute inset-0"
-        aria-label={`View ${name} template`}
-      />
+    <Card className="justify-between">
       <CardHeader>
-        <CardTitle className="pointer-events-none font-mono">{name}</CardTitle>
+        <CardTitle className="font-mono">{name}</CardTitle>
         <CardAction>
-          <PackageCheck className="size-4 text-muted-foreground" />
+          <Tooltip>
+            <TooltipTrigger
+              render={
+                <Link
+                  to="/templates/$templateName"
+                  params={{ templateName: name }}
+                  aria-label={`View ${name} template`}
+                  className={cn(
+                    buttonVariants({ variant: "ghost", size: "icon-sm" }),
+                    "text-muted-foreground hover:text-foreground",
+                  )}
+                />
+              }
+            >
+              <ArrowUpRight />
+            </TooltipTrigger>
+            <TooltipContent>View template</TooltipContent>
+          </Tooltip>
         </CardAction>
         <CardDescription>{description}</CardDescription>
       </CardHeader>
-      <CardContent className="relative flex flex-col gap-3">
+      <CardContent className="flex flex-col gap-3">
         <CopyCommand command={gitpickCommand(name)} size="sm" />
         <div className="flex items-center gap-3 font-mono text-xs text-muted-foreground">
           <span>

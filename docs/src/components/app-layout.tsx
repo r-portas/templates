@@ -1,12 +1,11 @@
 import { Outlet } from "@tanstack/react-router";
-import { Home, Settings } from "lucide-react";
+import { Home } from "lucide-react";
 
 import { Sidebar } from "@/components/ui/sidebar";
 import type { SidebarItem } from "@/components/ui/sidebar";
 
 const SIDEBAR_ITEMS: SidebarItem[] = [
   { icon: Home, title: "Home", to: "/", activeOptions: { exact: true } },
-  { icon: Settings, title: "Settings", to: "/settings" },
 ];
 
 /**

@@ -10,18 +10,12 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as AddonsFilenameRouteImport } from './routes/addons.$filename'
 import { Route as TemplatesTemplateNameRouteImport } from './routes/templates.$templateName'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SettingsRoute = SettingsRouteImport.update({
-  id: '/settings',
-  path: '/settings',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AddonsFilenameRoute = AddonsFilenameRouteImport.update({
@@ -37,40 +31,30 @@ const TemplatesTemplateNameRoute = TemplatesTemplateNameRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/settings': typeof SettingsRoute
   '/addons/$filename': typeof AddonsFilenameRoute
   '/templates/$templateName': typeof TemplatesTemplateNameRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/settings': typeof SettingsRoute
   '/addons/$filename': typeof AddonsFilenameRoute
   '/templates/$templateName': typeof TemplatesTemplateNameRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/settings': typeof SettingsRoute
   '/addons/$filename': typeof AddonsFilenameRoute
   '/templates/$templateName': typeof TemplatesTemplateNameRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    '/' | '/settings' | '/addons/$filename' | '/templates/$templateName'
+  fullPaths: '/' | '/addons/$filename' | '/templates/$templateName'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/settings' | '/addons/$filename' | '/templates/$templateName'
-  id:
-    | '__root__'
-    | '/'
-    | '/settings'
-    | '/addons/$filename'
-    | '/templates/$templateName'
+  to: '/' | '/addons/$filename' | '/templates/$templateName'
+  id: '__root__' | '/' | '/addons/$filename' | '/templates/$templateName'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  SettingsRoute: typeof SettingsRoute
   AddonsFilenameRoute: typeof AddonsFilenameRoute
   TemplatesTemplateNameRoute: typeof TemplatesTemplateNameRoute
 }
@@ -82,13 +66,6 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/settings': {
-      id: '/settings'
-      path: '/settings'
-      fullPath: '/settings'
-      preLoaderRoute: typeof SettingsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/addons/$filename': {
@@ -110,7 +87,6 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  SettingsRoute: SettingsRoute,
   AddonsFilenameRoute: AddonsFilenameRoute,
   TemplatesTemplateNameRoute: TemplatesTemplateNameRoute,
 }
