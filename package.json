@@ -5,6 +5,9 @@
     "templates/*",
     "docs"
   ],
+  "bin": {
+    "create-template": "./scripts/create-template.ts"
+  },
   "scripts": {
     "update": "bun update --recursive --interactive --latest",
     "build": "bun run --workspaces build",

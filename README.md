@@ -6,17 +6,22 @@ can be pulled into a new project using [gitpick](https://github.com/nrjdalal/git
 
 ## Usage
 
-Use `gitpick` to copy a template into a new directory. Replace `my-project` with
-your desired project name:
+Use `create-template` to copy a template into a new directory. Replace `my-project` with your
+desired project name:
 
 ```bash
-bunx --bun gitpick r-portas/templates/tree/main/templates/<template> my-project
+bunx --bun github:r-portas/templates <template> my-project
 ```
 
-`gitpick` copies files only, so the new project has no git history linking it back to this repo.
-Each template ships a `sync-template` Claude Code skill (`/sync-template`) so the project can
-later pull in changes made to its template — see the "Keeping in sync with the template" section
-in the template's own README.
+This also stamps the exact commit the template was copied from into
+`my-project/.claude/template-sync.json`. Each template ships a `sync-template` Claude Code skill
+(`/sync-template`) that reads this file to pull in changes made to the template since — see the
+"Keeping in sync with the template" section in the template's own README.
+
+Alternatively, [`gitpick`](https://github.com/nrjdalal/gitpick) works too
+(`bunx --bun gitpick r-portas/templates/tree/main/templates/<template> my-project`), but since it
+only copies files it has no commit to stamp — the `sync-template` skill falls back to asking when
+the project was created instead.
 
 ## Tooling
 

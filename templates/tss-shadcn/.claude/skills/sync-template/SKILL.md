@@ -17,7 +17,10 @@ Look for `.claude/template-sync.json` in the project root. It looks like:
 }
 ```
 
-If it doesn't exist, this is the first run — bootstrap it:
+Projects created with `bunx --bun github:r-portas/templates <template> <dir>` already have this
+file, stamped with the exact commit the template was copied from — skip straight to step 2.
+
+If it doesn't exist (the project was created another way, e.g. `gitpick`), bootstrap it:
 
 1. Infer `template` from the `name` field in the project's `package.json`. It should be one of
    `react`, `tss`, `tss-tw`, `tss-shadcn`. If the name doesn't match one of these (the project was
