@@ -35,6 +35,8 @@ description: Checks the alignment of templates against best practises, use this 
     - `tailwind-merge`
     - `lucide-react`
     - `tw-animate-css`
+    - `@fontsource-variable/geist`
+    - plus any additional dependencies unique to this template's `package.json`
   - `tss-mantine`: Builds off the `tss` template adding Mantine, and is the opinionated, batteries-included template. Check the following dependencies:
     - `@mantine/core`: https://mantine.dev/llms.txt
     - `@mantine/hooks`: https://mantine.dev/llms.txt

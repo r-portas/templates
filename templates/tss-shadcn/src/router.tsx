@@ -1,4 +1,4 @@
-import { createRouter, useRouter } from "@tanstack/react-router";
+import { createRouter, type ErrorComponentProps } from "@tanstack/react-router";
 import { AlertTriangleIcon, SearchXIcon } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -35,8 +35,9 @@ function DefaultNotFound() {
   );
 }
 
-function DefaultError({ error }: { error: Error }) {
-  const router = useRouter();
+function DefaultError({ error, reset }: ErrorComponentProps) {
+  // In production, don't leak internal details
+  const message = import.meta.env.DEV ? error.message : "An unexpected error occurred";
 
   return (
     <Empty className="h-full">
@@ -45,10 +46,10 @@ function DefaultError({ error }: { error: Error }) {
           <AlertTriangleIcon />
         </EmptyMedia>
         <EmptyTitle>Something went wrong</EmptyTitle>
-        <EmptyDescription>{error.message}</EmptyDescription>
+        <EmptyDescription>{message}</EmptyDescription>
       </EmptyHeader>
       <EmptyContent>
-        <Button size="sm" onClick={() => router.invalidate()}>
+        <Button size="sm" onClick={reset}>
           Try again
         </Button>
       </EmptyContent>

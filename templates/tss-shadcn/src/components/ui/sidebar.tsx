@@ -1,8 +1,8 @@
-import { Link, type LinkProps } from "@tanstack/react-router";
+import type { LinkProps } from "@tanstack/react-router";
 import type { LucideIcon } from "lucide-react";
 import type { ComponentProps } from "react";
 
-import { buttonVariants } from "@/components/ui/button";
+import { ButtonLink } from "@/components/ui/button-link";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
 
@@ -46,18 +46,15 @@ function Sidebar({ items, className, ...props }: SidebarProps) {
         <Tooltip key={title}>
           <TooltipTrigger
             render={
-              <Link
+              <ButtonLink
                 {...linkProps}
                 aria-label={title}
-                className={buttonVariants({
-                  variant: "ghost",
-                  size: "icon",
-                  className:
-                    "text-sidebar-foreground/70 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground data-[status=active]:bg-sidebar-accent data-[status=active]:text-sidebar-accent-foreground [&_svg]:size-5",
-                })}
+                variant="ghost"
+                size="icon"
+                className="text-sidebar-foreground/70 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground data-[status=active]:bg-sidebar-accent data-[status=active]:text-sidebar-accent-foreground [&_svg]:size-5"
               >
                 <Icon />
-              </Link>
+              </ButtonLink>
             }
           />
           <TooltipContent side="right">{title}</TooltipContent>
