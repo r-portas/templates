@@ -6,8 +6,7 @@
 - All templates share a common set of tooling, including Bun, Oxlint and Oxfmt
 - The repo root is a [Bun workspace](https://bun.sh/docs/install/workspaces) (see @package.json), with each template and `./docs` as a workspace package. Use the root scripts to operate across all of them at once:
   - `bun run update`: update every template's dependencies to the latest versions
-  - `bun run lint`: lint every template
-  - `bun run build`: build every template, verifying it still works
+  - `bun run build`: build every template, verifying it still works (each template's `build` script also runs `oxlint`)
 - Templates build on each other, so changes should flow downstream through this lineage:
   - `react` is the base template
   - `tss` builds on `react`, adding TanStack Start

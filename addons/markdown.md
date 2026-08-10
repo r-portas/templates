@@ -220,6 +220,5 @@ function RouteComponent() {
 ## 6. Verify
 
 ```bash
-bun run lint
 bun run build
 ```

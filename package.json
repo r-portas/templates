@@ -8,7 +8,6 @@
   "scripts": {
     "update": "bun update --recursive --interactive --latest",
     "build": "bun run --workspaces build",
-    "lint": "bun run --workspaces lint",
     "format": "bun run --workspaces format"
   }
 }

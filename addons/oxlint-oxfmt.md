@@ -19,11 +19,13 @@ bun add -D oxfmt oxlint
 ```json
 {
   "scripts": {
-    "format": "oxfmt .",
-    "lint": "oxlint ."
+    "format": "oxfmt ."
   }
 }
 ```
+
+Also append `&& oxlint .` to the project's existing `build` script, so linting runs as part of the
+build rather than as a separate `lint` script (matching the templates' convention).
 
 ## 3. Create config files
 
@@ -74,7 +76,7 @@ bun add -D oxfmt oxlint
 ```
 
 - `categories` raises the `correctness` and `suspicious` rule sets from oxlint's defaults to
-  `error`, so those classes of bugs fail `bun run lint` rather than just warning.
+  `error`, so those classes of bugs fail `bun run build` rather than just warning.
 - `unicorn/no-null` enforces `undefined` over `null` across the project — drop it if the project
   intentionally uses `null` (e.g. to match a database or API type).
 - Add the `nextjs` plugin if the project uses Next.js. Drop `react`, `react-perf`, and the
@@ -136,7 +138,7 @@ hook configured before adding it.
 
 ```bash
 bun run format
-bun run lint
+bun run build
 ```
 
 ## 7. Remove old Prettier / ESLint
