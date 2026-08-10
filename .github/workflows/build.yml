@@ -12,6 +12,7 @@ jobs:
           - react
           - tss
           - tss-tw
+          - tss-shadcn
           - tss-mantine
     defaults:
       run:

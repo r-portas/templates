@@ -12,6 +12,7 @@
   - `react` is the base template
   - `tss` builds on `react`, adding TanStack Start
   - `tss-tw` and `tss-mantine` both build on `tss`, adding Tailwind CSS and Mantine respectively
+  - `tss-shadcn` builds on `tss-tw`, adding shadcn/ui
   - `tss-mantine` is the end of the lineage, and is the opinionated, batteries-included template for building new web apps
   - `./docs` (the documentation site, outside `./templates`) is not part of this lineage. It is a standalone TanStack Start site using Mantine, maintained directly, and follows the conventions of the `tss-mantine` template.
 - When making changes to a template consider:
