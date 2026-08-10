@@ -127,6 +127,11 @@ import { postFrontmatterSchema } from "@/lib/posts.schemas";
 
 const POSTS_DIR = resolve("posts");
 
+/**
+ * Gets a single post, including its parsed document.
+ *
+ * @param slug - The post's slug, excluding the file extension, e.g. `hello-world`.
+ */
 export async function getPost(slug: string) {
   const content = await readFile(resolve(POSTS_DIR, `${slug}.md`), "utf-8");
   const document = parseMarkdown(content, { frontmatter: true });
@@ -137,6 +142,9 @@ export async function getPost(slug: string) {
   return { slug, ...frontmatter, document };
 }
 
+/**
+ * Lists the available posts by reading the contents of the posts directory.
+ */
 export async function listPosts() {
   const entries = await readdir(POSTS_DIR);
   const slugs = entries
