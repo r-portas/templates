@@ -33,10 +33,10 @@ that matter _before_ starting, not per-step detail.
 ## 3. Verify
 
 Most addons should end with a step that confirms the change worked — usually the project's
-existing `format`, `lint`, and `build` scripts, or a more specific check if the addon needs one.
+existing `format` and `build` scripts (`build` also runs oxlint), or a more specific check if the
+addon needs one.
 
 ```bash
-bun run lint
 bun run build
 ```
 
