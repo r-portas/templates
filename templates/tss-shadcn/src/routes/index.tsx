@@ -1,12 +1,23 @@
 import { createFileRoute } from "@tanstack/react-router";
 
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
+
 export const Route = createFileRoute("/")({
   component: RouteComponent,
 });
 
 function RouteComponent() {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center gap-6">
+    <div>
+      <Card className="max-w-sm">
+        <CardHeader>
+          <CardTitle>Project Overview</CardTitle>
+          <CardDescription>
+            Track progress and recent activity for your TanStack Start app.
+          </CardDescription>
+        </CardHeader>
+        <CardContent>Your design system is ready. Start building your next component.</CardContent>
+      </Card>
     </div>
   );
 }

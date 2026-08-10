@@ -30,11 +30,11 @@ export const Route = createRootRoute({
 
 function RootDocument() {
   return (
-    <html>
+    <html lang="en" className="font-sans antialiased">
       <head>
         <HeadContent />
       </head>
-      <body className="min-h-screen bg-black text-yellow-400">
+      <body>
         <Outlet />
         <Scripts />
       </body>
