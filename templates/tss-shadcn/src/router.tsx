@@ -16,7 +16,7 @@ import { routeTree } from "./routeTree.gen";
 
 function DefaultNotFound() {
   return (
-    <Empty className="h-svh">
+    <Empty className="h-full">
       <EmptyHeader>
         <EmptyMedia variant="icon">
           <SearchXIcon />
@@ -39,7 +39,7 @@ function DefaultError({ error }: { error: Error }) {
   const router = useRouter();
 
   return (
-    <Empty className="h-svh">
+    <Empty className="h-full">
       <EmptyHeader>
         <EmptyMedia variant="icon">
           <AlertTriangleIcon />
