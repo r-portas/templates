@@ -40,6 +40,12 @@ bunx --bun skills add vercel-labs/agent-browser --global
 bunx --bun skills update --global
 ```
 
+## Keeping in sync with the template
+
+This project was created from the [`tss-shadcn`](https://github.com/r-portas/templates/tree/main/templates/tss-shadcn)
+template. Run the `sync-template` Claude Code skill (`/sync-template`) to pull in changes made to
+the template since this project was created.
+
 ## Environment variables
 
 Environment variables can be configured in one of two files:

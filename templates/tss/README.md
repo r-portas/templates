@@ -18,6 +18,12 @@ bun dev
 bun run update
 ```
 
+## Keeping in sync with the template
+
+This project was created from the [`tss`](https://github.com/r-portas/templates/tree/main/templates/tss)
+template. Run the `sync-template` Claude Code skill (`/sync-template`) to pull in changes made to
+the template since this project was created.
+
 ## Environment variables
 
 Environment variables can be configured in one of two files:
