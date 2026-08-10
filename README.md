@@ -13,6 +13,11 @@ your desired project name:
 bunx --bun gitpick r-portas/templates/tree/main/templates/<template> my-project
 ```
 
+`gitpick` copies files only, so the new project has no git history linking it back to this repo.
+Each template ships a `sync-template` Claude Code skill (`/sync-template`) so the project can
+later pull in changes made to its template — see the "Keeping in sync with the template" section
+in the template's own README.
+
 ## Tooling
 
 All templates share a common set of tooling:
