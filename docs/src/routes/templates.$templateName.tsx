@@ -1,21 +1,11 @@
-import {
-  Anchor,
-  Badge,
-  Card,
-  Container,
-  Group,
-  SimpleGrid,
-  Stack,
-  Table,
-  Text,
-  Title,
-} from "@mantine/core";
 import { createFileRoute, notFound } from "@tanstack/react-router";
+import { ArrowLeft, GitBranch } from "lucide-react";
 
 import { CopyCommand } from "@/components/copy-command";
-import { GithubButton } from "@/components/github-button";
-import { PageHeader } from "@/components/page-header";
-import { ThemeToggle } from "@/components/theme-toggle";
+import { Badge } from "@/components/ui/badge";
+import { buttonVariants } from "@/components/ui/button";
+import { ButtonLink } from "@/components/ui/button-link";
+import { Card, CardAction, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { githubUrl, gitpickCommand } from "@/lib/gitpick";
 import { getTemplatePackageJsonFn } from "@/lib/templates.functions";
 
@@ -24,9 +14,7 @@ export const Route = createFileRoute("/templates/$templateName")({
   loader: async ({ params }) => {
     try {
       const template = await getTemplatePackageJsonFn({ data: params.templateName });
-      return {
-        template,
-      };
+      return { template };
     } catch {
       throw notFound();
     }
@@ -36,50 +24,24 @@ export const Route = createFileRoute("/templates/$templateName")({
 function DependencyList({ dependencies }: { dependencies: Record<string, string> }) {
   const entries = Object.entries(dependencies).toSorted(([a], [b]) => a.localeCompare(b));
   if (entries.length === 0) {
-    return <Text c="dimmed">None</Text>;
+    return <p className="text-sm text-muted-foreground">None</p>;
   }
   return (
-    <Table>
-      <Table.Tbody>
-        {entries.map(([name, version]) => (
-          <Table.Tr key={name}>
-            <Table.Td maw={0} w="100%">
-              <Anchor
-                href={`https://npmx.dev/package/${name}`}
-                target="_blank"
-                rel="noreferrer"
-                truncate="end"
-                display="block"
-                ff="monospace"
-              >
-                {name}
-              </Anchor>
-            </Table.Td>
-            <Table.Td ta="right" c="dimmed" ff="monospace" w={1} style={{ whiteSpace: "nowrap" }}>
-              {version}
-            </Table.Td>
-          </Table.Tr>
-        ))}
-      </Table.Tbody>
-    </Table>
-  );
-}
-
-function DependencyCard({
-  title,
-  dependencies,
-}: {
-  title: string;
-  dependencies: Record<string, string>;
-}) {
-  return (
-    <Card withBorder>
-      <Group justify="space-between" mb="md">
-        <Title order={3}>{title}</Title>
-        <Badge variant="filled">{Object.keys(dependencies).length}</Badge>
-      </Group>
-      <DependencyList dependencies={dependencies} />
-    </Card>
+    <ul className="flex flex-col gap-1 font-mono text-sm">
+      {entries.map(([name, version]) => (
+        <li key={name} className="flex items-baseline justify-between gap-4">
+          <a
+            href={`https://npmx.dev/package/${name}`}
+            target="_blank"
+            rel="noreferrer"
+            className="truncate text-foreground underline-offset-2 hover:underline"
+          >
+            {name}
+          </a>
+          <span className="shrink-0 text-muted-foreground">{version}</span>
+        </li>
+      ))}
+    </ul>
   );
 }
 
@@ -87,28 +49,59 @@ function RouteComponent() {
   const { template } = Route.useLoaderData();
 
   return (
-    <Container py="xl">
-      <Stack gap="xl">
-        <PageHeader
-          title={template.name}
-          titleId={template.name}
-          breadcrumb={{ label: "All templates", to: "/" }}
-          action={
-            <Group gap="xs" wrap="nowrap">
-              <ThemeToggle />
-              <GithubButton href={githubUrl(template.name)} />
-            </Group>
-          }
-        />
-        <Text c="dimmed">{template.description}</Text>
+    <div className="mx-auto flex max-w-3xl flex-col gap-6">
+      <ButtonLink
+        to="/"
+        variant="ghost"
+        size="sm"
+        className="w-fit gap-1 text-muted-foreground hover:text-foreground"
+      >
+        <ArrowLeft className="size-3.5" />
+        All templates
+      </ButtonLink>
 
-        <CopyCommand command={gitpickCommand(template.name)} />
+      <div className="flex items-start justify-between gap-4">
+        <div className="flex flex-col gap-1">
+          <h1 className="font-heading text-2xl font-semibold">{template.name}</h1>
+          <p className="max-w-2xl text-muted-foreground">{template.description}</p>
+        </div>
+        <a
+          href={githubUrl(template.name)}
+          target="_blank"
+          rel="noreferrer"
+          className={buttonVariants({ variant: "ghost", size: "sm" })}
+        >
+          <GitBranch data-icon="inline-start" />
+          GitHub
+        </a>
+      </div>
 
-        <SimpleGrid cols={{ base: 1, sm: 2 }}>
-          <DependencyCard title="Dependencies" dependencies={template.dependencies} />
-          <DependencyCard title="Dev dependencies" dependencies={template.devDependencies} />
-        </SimpleGrid>
-      </Stack>
-    </Container>
+      <CopyCommand command={gitpickCommand(template.name)} />
+
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <Card>
+          <CardHeader>
+            <CardTitle>Dependencies</CardTitle>
+            <CardAction>
+              <Badge variant="outline">{Object.keys(template.dependencies).length}</Badge>
+            </CardAction>
+          </CardHeader>
+          <CardContent>
+            <DependencyList dependencies={template.dependencies} />
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader>
+            <CardTitle>Dev dependencies</CardTitle>
+            <CardAction>
+              <Badge variant="outline">{Object.keys(template.devDependencies).length}</Badge>
+            </CardAction>
+          </CardHeader>
+          <CardContent>
+            <DependencyList dependencies={template.devDependencies} />
+          </CardContent>
+        </Card>
+      </div>
+    </div>
   );
 }

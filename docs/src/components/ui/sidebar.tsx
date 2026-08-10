@@ -1,13 +1,15 @@
 import type { LinkProps } from "@tanstack/react-router";
-import { Blocks, type LucideIcon } from "lucide-react";
+import { GitBranchIcon, LayoutTemplate, type LucideIcon } from "lucide-react";
 import type { ComponentProps } from "react";
 
+import { buttonVariants } from "@/components/ui/button";
 import { ButtonLink } from "@/components/ui/button-link";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import { GITPICK_REPO } from "@/lib/gitpick";
 import { cn } from "@/lib/utils";
 
 /** Placeholder app icon shown at the top of the sidebar — swap for your app's own logo/icon. */
-const APP_ICON = Blocks;
+const APP_ICON = LayoutTemplate;
 
 export interface SidebarItem extends LinkProps {
   icon: LucideIcon;
@@ -66,6 +68,30 @@ function Sidebar({ items, className, ...props }: SidebarProps) {
           <TooltipContent side="right">{title}</TooltipContent>
         </Tooltip>
       ))}
+
+      <div className="mt-auto">
+        <Tooltip>
+          <TooltipTrigger
+            render={
+              <a
+                aria-label="Open GitHub repo"
+                className={buttonVariants({
+                  variant: "ghost",
+                  size: "icon",
+                  className:
+                    "text-sidebar-foreground/70 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground data-[status=active]:bg-sidebar-accent data-[status=active]:text-sidebar-accent-foreground [&_svg]:size-5",
+                })}
+                href={`https://github.com/${GITPICK_REPO}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <GitBranchIcon />
+              </a>
+            }
+          />
+          <TooltipContent side="right">Open GitHub repo</TooltipContent>
+        </Tooltip>
+      </div>
     </nav>
   );
 }

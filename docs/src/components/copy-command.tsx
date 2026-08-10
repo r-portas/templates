@@ -1,54 +1,56 @@
-import { ActionIcon, CopyButton, Group, Paper, Text, Tooltip } from "@mantine/core";
-import { CheckIcon, CopyIcon } from "@phosphor-icons/react";
+import { Check, Copy } from "lucide-react";
+
+import { buttonVariants } from "@/components/ui/button";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
+import { cn } from "@/lib/utils";
 
 export function CopyCommand({
   command,
-  size = "md",
+  className,
+  size = "default",
   prefix = "$",
   truncate = true,
 }: {
   command: string;
-  size?: "sm" | "md";
+  className?: string;
+  size?: "default" | "sm";
   prefix?: string;
   truncate?: boolean;
 }) {
+  const { copied, copy } = useCopyToClipboard();
+
   return (
-    <Paper bg="var(--mantine-color-gray-light)" p={size === "sm" ? "xs" : "sm"}>
-      <Group gap="sm" wrap="nowrap">
-        <Text
-          span
-          aria-hidden="true"
-          size={size}
-          c="dimmed"
-          ff="monospace"
-          style={{ userSelect: "none" }}
-        >
-          {prefix}
-        </Text>
-        <Text
-          span
-          size={size}
-          ff="monospace"
-          truncate={truncate ? "end" : undefined}
-          style={{ flex: 1, minWidth: 0, overflowWrap: truncate ? undefined : "anywhere" }}
-        >
-          {command}
-        </Text>
-        <CopyButton value={command} timeout={1600}>
-          {({ copied, copy }) => (
-            <Tooltip label={copied ? "Copied" : "Copy"} withArrow>
-              <ActionIcon
-                variant="subtle"
-                size={size}
-                onClick={copy}
-                aria-label={copied ? "Command copied" : `Copy command: ${command}`}
-              >
-                {copied ? <CheckIcon /> : <CopyIcon />}
-              </ActionIcon>
-            </Tooltip>
+    <div
+      data-slot="copy-command"
+      className={cn(
+        "flex w-full items-center gap-3 rounded-md border border-border bg-muted/40 font-mono",
+        size === "default"
+          ? "py-2 pr-2 pl-4 text-[0.8rem] sm:text-sm"
+          : "py-1.5 pr-1.5 pl-3 text-xs",
+        className,
+      )}
+    >
+      <span aria-hidden="true" className="shrink-0 text-muted-foreground select-none">
+        {prefix}
+      </span>
+      <span className={cn("min-w-0 flex-1 text-foreground", truncate ? "truncate" : "break-all")}>
+        {command}
+      </span>
+      <Tooltip>
+        <TooltipTrigger
+          type="button"
+          onClick={() => copy(command)}
+          aria-label={copied ? "Command copied" : `Copy command: ${command}`}
+          className={cn(
+            buttonVariants({ variant: "ghost", size: size === "default" ? "icon-sm" : "icon-xs" }),
+            "shrink-0 text-muted-foreground hover:text-foreground",
           )}
-        </CopyButton>
-      </Group>
-    </Paper>
+        >
+          {copied ? <Check className="text-primary" /> : <Copy />}
+        </TooltipTrigger>
+        <TooltipContent>{copied ? "Copied" : "Copy"}</TooltipContent>
+      </Tooltip>
+    </div>
   );
 }
