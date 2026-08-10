@@ -1,10 +1,13 @@
 import type { LinkProps } from "@tanstack/react-router";
-import type { LucideIcon } from "lucide-react";
+import { Blocks, type LucideIcon } from "lucide-react";
 import type { ComponentProps } from "react";
 
 import { ButtonLink } from "@/components/ui/button-link";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
+
+/** Placeholder app icon shown at the top of the sidebar — swap for your app's own logo/icon. */
+const APP_ICON = Blocks;
 
 export interface SidebarItem extends LinkProps {
   icon: LucideIcon;
@@ -42,6 +45,9 @@ function Sidebar({ items, className, ...props }: SidebarProps) {
       )}
       {...props}
     >
+      <div className="mb-2 flex size-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
+        <APP_ICON className="size-5" />
+      </div>
       {items.map(({ icon: Icon, title, ...linkProps }) => (
         <Tooltip key={title}>
           <TooltipTrigger
