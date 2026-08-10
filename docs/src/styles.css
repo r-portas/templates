@@ -93,5 +93,6 @@
   }
   html {
     @apply font-sans antialiased;
+    color-scheme: dark;
   }
 }

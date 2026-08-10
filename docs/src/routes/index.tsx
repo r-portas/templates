@@ -20,6 +20,7 @@ function RouteComponent() {
 
   return (
     <div className="mx-auto flex max-w-3xl flex-col gap-10">
+      <h1 className="font-heading text-2xl font-semibold">Roy's Templates</h1>
       <Section title="Getting Started" description="Three steps to your first project.">
         <GettingStarted />
       </Section>
