@@ -1,5 +1,6 @@
-import { Outlet, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
+import { createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 
+import { AppLayout } from "@/components/app-layout";
 import clientEnv from "@/lib/env";
 
 import appCss from "@/styles.css?url";
@@ -30,12 +31,12 @@ export const Route = createRootRoute({
 
 function RootDocument() {
   return (
-    <html lang="en" className="font-sans antialiased">
+    <html lang="en" className="font-sans antialiased" suppressHydrationWarning>
       <head>
         <HeadContent />
       </head>
       <body>
-        <Outlet />
+        <AppLayout />
         <Scripts />
       </body>
     </html>

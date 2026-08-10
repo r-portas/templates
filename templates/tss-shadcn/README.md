@@ -21,6 +21,19 @@ bun dev
 bun run update
 ```
 
+### Install Agent Browser
+
+```bash
+# Install the library globally
+bun install -g agent-browser
+
+# Download Chrome
+agent-browser install
+
+# Install the skill
+bunx --bun skills add vercel-labs/agent-browser --global
+```
+
 ### Update skills
 
 ```bash
