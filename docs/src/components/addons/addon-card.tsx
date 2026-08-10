@@ -1,5 +1,5 @@
 import { ClientOnly, Link } from "@tanstack/react-router";
-import { FileText } from "lucide-react";
+import { ArrowUpRight, FileText } from "lucide-react";
 
 import { CopyCommand } from "@/components/copy-command";
 import { buttonVariants } from "@/components/ui/button";
@@ -15,32 +15,24 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip
 import { addonPath } from "@/lib/addons";
 import { cn } from "@/lib/utils";
 
-function getAddonUrl(filename: string) {
-  return new URL(addonPath(filename), window.location.origin).toString();
+function getAddonUrl(slug: string) {
+  return new URL(addonPath(slug), window.location.origin).toString();
 }
 
-function AddonCard({
-  filename,
-  name,
-  description,
-}: {
-  filename: string;
-  name: string;
-  description: string;
-}) {
+function AddonCard({ slug, description }: { slug: string; description: string }) {
   return (
     <Card className="justify-between">
       <CardHeader>
-        <CardTitle className="font-mono">{name}</CardTitle>
-        <CardAction>
+        <CardTitle className="font-mono">{slug}</CardTitle>
+        <CardAction className="flex gap-1">
           <Tooltip>
             <TooltipTrigger
               render={
                 <Link
-                  to="/addons/$filename"
-                  params={{ filename }}
+                  to="/addons/$slug/raw"
+                  params={{ slug }}
                   reloadDocument
-                  aria-label={`View the raw markdown for the ${name} addon`}
+                  aria-label={`View the raw markdown for the ${slug} addon`}
                   className={cn(
                     buttonVariants({ variant: "ghost", size: "icon-sm" }),
                     "text-muted-foreground hover:text-foreground",
@@ -52,20 +44,38 @@ function AddonCard({
             </TooltipTrigger>
             <TooltipContent>View raw markdown</TooltipContent>
           </Tooltip>
+          <Tooltip>
+            <TooltipTrigger
+              render={
+                <Link
+                  to="/addons/$slug"
+                  params={{ slug }}
+                  aria-label={`View the details for the ${slug} addon`}
+                  className={cn(
+                    buttonVariants({ variant: "ghost", size: "icon-sm" }),
+                    "text-muted-foreground hover:text-foreground",
+                  )}
+                />
+              }
+            >
+              <ArrowUpRight />
+            </TooltipTrigger>
+            <TooltipContent>View addon details</TooltipContent>
+          </Tooltip>
         </CardAction>
         <CardDescription>{description}</CardDescription>
       </CardHeader>
       <CardContent>
         <ClientOnly>
-          <AgentCommand filename={filename} />
+          <AgentCommand slug={slug} />
         </ClientOnly>
       </CardContent>
     </Card>
   );
 }
 
-function AgentCommand({ filename }: { filename: string }) {
-  const url = getAddonUrl(filename);
+function AgentCommand({ slug }: { slug: string }) {
+  const url = getAddonUrl(slug);
   return (
     <CopyCommand
       command={`Follow the setup instructions at ${url}`}

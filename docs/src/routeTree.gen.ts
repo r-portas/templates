@@ -10,17 +10,18 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as AddonsFilenameRouteImport } from './routes/addons.$filename'
+import { Route as AddonsSlugRouteImport } from './routes/addons.$slug'
 import { Route as TemplatesTemplateNameRouteImport } from './routes/templates.$templateName'
+import { Route as AddonsSlugRawRouteImport } from './routes/addons.$slug.raw'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AddonsFilenameRoute = AddonsFilenameRouteImport.update({
-  id: '/addons/$filename',
-  path: '/addons/$filename',
+const AddonsSlugRoute = AddonsSlugRouteImport.update({
+  id: '/addons/$slug',
+  path: '/addons/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TemplatesTemplateNameRoute = TemplatesTemplateNameRouteImport.update({
@@ -28,34 +29,48 @@ const TemplatesTemplateNameRoute = TemplatesTemplateNameRouteImport.update({
   path: '/templates/$templateName',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AddonsSlugRawRoute = AddonsSlugRawRouteImport.update({
+  id: '/raw',
+  path: '/raw',
+  getParentRoute: () => AddonsSlugRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/addons/$filename': typeof AddonsFilenameRoute
+  '/addons/$slug': typeof AddonsSlugRouteWithChildren
   '/templates/$templateName': typeof TemplatesTemplateNameRoute
+  '/addons/$slug/raw': typeof AddonsSlugRawRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/addons/$filename': typeof AddonsFilenameRoute
+  '/addons/$slug': typeof AddonsSlugRouteWithChildren
   '/templates/$templateName': typeof TemplatesTemplateNameRoute
+  '/addons/$slug/raw': typeof AddonsSlugRawRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/addons/$filename': typeof AddonsFilenameRoute
+  '/addons/$slug': typeof AddonsSlugRouteWithChildren
   '/templates/$templateName': typeof TemplatesTemplateNameRoute
+  '/addons/$slug/raw': typeof AddonsSlugRawRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/addons/$filename' | '/templates/$templateName'
+  fullPaths:
+    '/' | '/addons/$slug' | '/templates/$templateName' | '/addons/$slug/raw'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/addons/$filename' | '/templates/$templateName'
-  id: '__root__' | '/' | '/addons/$filename' | '/templates/$templateName'
+  to: '/' | '/addons/$slug' | '/templates/$templateName' | '/addons/$slug/raw'
+  id:
+    | '__root__'
+    | '/'
+    | '/addons/$slug'
+    | '/templates/$templateName'
+    | '/addons/$slug/raw'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AddonsFilenameRoute: typeof AddonsFilenameRoute
+  AddonsSlugRoute: typeof AddonsSlugRouteWithChildren
   TemplatesTemplateNameRoute: typeof TemplatesTemplateNameRoute
 }
 
@@ -68,11 +83,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/addons/$filename': {
-      id: '/addons/$filename'
-      path: '/addons/$filename'
-      fullPath: '/addons/$filename'
-      preLoaderRoute: typeof AddonsFilenameRouteImport
+    '/addons/$slug': {
+      id: '/addons/$slug'
+      path: '/addons/$slug'
+      fullPath: '/addons/$slug'
+      preLoaderRoute: typeof AddonsSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/templates/$templateName': {
@@ -82,12 +97,31 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TemplatesTemplateNameRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/addons/$slug/raw': {
+      id: '/addons/$slug/raw'
+      path: '/raw'
+      fullPath: '/addons/$slug/raw'
+      preLoaderRoute: typeof AddonsSlugRawRouteImport
+      parentRoute: typeof AddonsSlugRoute
+    }
   }
 }
 
+interface AddonsSlugRouteChildren {
+  AddonsSlugRawRoute: typeof AddonsSlugRawRoute
+}
+
+const AddonsSlugRouteChildren: AddonsSlugRouteChildren = {
+  AddonsSlugRawRoute: AddonsSlugRawRoute,
+}
+
+const AddonsSlugRouteWithChildren = AddonsSlugRoute._addFileChildren(
+  AddonsSlugRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AddonsFilenameRoute: AddonsFilenameRoute,
+  AddonsSlugRoute: AddonsSlugRouteWithChildren,
   TemplatesTemplateNameRoute: TemplatesTemplateNameRoute,
 }
 export const routeTree = rootRouteImport

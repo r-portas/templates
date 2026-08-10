@@ -10,17 +10,18 @@ function notFound() {
   });
 }
 
-export const Route = createFileRoute("/addons/$filename")({
+export const Route = createFileRoute("/addons/$slug/raw")({
   server: {
     handlers: {
       GET: async ({ params }) => {
-        const { filename } = params;
+        const { slug } = params;
+        const filename = `${slug}.md`;
         if (!isValidAddonFilename(filename)) {
           return notFound();
         }
 
         try {
-          const { content } = await getAddon(filename);
+          const { content } = await getAddon(slug);
           return new Response(content, {
             headers: { "Content-Type": "text/markdown; charset=utf-8" },
           });

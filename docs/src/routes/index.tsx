@@ -46,12 +46,7 @@ function RouteComponent() {
       >
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           {addons.map((addon) => (
-            <AddonCard
-              key={addon.filename}
-              filename={addon.filename}
-              name={addon.name}
-              description={addon.description}
-            />
+            <AddonCard key={addon.slug} {...addon} />
           ))}
         </div>
       </Section>
