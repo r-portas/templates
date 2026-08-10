@@ -52,12 +52,34 @@ bun add -D oxfmt oxlint
 ```json
 {
   "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["eslint", "jsdoc", "react", "react-perf"]
+  "plugins": ["eslint", "typescript", "oxc", "jsdoc", "react", "react-perf", "unicorn"],
+  "categories": {
+    "correctness": "error",
+    "suspicious": "error"
+  },
+  "rules": {
+    // Prefer undefined over null
+    "unicorn/no-null": "error",
+    // Not needed for React 17+
+    "react/react-in-jsx-scope": "off"
+  },
+  "settings": {
+    "jsdoc": {
+      "tagNamePreference": {
+        "remarks": "remarks"
+      }
+    }
+  }
 }
 ```
 
-> Add the `nextjs` plugin if the project uses Next.js. Drop `react` and `react-perf` if it isn't
-> a React project.
+- `categories` raises the `correctness` and `suspicious` rule sets from oxlint's defaults to
+  `error`, so those classes of bugs fail `bun run lint` rather than just warning.
+- `unicorn/no-null` enforces `undefined` over `null` across the project — drop it if the project
+  intentionally uses `null` (e.g. to match a database or API type).
+- Add the `nextjs` plugin if the project uses Next.js. Drop `react`, `react-perf`, and the
+  `react/react-in-jsx-scope` rule if it isn't a React project. `typescript`, `oxc`, `jsdoc`, and
+  `unicorn` apply regardless of framework.
 
 ## 4. VS Code setup
 
