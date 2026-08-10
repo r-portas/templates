@@ -36,7 +36,7 @@ export async function getAddon(slug: string) {
 
   const content = await readFile(resolve(ADDONS_DIR, filename), "utf-8");
   const document = parseMarkdown(content, { frontmatter: true });
-  const frontmatter = addonFrontmatterSchema.parse(YAML.parse(document.frontmatter ?? ""));
+  const frontmatter = addonFrontmatterSchema.parse(YAML.parse(document.frontmatter ?? "") ?? {});
 
   return { slug, description: frontmatter.description, document, content };
 }

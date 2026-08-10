@@ -17,7 +17,8 @@ export const Route = createFileRoute("/addons/$slug")({
   component: RouteComponent,
   loader: async ({ params }) => {
     const { slug } = params;
-    const addon = await getAddonFn({ data: slug });
+    // Don't include the raw markdown source, since only `document` is rendered and it can be large.
+    const { content: _content, ...addon } = await getAddonFn({ data: slug });
     return { addon };
   },
 });
@@ -29,7 +30,7 @@ function RouteComponent() {
       <div className="flex items-center justify-between">
         <ButtonLink to="/" variant="ghost" className="w-fit">
           <ArrowLeft data-icon="inline-start" />
-          All templates
+          Home
         </ButtonLink>
         <ButtonLink
           to="/addons/$slug/raw"
