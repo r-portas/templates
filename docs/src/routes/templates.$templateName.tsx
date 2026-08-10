@@ -50,13 +50,8 @@ function RouteComponent() {
 
   return (
     <div className="mx-auto flex max-w-3xl flex-col gap-6">
-      <ButtonLink
-        to="/"
-        variant="ghost"
-        size="sm"
-        className="w-fit gap-1 text-muted-foreground hover:text-foreground"
-      >
-        <ArrowLeft className="size-3.5" />
+      <ButtonLink to="/" variant="ghost" className="w-fit">
+        <ArrowLeft data-icon="inline-start" />
         All templates
       </ButtonLink>
 
@@ -69,7 +64,7 @@ function RouteComponent() {
           href={githubUrl(template.name)}
           target="_blank"
           rel="noreferrer"
-          className={buttonVariants({ variant: "ghost", size: "sm" })}
+          className={buttonVariants({ variant: "ghost" })}
         >
           <GitBranch data-icon="inline-start" />
           GitHub

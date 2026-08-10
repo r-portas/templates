@@ -1,5 +1,5 @@
 import { ClientOnly, Link } from "@tanstack/react-router";
-import { FileText } from "lucide-react";
+import { ArrowUpRight, FileText } from "lucide-react";
 
 import { CopyCommand } from "@/components/copy-command";
 import { buttonVariants } from "@/components/ui/button";
@@ -19,28 +19,20 @@ function getAddonUrl(filename: string) {
   return new URL(addonPath(filename), window.location.origin).toString();
 }
 
-function AddonCard({
-  filename,
-  name,
-  description,
-}: {
-  filename: string;
-  name: string;
-  description: string;
-}) {
+function AddonCard({ slug, description }: { slug: string; description: string }) {
   return (
     <Card className="justify-between">
       <CardHeader>
-        <CardTitle className="font-mono">{name}</CardTitle>
+        <CardTitle className="font-mono">{slug}</CardTitle>
         <CardAction>
           <Tooltip>
             <TooltipTrigger
               render={
                 <Link
-                  to="/addons/$filename"
-                  params={{ filename }}
+                  to="/addons/$slug/raw"
+                  params={{ slug }}
                   reloadDocument
-                  aria-label={`View the raw markdown for the ${name} addon`}
+                  aria-label={`View the raw markdown for the ${slug} addon`}
                   className={cn(
                     buttonVariants({ variant: "ghost", size: "icon-sm" }),
                     "text-muted-foreground hover:text-foreground",
@@ -52,12 +44,31 @@ function AddonCard({
             </TooltipTrigger>
             <TooltipContent>View raw markdown</TooltipContent>
           </Tooltip>
+          <Tooltip>
+            <TooltipTrigger
+              render={
+                <Link
+                  to="/addons/$slug"
+                  params={{ slug }}
+                  reloadDocument
+                  aria-label={`View the details for the ${slug} addon`}
+                  className={cn(
+                    buttonVariants({ variant: "ghost", size: "icon-sm" }),
+                    "text-muted-foreground hover:text-foreground",
+                  )}
+                />
+              }
+            >
+              <ArrowUpRight />
+            </TooltipTrigger>
+            <TooltipContent>View addon details</TooltipContent>
+          </Tooltip>
         </CardAction>
         <CardDescription>{description}</CardDescription>
       </CardHeader>
       <CardContent>
         <ClientOnly>
-          <AgentCommand filename={filename} />
+          <AgentCommand filename={`${slug}/raw`} />
         </ClientOnly>
       </CardContent>
     </Card>
