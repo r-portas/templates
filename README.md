@@ -47,11 +47,10 @@ Addons are optional setup steps that can be applied to a template by coding agen
 This repo is a [Bun workspace](https://bun.sh/docs/install/workspaces), with each
 template (and `./docs`) as a workspace package. Run these from the repo root:
 
-| Command          | Description                                                 |
-| ---------------- | ----------------------------------------------------------- |
-| `bun run update` | Update every template's dependencies to the latest versions |
-| `bun run lint`   | Lint every template                                         |
-| `bun run build`  | Build every template, verifying it still works              |
+| Command          | Description                                                        |
+| ---------------- | ------------------------------------------------------------------ |
+| `bun run update` | Update every template's dependencies to the latest versions        |
+| `bun run build`  | Build every template, verifying it still works (includes linting)  |
 
 ## Skills
 

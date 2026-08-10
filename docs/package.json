@@ -4,8 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "bun --bun vite dev",
-    "build": "bun --bun vite build && tsc --noEmit",
-    "lint": "oxlint .",
+    "build": "bun --bun vite build && tsc --noEmit && oxlint .",
     "format": "oxfmt .",
     "update": "bun update --interactive --latest"
   },
