@@ -17,9 +17,6 @@ bun install
 # Install the shadcn/ui skill
 bunx --bun skills add shadcn/ui --global
 
-# Copy the example env file and fill in any secrets
-cp .env.local.example .env.local
-
 # Start the development server
 bun dev
 

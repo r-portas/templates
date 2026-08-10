@@ -40,7 +40,7 @@ function Sidebar({ items, className, ...props }: SidebarProps) {
   return (
     <nav
       className={cn(
-        "flex h-screen flex-col gap-1 border-r border-sidebar-border bg-sidebar p-2",
+        "sticky top-0 flex h-screen shrink-0 flex-col gap-1 border-r border-sidebar-border bg-sidebar p-2",
         className,
       )}
       {...props}
