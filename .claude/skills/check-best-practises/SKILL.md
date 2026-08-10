@@ -27,6 +27,14 @@ description: Checks the alignment of templates against best practises, use this 
   - `tss-tw`: Builds off the `tss` template adding Tailwind, check the following dependencies:
     - `tailwindcss`
     - `@tailwindcss/vite`
+  - `tss-shadcn`: Builds off the `tss-tw` template adding shadcn/ui, check the following dependencies:
+    - `shadcn`: https://ui.shadcn.com/docs/llms.txt
+    - `@base-ui/react`
+    - `class-variance-authority`
+    - `clsx`
+    - `tailwind-merge`
+    - `lucide-react`
+    - `tw-animate-css`
   - `tss-mantine`: Builds off the `tss` template adding Mantine, and is the opinionated, batteries-included template. Check the following dependencies:
     - `@mantine/core`: https://mantine.dev/llms.txt
     - `@mantine/hooks`: https://mantine.dev/llms.txt

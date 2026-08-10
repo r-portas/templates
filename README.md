@@ -23,12 +23,13 @@ All templates share a common set of tooling:
 
 ## Templates
 
-| Name                                   | Description                                                                          |
-| -------------------------------------- | ------------------------------------------------------------------------------------ |
-| [react](./templates/react)             | A blank minimal React application                                                    |
-| [tss](./templates/tss)                 | A blank minimal TanStack Start application                                           |
-| [tss-tw](./templates/tss-tw)           | A blank minimal TanStack Start application configured with Tailwind CSS              |
-| [tss-mantine](./templates/tss-mantine) | An opinionated, batteries-included template for building new web apps, using Mantine |
+| Name                                   | Description                                                                            |
+| -------------------------------------- | ---------------------------------------------------------------------------------------- |
+| [react](./templates/react)             | A blank minimal React application                                                        |
+| [tss](./templates/tss)                 | A blank minimal TanStack Start application                                               |
+| [tss-tw](./templates/tss-tw)           | A blank minimal TanStack Start application configured with Tailwind CSS                  |
+| [tss-shadcn](./templates/tss-shadcn)   | A blank minimal TanStack Start application configured with shadcn/ui and Tailwind CSS    |
+| [tss-mantine](./templates/tss-mantine) | An opinionated, batteries-included template for building new web apps, using Mantine     |
 
 ## Addons
 

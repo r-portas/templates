@@ -62,6 +62,8 @@ Before editing files for a substantial task:
 
 ## User Interface
 
-- This project uses Tailwind CSS (v4) for styling.
-- Tailwind is configured CSS-first via `src/styles.css` (`@import "tailwindcss";`); there is no `tailwind.config.js`. Customise the theme with `@theme` in that file.
+- This project uses [shadcn/ui](https://ui.shadcn.com) components built on Tailwind CSS (v4) and Base UI.
+- `components.json` configures the shadcn CLI (style, aliases, icon library).
+- Use `bun shadcn add <component>` to add new components.
+- Tailwind is configured CSS-first via `src/styles.css`
 - Tailwind class sorting is handled by Oxfmt's `sortTailwindcss` option in `.oxfmtrc.json`, so classes are reordered automatically on format.
