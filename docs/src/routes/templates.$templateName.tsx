@@ -52,7 +52,7 @@ function RouteComponent() {
     <div className="mx-auto flex max-w-3xl flex-col gap-6">
       <ButtonLink to="/" variant="ghost" className="w-fit">
         <ArrowLeft data-icon="inline-start" />
-        All templates
+        Home
       </ButtonLink>
 
       <div className="flex items-start justify-between gap-4">
