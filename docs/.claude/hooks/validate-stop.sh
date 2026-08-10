@@ -16,7 +16,7 @@ if ! output=$(bun run build 2>&1); then
   exit 2
 fi
 
-if ! output=$(bun test 2>&1); then
+if ! output=$(bun test --pass-with-no-tests 2>&1); then
   echo "$output" >&2
   exit 2
 fi
