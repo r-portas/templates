@@ -23,7 +23,7 @@
           {
             "type": "command",
             "command": "$CLAUDE_PROJECT_DIR/.claude/hooks/validate-stop.sh",
-            "statusMessage": "Building..."
+            "statusMessage": "Building and testing..."
           }
         ]
       }
