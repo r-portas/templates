@@ -1,11 +1,14 @@
 import { describe, expect, test } from "bun:test";
 
-import { addonPath, isValidAddonFilename } from "@/lib/addons";
+import { addonPath, isListableAddonFilename, isValidAddonFilename } from "@/lib/addons";
 
 describe("isValidAddonFilename", () => {
-  test.each(["drizzle.md", "oxlint-oxfmt.md", "vitest2.md"])("accepts %p", (filename) => {
-    expect(isValidAddonFilename(filename)).toBe(true);
-  });
+  test.each(["drizzle.md", "oxlint-oxfmt.md", "vitest2.md", "_template.md"])(
+    "accepts %p",
+    (filename) => {
+      expect(isValidAddonFilename(filename)).toBe(true);
+    },
+  );
 
   test.each([
     "drizzle",
@@ -17,6 +20,16 @@ describe("isValidAddonFilename", () => {
     "a b.md",
   ])("rejects %p", (filename) => {
     expect(isValidAddonFilename(filename)).toBe(false);
+  });
+});
+
+describe("isListableAddonFilename", () => {
+  test("accepts a real addon filename", () => {
+    expect(isListableAddonFilename("drizzle.md")).toBe(true);
+  });
+
+  test("rejects the authoring template", () => {
+    expect(isListableAddonFilename("_template.md")).toBe(false);
   });
 });
 

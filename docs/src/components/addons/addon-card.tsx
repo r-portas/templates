@@ -12,12 +12,8 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
-import { addonPath } from "@/lib/addons";
+import { getAddonUrl } from "@/lib/addons";
 import { cn } from "@/lib/utils";
-
-function getAddonUrl(slug: string) {
-  return new URL(addonPath(slug), window.location.origin).toString();
-}
 
 function AddonCard({ slug, description }: { slug: string; description: string }) {
   return (
