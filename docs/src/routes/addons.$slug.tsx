@@ -37,7 +37,7 @@ function RouteComponent() {
           Home
         </ButtonLink>
         <ButtonLink
-          to="/addons/$slug/raw"
+          to="/addons/{$slug}.md"
           params={{ slug: addon.slug }}
           reloadDocument
           variant="ghost"

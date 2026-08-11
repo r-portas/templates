@@ -4,7 +4,7 @@ import { resolve } from "node:path";
 import { parseMarkdown } from "@tanstack/markdown/parser";
 import { YAML } from "bun";
 
-import { isValidAddonFilename } from "@/lib/addons";
+import { isListableAddonFilename, isValidAddonFilename } from "@/lib/addons";
 import { addonFrontmatterSchema } from "@/lib/addons.schemas";
 
 const ADDONS_DIR = resolve("../addons");
@@ -14,7 +14,7 @@ const ADDONS_DIR = resolve("../addons");
  */
 export async function listAddons() {
   const entries = await readdir(ADDONS_DIR);
-  const filenames = entries.filter(isValidAddonFilename).toSorted((a, b) => a.localeCompare(b));
+  const filenames = entries.filter(isListableAddonFilename).toSorted((a, b) => a.localeCompare(b));
 
   const addons = await Promise.all(
     filenames.map((filename) => getAddon(filename.replace(".md", ""))),

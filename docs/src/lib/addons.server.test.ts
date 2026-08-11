@@ -13,11 +13,13 @@ function mockAddon(filename: string) {
   ].join("\n");
 }
 
+const SERVABLE_FILENAMES = ["drizzle.md", "oxlint-oxfmt.md", "_template.md"];
+
 mock.module("node:fs/promises", () => ({
-  readdir: async () => ["drizzle.md", "oxlint-oxfmt.md", "README.txt"],
+  readdir: async () => ["drizzle.md", "oxlint-oxfmt.md", "_template.md", "README.txt"],
   readFile: async (path: string) => {
     const filename = path.split("/").pop();
-    if (filename !== "drizzle.md" && filename !== "oxlint-oxfmt.md") {
+    if (!filename || !SERVABLE_FILENAMES.includes(filename)) {
       throw new Error(`ENOENT: ${path}`);
     }
     return mockAddon(filename);
@@ -44,4 +46,13 @@ test("getAddon returns the frontmatter alongside the raw content", async () => {
 
 test("getAddon rejects a slug that would escape the addons directory", async () => {
   expect(getAddon("../package")).rejects.toThrow('Invalid addon filename "../package.md"');
+});
+
+test("getAddon resolves the authoring template even though it's excluded from listAddons", async () => {
+  expect(await getAddon("_template")).toEqual({
+    slug: "_template",
+    description: "_template description",
+    content: mockAddon("_template.md"),
+    document: expect.any(Object),
+  });
 });
