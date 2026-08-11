@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 
 import { AddonCard } from "@/components/addons/addon-card";
+import { NewAddonPrompt } from "@/components/addons/new-addon-prompt";
 import { GettingStarted } from "@/components/getting-started";
 import { Section } from "@/components/section";
 import { TemplateCard } from "@/components/templates/template-card";
@@ -44,10 +45,13 @@ function RouteComponent() {
         title="Addons"
         description="Optional setup steps to apply on top of a template. Copy the URL and point your coding agent at it."
       >
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          {addons.map((addon) => (
-            <AddonCard key={addon.slug} {...addon} />
-          ))}
+        <div className="flex flex-col gap-6">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            {addons.map((addon) => (
+              <AddonCard key={addon.slug} {...addon} />
+            ))}
+          </div>
+          <NewAddonPrompt />
         </div>
       </Section>
     </div>
