@@ -4,7 +4,7 @@ const ADDON_FILENAME_PATTERN = /^[a-z0-9-]+\.md$/;
 /** The authoring template for drafting new addons. Servable, but excluded from the public listing. */
 const TEMPLATE_FILENAME = "_template.md";
 
-/** The slug `_template.md` is served under, e.g. for building its `/addons/$slug/raw` URL. */
+/** The slug `_template.md` is served under, e.g. for building its `/addons/$slug.md` URL. */
 export const TEMPLATE_ADDON_SLUG = "_template";
 
 /**
@@ -14,7 +14,7 @@ export const TEMPLATE_ADDON_SLUG = "_template";
  *
  * @remarks
  * Includes the authoring template (`_template.md`) alongside real addons, since both are
- * served through the same `/addons/$slug/raw` route. Use {@link isListableAddonFilename}
+ * served through the same `/addons/$slug.md` route. Use {@link isListableAddonFilename}
  * to exclude the template from the public addon listing.
  */
 export function isValidAddonFilename(filename: string) {
@@ -39,7 +39,7 @@ export function isListableAddonFilename(filename: string) {
  * @param slug - The addon's slug, excluding the file extension, e.g. `docker`.
  */
 export function addonPath(slug: string) {
-  return `/addons/${slug}/raw`;
+  return `/addons/${slug}.md`;
 }
 
 /**

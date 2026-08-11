@@ -10,7 +10,7 @@ function notFound() {
   });
 }
 
-export const Route = createFileRoute("/addons/$slug/raw")({
+export const Route = createFileRoute("/addons/{$slug}.md")({
   server: {
     handlers: {
       GET: async ({ params }) => {

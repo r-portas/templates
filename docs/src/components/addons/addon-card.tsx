@@ -25,7 +25,7 @@ function AddonCard({ slug, description }: { slug: string; description: string })
             <TooltipTrigger
               render={
                 <Link
-                  to="/addons/$slug/raw"
+                  to="/addons/{$slug}.md"
                   params={{ slug }}
                   reloadDocument
                   aria-label={`View the raw markdown for the ${slug} addon`}

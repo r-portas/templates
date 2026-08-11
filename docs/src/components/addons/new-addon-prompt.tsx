@@ -26,7 +26,7 @@ export function NewAddonPrompt() {
           <TooltipTrigger
             render={
               <Link
-                to="/addons/$slug/raw"
+                to="/addons/{$slug}.md"
                 params={{ slug: TEMPLATE_ADDON_SLUG }}
                 reloadDocument
                 aria-label="View the raw addon authoring template"
