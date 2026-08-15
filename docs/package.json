@@ -14,9 +14,9 @@
     "@fontsource-variable/geist-mono": "^5.3.0",
     "@tanstack/highlight": "^0.0.10",
     "@tanstack/markdown": "^0.0.13",
-    "@tanstack/react-router": "^1.170.25",
-    "@tanstack/react-start": "^1.168.42",
-    "@tanstack/start-static-server-functions": "^1.167.26",
+    "@tanstack/react-router": "^1.170.27",
+    "@tanstack/react-start": "^1.168.44",
+    "@tanstack/start-static-server-functions": "^1.167.27",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^1.31.0",
@@ -35,7 +35,7 @@
     "@vitejs/plugin-react": "^6.0.5",
     "oxfmt": "^0.63.0",
     "oxlint": "^1.78.0",
-    "shadcn": "^4.16.2",
+    "shadcn": "^4.17.0",
     "typescript": "^7.0.2",
     "vite": "^8.2.1"
   }
