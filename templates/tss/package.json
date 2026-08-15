@@ -9,8 +9,8 @@
     "update": "bun update --interactive --latest"
   },
   "dependencies": {
-    "@tanstack/react-router": "^1.170.25",
-    "@tanstack/react-start": "^1.168.42",
+    "@tanstack/react-router": "^1.170.27",
+    "@tanstack/react-start": "^1.168.44",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "zod": "^4.4.3"
