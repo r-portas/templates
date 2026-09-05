@@ -9,22 +9,22 @@
     "update": "bun update --interactive --latest"
   },
   "dependencies": {
-    "@tanstack/react-router": "^1.170.25",
-    "@tanstack/react-start": "^1.168.42",
+    "@tanstack/react-router": "^1.170.32",
+    "@tanstack/react-start": "^1.168.49",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "tailwindcss": "^4.3.3",
-    "zod": "^4.4.3"
+    "zod": "^4.5.4"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.3.3",
-    "@types/bun": "^1.3.14",
+    "@types/bun": "^1.4.0",
     "@types/react": "^19.2.18",
-    "@types/react-dom": "^19.2.4",
-    "@vitejs/plugin-react": "^6.0.5",
-    "oxfmt": "^0.63.0",
-    "oxlint": "^1.78.0",
+    "@types/react-dom": "^19.2.5",
+    "@vitejs/plugin-react": "^6.1.1",
+    "oxfmt": "^0.66.0",
+    "oxlint": "^1.81.0",
     "typescript": "^7.0.2",
-    "vite": "^8.2.1"
+    "vite": "^8.2.2"
   }
 }
